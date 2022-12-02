@@ -1,0 +1,162 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model employee {
+  sis_id                        Int                  @id @default(autoincrement())
+  rec_st                        Boolean              @default(true)
+  created_at                    DateTime             @default(now())
+  updated_at                    DateTime             @updatedAt
+  created_by                    Int?
+  updated_by                    Int?
+  created                       employee?            @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated                       employee?            @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+  name                          String
+  core_id                       String               @unique
+  email                         String               @unique
+  password                      String
+  manager_id                    Int?
+  manager                       employee?            @relation("managerRef", fields: [manager_id], references: [sis_id])
+  department                    String?
+
+  employees                     employee[]           @relation("managerRef")
+  created_employees             employee[]           @relation("createdByRef")
+  updated_employees             employee[]           @relation("updatedByRef")
+  grp_created_by                group[]              @relation("createdByRef")
+  grp_updated_by                group[]              @relation("updatedByRef")
+  emp_grp_created_by            employee_group[]     @relation("createdByRef")
+  emp_grp_updated_by            employee_group[]     @relation("updatedByRef")
+  application_created_by        application[]        @relation("createdByRef")
+  application_updated_by        application[]        @relation("updatedByRef")
+  application_access_created_by application_access[] @relation("createdByRef")
+  application_access_updated_by application_access[] @relation("updatedByRef")
+  review_created_by             review[]             @relation("createdByRef")
+  review_updated_by             review[]             @relation("updatedByRef")
+
+  group                         group?               @relation(fields: [groupSis_id], references: [sis_id])
+  groupSis_id                   Int?
+  employee_group                employee_group[]
+  application_access            application_access[]
+  review                        review[]
+}
+
+model group {
+  sis_id         Int              @id @default(autoincrement())
+  rec_st         Boolean          @default(true)
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @updatedAt
+  created_by     Int
+  updated_by     Int
+
+  created        employee         @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated        employee         @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+  name           String
+  employees      employee[]
+  employee_group employee_group[]
+  applications   application[]
+}
+
+model employee_group {
+  sis_id      Int      @id @default(autoincrement())
+  rec_st      Boolean  @default(true)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  created_by  Int
+  updated_by  Int
+  created     employee @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated     employee @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+
+  employee_id Int
+  employee    employee @relation(fields: [employee_id], references: [sis_id])
+  group_id    Int
+  group       group    @relation(fields: [group_id], references: [sis_id])
+}
+
+model application {
+  sis_id             Int                  @id @default(autoincrement())
+  rec_st             Boolean              @default(true)
+  created_at         DateTime             @default(now())
+  updated_at         DateTime             @updatedAt
+  created_by         Int
+  updated_by         Int
+  created            employee             @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated            employee             @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+
+  name               String
+  environment        String
+  owner_gid          Int
+  owner_group        group                @relation(fields: [owner_gid], references: [sis_id])
+  application_access application_access[]
+  review             review[]
+}
+
+model application_access {
+  sis_id         Int         @id @default(autoincrement())
+  rec_st         Boolean     @default(true)
+  created_at     DateTime    @default(now())
+  updated_at     DateTime    @updatedAt
+  created_by     Int
+  updated_by     Int
+  created        employee    @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated        employee    @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+
+  access_id      String      @unique
+  application_id Int
+  application    application @relation(fields: [application_id], references: [sis_id])
+  employee_id    Int
+  employee       employee    @relation(fields: [employee_id], references: [sis_id])
+  role           String
+  version        Int
+  review         review[]
+}
+
+enum ReviewType {
+  MONTHLY
+  QUATERLY
+  ADHOC
+}
+
+enum status {
+  OPEN
+  MANAGER_REVIEW_COM
+  APP_OWNER_REVIEW_COM
+  CLOSED
+}
+
+enum review_stat {
+  MANAGER_ACEEPTED
+  MANAGER_REJECTED
+  APP_OWNER_ACEEPTED
+  APP_OWNER_REJECTED
+  PENDING
+}
+
+model review {
+  sis_id               Int                @id @default(autoincrement())
+  rec_st               Boolean            @default(true)
+  created_at           DateTime           @default(now())
+  updated_at           DateTime           @updatedAt
+  created_by           Int
+  updated_by           Int
+  created              employee           @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated              employee           @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+  
+  review_id            String             @unique
+  access_id            String
+  application_access   application_access @relation(fields: [access_id], references: [access_id])
+  application_id       Int
+  application          application        @relation(fields: [application_id], references: [sis_id])
+  employee_id          Int
+  employee             employee           @relation(fields: [employee_id], references: [sis_id])
+  quater               String
+  month                String
+  review_type          ReviewType
+  status               status             @default(OPEN)
+  review_accept_reject review_stat        @default(PENDING)
+  review_comments      String
+}

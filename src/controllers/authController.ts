@@ -1,0 +1,216 @@
+// prisma
+import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+import { NextFunction, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import logger from '../utils/logger';
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+dotenv.config();
+
+const register = async (req: any, res: any) => {
+   try {
+      logger.info("[/register]");
+      const { name, email, core_id,  } = req.body;
+
+      //find if exist
+      const user = await prisma.employee.findUnique({
+         where: {
+            core_id: core_id,
+         }
+      })
+      // Check if user already exists
+      if (user) {
+         logger.warn(`[/register] - user already exists`);
+         logger.debug(`[/register] - body: ${JSON.stringify(req.body)}`);
+         return res.status(400).json({
+            message: 'User already exists'
+         });
+      }
+      // generate 6 char random password alphanumeric
+      const password = Math.random().toString(36).slice(2);
+      // hash password
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+      // save password in file
+      const fs = require('fs');
+      fs.appendFile('password.txt', `${email} - ${password}`, function (err: any) {
+         if (err) throw err;
+         console.log('Saved!');
+      });
+
+      // create user
+      const newUser = await prisma.employee.create({
+         data: {
+            name: name,
+            email: email,
+            password: hashedPassword,
+            core_id: core_id,
+            created_by: req.user_id,
+            updated_by: req.user_id,
+         }
+      })
+      logger.info("[/register]: user created")
+
+      // // send email
+      // let myEmail = {
+      //    "email": "tandelneelkanth@gmail.com",
+      //    "name" : "Tandel Neelkanth"
+      // }
+      // await sendPasswordResetEmail({email: newUser.email, name: newUser.name},myEmail,password);
+      // logger.info("[/register]: email sent")
+
+      logger.info("[/register]: success")
+      return res.status(200).json({
+         message: 'User created successfully',
+         isError: false,
+         data: {
+            name: newUser.name,
+            email: newUser.email,
+            core_id: newUser.core_id,
+            
+            password: password // send password in email
+
+         }
+      });
+   } catch (err) {
+      logger.error(err)
+      return res.status(500).json({
+         isError: true,
+         message: 'Something went wrong'
+      });
+   }
+};
+
+// reference: https://www.freecodecamp.org/news/how-to-authenticate-users-and-implement-cors-in-nodejs-applications/
+const login = async (req: Request, res: Response) => {
+   logger.info("[/login]");
+   try {
+      const { core_id, password } = req.body;
+
+      // find user
+      let employee = await prisma.employee.findUnique({
+         where: {
+            core_id: core_id,
+         },
+      });
+
+      let _employee: any = { ...employee };
+      if (!employee) {
+         logger.warn(`[/login] - user not found`);
+         logger.debug(`[/login] - body: ${JSON.stringify(req.body)}`);
+         return res.status(400).json({
+            message: "User not found",
+         });
+      }
+
+      // check password
+      const isMatch = await bcrypt.compare(password, employee.password);
+      if (!isMatch) {
+         logger.warn(`[/login] - incorrect username or password`);
+         logger.debug(`[/login] - body: ${JSON.stringify(req.body)}`);
+         return res.status(400).json({
+            message: "Incorrect username or password",
+         });
+      }
+      // token of user inf time
+      let secret: any = process.env.JWT_SECRET;
+      const token = jwt.sign({ userId: employee.sis_id }, secret);
+      logger.info(`[/login] - success - ${employee.sis_id}`);
+      delete _employee.password;
+
+      return res.status(200).json({
+         message: "Login successful",
+         isError: false,
+         is_logged_in: true,
+         isAdmin: employee.sis_id === 1,
+         redirect: employee.updated_by === 1,
+         data: {
+            user: _employee,
+            token: token,
+         }
+      });
+   } catch (err) {
+      logger.error(`[/login] - ${err}`);
+      return res.status(400).send({
+         message: "Server error",
+      });
+   }
+};
+
+const changePassword = async (req: any, res: any) => {
+   logger.info("[/changePassword]");
+   try {
+      const { password, new_password } = req.body;
+      
+
+      // update password
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const updatedUser = await prisma.employee.update({
+         where: {
+            sis_id: req.user_id,
+         },
+         data: {
+            password: hashedPassword,
+            updated_by: req.user_id, //hardcoded to 4 for now
+         },
+      });
+      logger.info(`[/changePassword] - success - ${req.user_id}`);
+      return res.status(200).json({
+         isError: false,
+         message: "Password changed successfully",
+         data: {
+            user: updatedUser
+         }
+      });
+   } catch (err) {
+      logger.error(`[/changePassword] - ${err}`);
+      return res.status(400).send({
+         isError: true,
+         message: "Server error",
+      });
+   }
+};
+
+// const editProfile = async (req: any, res: any) => {
+//    logger.info("[/userDetails]");
+//    try {
+//       const { post_id, department, committee } = req.body;
+//       // sanity check
+//       if (!post_id) {
+//          logger.warn(`[/userDetails] - required post `);
+//          logger.debug(`[/userDetails] - body: ${JSON.stringify(req.body)}`);
+//          return res.status(400).json({
+//             isError: true,
+//             message: "Please provide all the required fields",
+//          });
+//       }
+
+//       // update user details
+//       let user = await prisma.employee.update({
+//          where: {
+//             sis_id: req.user_id,
+//          },
+//          data: {
+//             position_id: 2,
+//             department_id: 1,
+//             committee_id: null,
+//             modified_by: req.user_id //hardcoded to 4 for now
+//          },
+//       });
+//       logger.info(`[/userDetails] - success - ${user.sis_id}`);
+//       return res.status(200).json({
+//          isError: false,
+//          message: "User details updated successfully",
+//       });
+//    } catch (err) {
+//       logger.error(`[/userDetails] - ${err}`);
+//       return res.status(400).send({
+//          isError: true,
+//          message: "Server error",
+//       });
+//    }
+// };
+
+
+export default { register, login, changePassword };
