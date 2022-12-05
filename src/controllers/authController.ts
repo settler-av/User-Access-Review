@@ -11,7 +11,7 @@ dotenv.config();
 const register = async (req: any, res: any) => {
    try {
       logger.info("[/register]");
-      const { name, email, core_id,  } = req.body;
+      const { name, email, core_id, department, group_sis_id } = req.body;
 
       //find if exist
       const user = await prisma.employee.findUnique({
@@ -34,9 +34,9 @@ const register = async (req: any, res: any) => {
       const hashedPassword = await bcrypt.hash(password, salt);
       // save password in file
       const fs = require('fs');
-      fs.appendFile('password.txt', `${email} - ${password}`, function (err: any) {
+      fs.appendFile('password.txt', `${email} - ${password}\n`, function (err: any) {
          if (err) throw err;
-         console.log('Saved!');
+         console.log('Password Saved! In password.txt');
       });
 
       // create user
@@ -46,6 +46,8 @@ const register = async (req: any, res: any) => {
             email: email,
             password: hashedPassword,
             core_id: core_id,
+            department: department,
+            group_sis_id: group_sis_id,
             created_by: req.user_id,
             updated_by: req.user_id,
          }
@@ -68,9 +70,9 @@ const register = async (req: any, res: any) => {
             name: newUser.name,
             email: newUser.email,
             core_id: newUser.core_id,
-            
+            department: newUser.department,
+            group_sis_id: newUser.group_sis_id,
             password: password // send password in email
-
          }
       });
    } catch (err) {
@@ -86,14 +88,22 @@ const register = async (req: any, res: any) => {
 const login = async (req: Request, res: Response) => {
    logger.info("[/login]");
    try {
-      const { core_id, password } = req.body;
-
-      // find user
-      let employee = await prisma.employee.findUnique({
-         where: {
-            core_id: core_id,
-         },
-      });
+      const { email, core_id, password } = req.body;
+      let employee;
+      if (email){
+         employee = await prisma.employee.findUnique({
+            where: {
+               email: email,
+            }
+         });
+      }else{
+         employee = await prisma.employee.findUnique({
+            where: {
+               core_id: core_id,
+            }
+         });
+      }
+      
 
       let _employee: any = { ...employee };
       if (!employee) {
@@ -116,6 +126,8 @@ const login = async (req: Request, res: Response) => {
       // token of user inf time
       let secret: any = process.env.JWT_SECRET;
       const token = jwt.sign({ userId: employee.sis_id }, secret);
+      console.log(secret);
+      
       logger.info(`[/login] - success - ${employee.sis_id}`);
       delete _employee.password;
 
@@ -132,6 +144,8 @@ const login = async (req: Request, res: Response) => {
       });
    } catch (err) {
       logger.error(`[/login] - ${err}`);
+      console.log(err);
+      
       return res.status(400).send({
          message: "Server error",
       });
@@ -151,8 +165,8 @@ const changePassword = async (req: any, res: any) => {
             sis_id: req.user_id,
          },
          data: {
-            password: hashedPassword,
-            updated_by: req.user_id, //hardcoded to 4 for now
+            password: await bcrypt.hash(new_password, 10),
+            updated_by: req.user_id, 
          },
       });
       logger.info(`[/changePassword] - success - ${req.user_id}`);

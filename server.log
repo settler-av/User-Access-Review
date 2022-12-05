@@ -1,1 +1,165 @@
 2022-12-02 17:32:28 info: App is running on port undefined
+2022-12-02 17:37:19 info: App is running on port 4000
+2022-12-05 12:17:30 info: App is running on port 4000
+[05/Dec/2022:06:50:04 +0000] GET / 404 139 - 9.871 ms
+[05/Dec/2022:07:07:05 +0000] POST /api/v1//login 404 153 - 17.044 ms
+[05/Dec/2022:07:07:40 +0000] POST /api/v1//auth/login 404 158 - 0.706 ms
+[05/Dec/2022:07:08:01 +0000] POST /api/v1/auth/login 404 157 - 0.783 ms
+[05/Dec/2022:07:08:52 +0000] POST /api/v1/auth/login 404 157 - 0.442 ms
+[05/Dec/2022:07:10:01 +0000] POST /api/v1/check 404 152 - 1.129 ms
+[05/Dec/2022:07:10:05 +0000] GET /api/v1/check 404 151 - 2.300 ms
+[05/Dec/2022:07:10:29 +0000] GET /api/v1/check 404 151 - 0.670 ms
+2022-12-05 12:41:38 info: App is running on port localhost:4000
+[05/Dec/2022:07:11:43 +0000] GET /api/v1/check 200 5 - 14.896 ms
+[05/Dec/2022:07:11:55 +0000] POST /api/v1/auth/login 500 1263 - 17.065 ms
+2022-12-05 12:44:21 info: App is running on port localhost:4000
+[05/Dec/2022:07:14:22 +0000] POST /api/v1/auth/login 500 1263 - 29.959 ms
+2022-12-05 12:45:57 info: App is running on port localhost:4000
+[05/Dec/2022:07:15:58 +0000] POST /api/v1/auth/login 500 1263 - 25.922 ms
+2022-12-05 12:52:21 info: App is running on port localhost:4000
+2022-12-05 12:52:25 info: [/login]
+2022-12-05 12:52:25 error: [/login] - Error: secretOrPrivateKey must have a value
+[05/Dec/2022:07:22:25 +0000] POST /api/v1/auth/login 400 26 - 505.946 ms
+2022-12-05 12:54:11 info: App is running on port localhost:4000
+2022-12-05 12:54:15 info: [/login]
+2022-12-05 12:54:15 error: [/login] - Error: secretOrPrivateKey must have a value
+[05/Dec/2022:07:24:15 +0000] POST /api/v1/auth/login 400 26 - 262.049 ms
+2022-12-05 12:55:03 info: App is running on port localhost:4000
+2022-12-05 12:55:10 info: [/login]
+2022-12-05 12:55:10 error: [/login] - Error: secretOrPrivateKey must have a value
+[05/Dec/2022:07:25:10 +0000] POST /api/v1/auth/login 400 26 - 330.708 ms
+2022-12-05 12:55:30 info: App is running on port localhost:4000
+2022-12-05 12:56:38 info: App is running on port localhost:4000
+2022-12-05 12:56:38 info: [/login]
+2022-12-05 12:56:39 info: [/login] - success - 1
+[05/Dec/2022:07:26:39 +0000] POST /api/v1/auth/login 200 526 - 386.755 ms
+2022-12-05 13:03:45 info: App is running on port localhost:4000
+[05/Dec/2022:07:33:49 +0000] POST /api/v1/auth/login 500 176 - 23.280 ms
+2022-12-05 13:04:22 info: App is running on port localhost:4000
+2022-12-05 13:04:22 info: [/login]
+2022-12-05 13:04:22 info: [/login] - success - 1
+[05/Dec/2022:07:34:22 +0000] POST /api/v1/auth/login 200 526 - 288.360 ms
+[05/Dec/2022:09:43:24 +0000] POST /api/v1/auth/login 500 207 - 80.483 ms
+2022-12-05 15:16:53 info: App is running on port localhost:4000
+2022-12-05 15:17:10 info: [/login]
+2022-12-05 15:17:10 info: [/login] - success - 2
+[05/Dec/2022:09:47:10 +0000] POST /api/v1/auth/login 200 521 - 394.531 ms
+[05/Dec/2022:11:02:17 +0000] GET /api/v1/auth/register 404 159 - 25.130 ms
+[05/Dec/2022:11:02:28 +0000] POST /api/v1/auth/register 500 184 - 23.668 ms
+2022-12-05 16:33:02 info: App is running on port localhost:4000
+[05/Dec/2022:11:03:15 +0000] POST /api/v1/auth/register 401 52 - 273.724 ms
+2022-12-05 16:46:07 info: [/login]
+2022-12-05 16:46:08 info: [/login] - success - 1
+[05/Dec/2022:11:16:08 +0000] POST /api/v1/auth/login 200 526 - 568.186 ms
+2022-12-05 16:46:25 info: [/register]
+2022-12-05 16:46:25 error: 
+Invalid `prisma.employee.create()` invocation in
+E:\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Unique constraint failed on the fields: (`sis_id`)
+Stack: Error: 
+Invalid `prisma.employee.create()` invocation in
+E:\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Unique constraint failed on the fields: (`sis_id`)
+    at RequestHandler.handleRequestError (E:\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34843:13)
+    at RequestHandler.handleAndLogRequestError (E:\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34815:12)
+    at RequestHandler.request (E:\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34810:12)
+    at async PrismaClient._request (E:\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:35900:16)
+    at async register (E:\Angular\UserAccessReview\src\controllers\authController.ts:43:23)
+[05/Dec/2022:11:16:25 +0000] POST /api/v1/auth/register 500 49 - 348.979 ms
+2022-12-05 16:47:44 info: App is running on port localhost:4000
+2022-12-05 16:48:30 info: App is running on port localhost:4000
+2022-12-05 17:20:02 info: App is running on port localhost:4000
+2022-12-05 17:20:06 warn: [auth] User not found - 1
+[05/Dec/2022:11:50:06 +0000] POST /api/v1/auth/register 401 49 - 151.246 ms
+2022-12-05 17:20:59 info: App is running on port localhost:4000
+2022-12-05 17:21:17 info: App is running on port localhost:4000
+2022-12-05 17:21:21 warn: [auth] User not found - 1
+[05/Dec/2022:11:51:21 +0000] POST /api/v1/auth/register 401 49 - 149.670 ms
+2022-12-05 17:22:09 info: App is running on port localhost:4000
+2022-12-05 17:22:21 info: App is running on port localhost:4000
+2022-12-05 17:23:37 info: App is running on port localhost:4000
+2022-12-05 17:24:11 info: App is running on port localhost:4000
+2022-12-05 17:26:47 info: App is running on port localhost:4000
+2022-12-05 17:28:10 info: App is running on port localhost:4000
+2022-12-05 17:28:50 info: App is running on port localhost:4000
+2022-12-05 17:28:58 info: App is running on port localhost:4000
+2022-12-05 17:29:03 info: App is running on port localhost:4000
+2022-12-05 17:29:44 info: App is running on port localhost:4000
+2022-12-05 17:29:49 info: App is running on port localhost:4000
+2022-12-05 17:30:28 info: App is running on port localhost:4000
+2022-12-05 17:30:32 info: App is running on port localhost:4000
+2022-12-05 17:30:56 warn: [auth] User not found - 1
+[05/Dec/2022:12:00:56 +0000] POST /api/v1/auth/register 401 49 - 271.452 ms
+2022-12-05 17:31:32 info: [/login]
+2022-12-05 17:31:33 info: [/login] - success - 91
+[05/Dec/2022:12:01:33 +0000] POST /api/v1/auth/login 200 536 - 347.811 ms
+2022-12-05 17:32:57 info: [/register]
+2022-12-05 17:32:58 info: [/register]: user created
+[05/Dec/2022:12:02:58 +0000] POST /api/v1/auth/register 200 173 - 201.668 ms
+2022-12-05 17:32:58 info: [/register]: success
+2022-12-05 17:33:22 info: [/login]
+2022-12-05 17:33:22 warn: [/login] - incorrect username or password
+[05/Dec/2022:12:03:22 +0000] POST /api/v1/auth/login 400 44 - 166.178 ms
+2022-12-05 17:33:22 debug: [/login] - body: {"core_id":"VANB84","password":"asif"}
+2022-12-05 17:33:59 info: [/login]
+2022-12-05 17:34:00 info: [/login] - success - 108
+[05/Dec/2022:12:04:00 +0000] POST /api/v1/auth/login 200 530 - 178.199 ms
+2022-12-05 17:36:12 info: App is running on port localhost:4000
+2022-12-05 17:36:38 info: App is running on port localhost:4000
+2022-12-05 17:36:41 info: App is running on port localhost:4000
+2022-12-05 17:37:27 info: App is running on port localhost:4000
+2022-12-05 17:38:18 info: App is running on port localhost:4000
+2022-12-05 17:38:27 info: App is running on port localhost:4000
+2022-12-05 17:39:36 info: App is running on port localhost:4000
+2022-12-05 17:39:51 info: App is running on port localhost:4000
+2022-12-05 17:39:57 info: App is running on port localhost:4000
+2022-12-05 17:40:12 info: App is running on port localhost:4000
+2022-12-05 17:40:37 info: App is running on port localhost:4000
+2022-12-05 17:40:41 info: App is running on port localhost:4000
+2022-12-05 17:40:47 info: App is running on port localhost:4000
+2022-12-05 17:41:24 info: [/register]
+2022-12-05 17:41:24 info: [/register]: user created
+[05/Dec/2022:12:11:24 +0000] POST /api/v1/auth/register 200 208 - 788.046 ms
+2022-12-05 17:41:24 info: [/register]: success
+2022-12-05 17:43:46 info: App is running on port localhost:4000
+2022-12-05 17:47:24 warn: [auth] User not found - 108
+[05/Dec/2022:12:17:24 +0000] POST /api/v1/auth/change-password 401 49 - 371.888 ms
+2022-12-05 17:47:38 info: [/login]
+2022-12-05 17:47:38 warn: [/login] - incorrect username or password
+[05/Dec/2022:12:17:38 +0000] POST /api/v1/auth/login 400 44 - 213.992 ms
+2022-12-05 17:47:38 debug: [/login] - body: {"core_id":"VANB84","password":"2rsfpornp81"}
+2022-12-05 17:47:51 info: [/login]
+2022-12-05 17:47:51 info: [/login] - success - 109
+[05/Dec/2022:12:17:51 +0000] POST /api/v1/auth/login 200 528 - 81.904 ms
+2022-12-05 17:48:08 info: [/changePassword]
+2022-12-05 17:48:08 info: [/changePassword] - success - 109
+[05/Dec/2022:12:18:08 +0000] POST /api/v1/auth/change-password 200 429 - 93.313 ms
+2022-12-05 17:48:37 info: [/login]
+2022-12-05 17:48:37 warn: [/login] - incorrect username or password
+[05/Dec/2022:12:18:37 +0000] POST /api/v1/auth/login 400 44 - 82.404 ms
+2022-12-05 17:48:37 debug: [/login] - body: {"core_id":"VANB84","password":"asif"}
+2022-12-05 17:48:42 info: [/login]
+2022-12-05 17:48:42 warn: [/login] - incorrect username or password
+[05/Dec/2022:12:18:42 +0000] POST /api/v1/auth/login 400 44 - 78.619 ms
+2022-12-05 17:48:42 debug: [/login] - body: {"core_id":"VANB84","password":"asif"}
+2022-12-05 17:49:09 info: [/login]
+2022-12-05 17:49:09 warn: [/login] - incorrect username or password
+[05/Dec/2022:12:19:09 +0000] POST /api/v1/auth/login 400 44 - 76.350 ms
+2022-12-05 17:49:09 debug: [/login] - body: {"core_id":"VANB84","password":"$2b$10$TKb6Y4V4ok8MOcprEQhvJe2td4EF7qdHHABozmK0fivqgw/J2Ycti"}
+2022-12-05 17:50:10 info: App is running on port localhost:4000
+2022-12-05 17:50:23 info: [/changePassword]
+2022-12-05 17:50:24 info: [/changePassword] - success - 109
+[05/Dec/2022:12:20:24 +0000] POST /api/v1/auth/change-password 200 429 - 769.208 ms
+2022-12-05 17:50:36 info: [/login]
+2022-12-05 17:50:36 info: [/login] - success - 109
+[05/Dec/2022:12:20:36 +0000] POST /api/v1/auth/login 200 529 - 93.333 ms

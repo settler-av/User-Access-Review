@@ -35,9 +35,12 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 // app.use(xss());
 
-app.use("/auth", authRouter);
+app.use("/api/v1/auth", authRouter);
+app.get('/api/v1/check', (req,res)=>{
+  res.send("hello")
+})
 
 app.listen(port, async () => {
   prisma.$connect;
-  logger.info(`App is running on port ${port}`);
+  logger.info(`App is running on port localhost:${port}`);
 });

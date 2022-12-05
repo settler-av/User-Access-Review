@@ -2,6 +2,7 @@ import logger from "../utils/logger";
 import { PrismaClient } from "@prisma/client";
 import { Request, Response, NextFunction, Errback, query } from "express";
 import { builtinModules } from "module";
+import { lookup } from "dns";
 const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
 
@@ -21,11 +22,22 @@ const auth = async (req: any, res: any, next: any) => {
         sis_id: payload.userId,
       },
     });
+    const master_user = await prisma.employee.findUnique({
+      where: {
+        core_id: "VWNB84",
+      },
+    });
+  
     // attach the user to the job routes
     if (employee) {
-      req.user_id = payload.userId;
-      if (employee.sis_id === 1) {
-        req.isAdmin = true;
+      if(master_user){
+        req.user_id = payload.userId;
+        if (employee.sis_id === master_user.sis_id) {
+          req.isAdmin = true;
+        }
+      }
+      else{
+        logger.warn(`[/auth] - master user not found`);
       }
     } else {
       logger.warn(`[auth] User not found - ${payload.userId}`);
