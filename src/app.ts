@@ -16,6 +16,7 @@ import helmet from "helmet";
 import cors from "cors";
 
 const authRouter = require("./routes/authRoutes");
+const homeRouter = require("./routes/homeRoutes");
 
 // save the logs
 var accessLogStream = fs.createWriteStream("./server.log", { flags: "a" });
@@ -36,6 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(xss());
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/home", homeRouter);
 app.get('/api/v1/check', (req,res)=>{
   res.send("hello")
 })

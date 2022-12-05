@@ -163,3 +163,75 @@ Unique constraint failed on the fields: (`sis_id`)
 2022-12-05 17:50:36 info: [/login]
 2022-12-05 17:50:36 info: [/login] - success - 109
 [05/Dec/2022:12:20:36 +0000] POST /api/v1/auth/login 200 529 - 93.333 ms
+2022-12-05 18:34:15 info: App is running on port localhost:4000
+2022-12-05 18:34:20 info: [/changePassword]
+2022-12-05 18:34:20 info: [/changePassword] - success - 109
+[05/Dec/2022:13:04:20 +0000] POST /api/v1/auth/change-password 200 429 - 543.148 ms
+2022-12-05 18:34:26 info: [/login]
+2022-12-05 18:34:26 info: [/login] - success - 109
+[05/Dec/2022:13:04:26 +0000] POST /api/v1/auth/login 200 529 - 77.055 ms
+2022-12-05 18:34:30 info: [/login]
+2022-12-05 18:34:30 warn: [/login] - incorrect username or password
+[05/Dec/2022:13:04:30 +0000] POST /api/v1/auth/login 400 44 - 90.766 ms
+2022-12-05 18:34:30 debug: [/login] - body: {"core_id":"VANB84","password":"asif"}
+2022-12-05 18:34:32 info: [/login]
+2022-12-05 18:34:32 info: [/login] - success - 109
+[05/Dec/2022:13:04:32 +0000] POST /api/v1/auth/login 200 529 - 94.317 ms
+2022-12-05 18:37:35 info: App is running on port localhost:4000
+2022-12-05 18:38:45 info: App is running on port localhost:4000
+2022-12-05 18:38:50 info: App is running on port localhost:4000
+2022-12-05 18:40:37 info: App is running on port localhost:4000
+2022-12-05 18:41:12 info: App is running on port localhost:4000
+2022-12-05 18:41:22 info: App is running on port localhost:4000
+2022-12-05 18:41:38 info: App is running on port localhost:4000
+2022-12-05 18:47:46 info: App is running on port localhost:4000
+2022-12-05 18:47:51 info: App is running on port localhost:4000
+2022-12-05 18:47:57 info: App is running on port localhost:4000
+2022-12-05 18:48:13 info: App is running on port localhost:4000
+2022-12-05 18:48:19 info: App is running on port localhost:4000
+2022-12-05 18:48:43 info: App is running on port localhost:4000
+2022-12-05 18:48:52 info: App is running on port localhost:4000
+2022-12-05 18:48:59 info: App is running on port localhost:4000
+2022-12-05 18:49:20 info: App is running on port localhost:4000
+2022-12-05 18:49:26 info: App is running on port localhost:4000
+2022-12-05 18:49:32 info: App is running on port localhost:4000
+2022-12-05 18:49:43 info: App is running on port localhost:4000
+2022-12-05 18:49:49 info: App is running on port localhost:4000
+2022-12-05 18:49:54 info: App is running on port localhost:4000
+2022-12-05 18:50:25 info: App is running on port localhost:4000
+2022-12-05 18:50:44 info: App is running on port localhost:4000
+2022-12-05 18:51:11 info: App is running on port localhost:4000
+2022-12-05 18:51:19 info: App is running on port localhost:4000
+2022-12-05 18:51:30 info: App is running on port localhost:4000
+2022-12-05 18:51:39 info: App is running on port localhost:4000
+2022-12-05 18:51:53 info: App is running on port localhost:4000
+2022-12-05 18:52:08 info: App is running on port localhost:4000
+2022-12-05 18:52:33 info: App is running on port localhost:4000
+2022-12-05 18:52:52 info: App is running on port localhost:4000
+2022-12-05 18:53:29 info: App is running on port localhost:4000
+2022-12-05 18:53:41 info: App is running on port localhost:4000
+2022-12-05 18:53:47 info: App is running on port localhost:4000
+2022-12-05 18:54:06 info: App is running on port localhost:4000
+2022-12-05 18:55:30 info: App is running on port localhost:4000
+2022-12-05 18:56:25 info: App is running on port localhost:4000
+2022-12-05 18:57:35 info: App is running on port localhost:4000
+2022-12-05 18:57:48 info: App is running on port localhost:4000
+2022-12-05 18:57:55 info: App is running on port localhost:4000
+2022-12-05 18:59:13 info: App is running on port localhost:4000
+2022-12-05 19:01:08 info: App is running on port localhost:4000
+2022-12-05 19:01:46 info: App is running on port localhost:4000
+2022-12-05 19:01:49 info: App is running on port localhost:4000
+2022-12-05 19:02:03 info: App is running on port localhost:4000
+2022-12-05 19:02:24 info: App is running on port localhost:4000
+2022-12-05 19:02:37 info: App is running on port localhost:4000
+2022-12-05 19:02:41 info: App is running on port localhost:4000
+2022-12-05 19:02:53 info: App is running on port localhost:4000
+2022-12-05 19:09:52 info: App is running on port localhost:4000
+2022-12-05 19:11:03 info: App is running on port localhost:4000
+2022-12-05 19:11:19 info: App is running on port localhost:4000
+2022-12-05 19:11:23 info: App is running on port localhost:4000
+2022-12-05 19:11:31 info: App is running on port localhost:4000
+2022-12-05 19:12:11 info: App is running on port localhost:4000
+2022-12-05 19:12:27 info: App is running on port localhost:4000
+2022-12-05 19:12:34 info: App is running on port localhost:4000
+2022-12-05 19:14:17 info: App is running on port localhost:4000

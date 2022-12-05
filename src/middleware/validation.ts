@@ -24,6 +24,13 @@ const loginSchema = (req: any, res: any, next: any) => {
     validateRequest(req, res, schema, next);
 };
 
+const changePasswordSchema = (req: any, res: any, next: any) => {
+    const schema = joi.object({
+        password: joi.string().required(),
+        new_password: joi.string().required(),
+    }).unknown(false);
+    validateRequest(req, res, schema, next);
+};
 // helper functions
 
 function validateRequest(req: any, res: any, schema: any, next: any) {
@@ -43,5 +50,6 @@ function validateRequest(req: any, res: any, schema: any, next: any) {
 
 export default {
     registerSchema,
-    loginSchema
+    loginSchema,
+    changePasswordSchema
 };

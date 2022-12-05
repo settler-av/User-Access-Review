@@ -27,16 +27,48 @@ const auth = async (req: any, res: any, next: any) => {
         core_id: "VWNB84",
       },
     });
-  
+
     // attach the user to the job routes
     if (employee) {
-      if(master_user){
+      if (master_user) {
         req.user_id = payload.userId;
         if (employee.sis_id === master_user.sis_id) {
           req.isAdmin = true;
         }
-      }
-      else{
+        // get all manager ids
+        const managers = await prisma.employee.findMany({
+          where: {},
+          distinct: ["manager_id"],
+          select:{
+            manager_id:true
+          }
+        });
+        
+        managers.forEach((manager:any)=>{
+          if(manager.manager_id === employee.sis_id && manager.manager_id !== null){
+            req.isManager = true;
+          }
+        })
+
+        // if employee is compliance team member then attach the compliance team member to the request
+        const compliance = await prisma.employee.findUnique({
+          where: {
+            sis_id: employee.sis_id,
+          },
+          include:{
+            group:{
+              select:{
+                name:true
+              }
+            }
+          }
+        })
+        
+        if(compliance?.group?.name === "Compliance"){
+          req.isCompliance = true;
+          req.isManager = false;
+        }
+      } else {
         logger.warn(`[/auth] - master user not found`);
       }
     } else {
