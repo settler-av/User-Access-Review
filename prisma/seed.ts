@@ -12,16 +12,15 @@ const seedMasterUser = async () => {
       const hash_password = await bcrypt.hash("master", salt);
 
       const employee = await _prisma.employee.create({
-        data: 
-          {
-            // "sis_id": 1,
-            "name": "Adnan Vahora",
-            "core_id": "VWNB84",
-            "email": "adnan.vahora@motorolasolutions.com",
-            "password": hash_password,
-            "department": "ADMIN",
-            // "group_sis_id": 1
-          }
+        data: {
+          // "sis_id": 1,
+          name: "Adnan Vahora",
+          core_id: "VWNB84",
+          email: "adnan.vahora@motorolasolutions.com",
+          password: hash_password,
+          department: "ADMIN",
+          // "group_sis_id": 1
+        },
       });
       master_sis_id = employee.sis_id;
     },
@@ -38,34 +37,34 @@ const seedGroups = async (master_sis_id: any) => {
       const groups = [
         {
           // "sis_id": 1,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "ADMIN"
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "ADMIN",
         },
         {
           // "sis_id": 2,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "COMPLIANCE"
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "COMPLIANCE",
         },
         {
           // "sis_id": 3,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "DEVOPS"
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "DEVOPS",
         },
         {
           // "sis_id": 4,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "QA"
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "QA",
         },
         {
           // "sis_id": 5,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "CLOUD"
-        }
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "CLOUD",
+        },
       ];
       await _prisma.group.createMany({
         data: groups,
@@ -87,11 +86,11 @@ const get_group_sis_id = async (group_name: string) => {
       name: group_name,
     },
   });
-  if(group){
+  if (group) {
     return group.sis_id;
   }
   console.log(`Group ${group_name} not found`);
-  return null;
+  return 0;
 };
 // get_group_sis_id("ADMIN").then((group_sis_id) => {
 //   console.log({ group_sis_id });
@@ -103,7 +102,7 @@ const get_manager_id_by_name = async (name: string) => {
       name: name,
     },
   });
-  if(employee){
+  if (employee) {
     return employee.sis_id;
   }
   console.log(`Employee ${name} not found`);
@@ -113,54 +112,55 @@ const get_manager_id_by_name = async (name: string) => {
 const seedEmployee = async (master_sis_id: any) => {
   await prisma.$transaction(
     async (_prisma) => {
-      const employees = [{
-        // "sis_id": 2,
-        "created_by": master_sis_id,
-        "updated_by": master_sis_id,
-        "name": "Rohan Sahu",
-        "core_id": "VWNB85",
-        "email": "rohan.sahu@motorolasolutions.com",
-        "password": await hash_password("rohan"),
-        "department": "DEVOPS",
-        "group_sis_id": await get_group_sis_id("DEVOPS")
-      },
-      {
-        // "sis_id": 3,
-        "created_by": master_sis_id,
-        "updated_by": master_sis_id,
-        "name": "Sahil Patel",
-        "core_id": "VWNB86",
-        "email": "sahil.patel@motorolasolutions.com",
-        "password": await hash_password("sahil"),
-        "department": "CLOUD",
-        "group_sis_id": await get_group_sis_id("CLOUD")
-      },
-      {
-        // "sis_id": 4,
-        "created_by": master_sis_id,
-        "updated_by": master_sis_id,
-        "name": "Rakesh Patel",
-        "core_id": "VWNB87",
-        "email": "rakesh.patel@motorolasolutions.com",
-        "password": await hash_password("rakesh"),
-        "department": "QA",
-        "group_sis_id": await get_group_sis_id("QA")
-      },
-      {
-        // "sis_id": 15,
-        "created_by": master_sis_id,
-        "updated_by": master_sis_id,
-        "name": "Alia Henson",
-        "core_id": "VWNB98",
-        "email": "alia.henson@motorolasolutions.com",
-        "password": await hash_password("alia"),
-        "department": "COMPLIANCE",
-        "group_sis_id": await get_group_sis_id("COMPLIANCE")
-      }
-    ];
-    await _prisma.employee.createMany({
-      data: employees,
-    });
+      const employees = [
+        {
+          // "sis_id": 2,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Rohan Sahu",
+          core_id: "VWNB85",
+          email: "rohan.sahu@motorolasolutions.com",
+          password: await hash_password("rohan"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
+        },
+        {
+          // "sis_id": 3,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Sahil Patel",
+          core_id: "VWNB86",
+          email: "sahil.patel@motorolasolutions.com",
+          password: await hash_password("sahil"),
+          department: "CLOUD",
+          group_sis_id: await get_group_sis_id("CLOUD"),
+        },
+        {
+          // "sis_id": 4,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Rakesh Patel",
+          core_id: "VWNB87",
+          email: "rakesh.patel@motorolasolutions.com",
+          password: await hash_password("rakesh"),
+          department: "QA",
+          group_sis_id: await get_group_sis_id("QA"),
+        },
+        {
+          // "sis_id": 15,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Alia Henson",
+          core_id: "VWNB98",
+          email: "alia.henson@motorolasolutions.com",
+          password: await hash_password("alia"),
+          department: "COMPLIANCE",
+          group_sis_id: await get_group_sis_id("COMPLIANCE"),
+        },
+      ];
+      await _prisma.employee.createMany({
+        data: employees,
+      });
     },
     { timeout: 10000 }
   );
@@ -168,160 +168,222 @@ const seedEmployee = async (master_sis_id: any) => {
   await prisma.$transaction(
     async (_prisma) => {
       const employees = [
-        
         {
           // "sis_id": 5,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Irene Choi",
-          "core_id": "VWNB88",
-          "email": "irene.choi@motorolasolutions.com",
-          "password": await hash_password("irene"),
-          "manager_id": await get_manager_id_by_name("Rakesh Patel"),
-          "department": "QA",
-          "group_sis_id": await get_group_sis_id("QA")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Irene Choi",
+          core_id: "VWNB88",
+          email: "irene.choi@motorolasolutions.com",
+          password: await hash_password("irene"),
+          manager_id: await get_manager_id_by_name("Rakesh Patel"),
+          department: "QA",
+          group_sis_id: await get_group_sis_id("QA"),
         },
         {
           // "sis_id": 6,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Armani Best",
-          "core_id": "VWNB89",
-          "email": "armani.best@motorolasolutions.com",
-          "password": await hash_password("armani"),
-          "manager_id": await get_manager_id_by_name("Rohan Sahu"),
-          "department": "DEVOPS",
-          "group_sis_id": await get_group_sis_id("DEVOPS")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Armani Best",
+          core_id: "VWNB89",
+          email: "armani.best@motorolasolutions.com",
+          password: await hash_password("armani"),
+          manager_id: await get_manager_id_by_name("Rohan Sahu"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
         },
         {
           // "sis_id": 7,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Dillan Sharp",
-          "core_id": "VWNB90",
-          "email": "dillan.sharp@motorolasolutions.com",
-          "password": await hash_password("dillan"),
-          "manager_id": await get_manager_id_by_name("Rohan Sahu"),
-          "department": "DEVOPS",
-          "group_sis_id": await get_group_sis_id("DEVOPS")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Dillan Sharp",
+          core_id: "VWNB90",
+          email: "dillan.sharp@motorolasolutions.com",
+          password: await hash_password("dillan"),
+          manager_id: await get_manager_id_by_name("Rohan Sahu"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
         },
         {
           // "sis_id": 8,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Jonathon Dawson",
-          "core_id": "VWNB91",
-          "email": "jonathon.dawson@motorolasolutions.com",
-          "password": await hash_password("jonathon"),
-          "manager_id": await get_manager_id_by_name("Sahil Patel"),
-          "department": "CLOUD",
-          "group_sis_id": await get_group_sis_id("CLOUD")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Jonathon Dawson",
+          core_id: "VWNB91",
+          email: "jonathon.dawson@motorolasolutions.com",
+          password: await hash_password("jonathon"),
+          manager_id: await get_manager_id_by_name("Sahil Patel"),
+          department: "CLOUD",
+          group_sis_id: await get_group_sis_id("CLOUD"),
         },
         {
           // "sis_id": 9,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Jay Fowler",
-          "core_id": "VWNB92",
-          "email": "jay.fowler@motorolasolutions.com",
-          "password": await hash_password("jay"),
-          "manager_id": await get_manager_id_by_name("Rakesh Patel"),
-          "department": "QA",
-          "group_sis_id": await get_group_sis_id("QA")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Jay Fowler",
+          core_id: "VWNB92",
+          email: "jay.fowler@motorolasolutions.com",
+          password: await hash_password("jay"),
+          manager_id: await get_manager_id_by_name("Rakesh Patel"),
+          department: "QA",
+          group_sis_id: await get_group_sis_id("QA"),
         },
         {
           // "sis_id": 10,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Gary Long",
-          "core_id": "VWNB93",
-          "email": "gary.long@motorolasolutions.com",
-          "password": await hash_password("gary"),
-          "manager_id": await get_manager_id_by_name("Rohan Sahu"),
-          "department": "DEVOPS",
-          "group_sis_id": await get_group_sis_id("DEVOPS")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Gary Long",
+          core_id: "VWNB93",
+          email: "gary.long@motorolasolutions.com",
+          password: await hash_password("gary"),
+          manager_id: await get_manager_id_by_name("Rohan Sahu"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
         },
         {
           // "sis_id": 11,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Gracelyn Frazier",
-          "core_id": "VWNB94",
-          "email": "gracelyn.frazier@motorolasolutions.com",
-          "password": await hash_password("gracelyn"),
-          "manager_id": await get_manager_id_by_name("Rohan Sahu"),
-          "department": "DEVOPS",
-          "group_sis_id": await get_group_sis_id("DEVOPS")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Gracelyn Frazier",
+          core_id: "VWNB94",
+          email: "gracelyn.frazier@motorolasolutions.com",
+          password: await hash_password("gracelyn"),
+          manager_id: await get_manager_id_by_name("Rohan Sahu"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
         },
         {
           // "sis_id": 12,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Sofia Snyder",
-          "core_id": "VWNB95",
-          "email": "sofia.snyder@motorolasolutions.com",
-          "password": await hash_password("sofia"),
-          "manager_id": await get_manager_id_by_name("Sahil Patel"),
-          "department": "CLOUD",
-          "group_sis_id": await get_group_sis_id("CLOUD")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Sofia Snyder",
+          core_id: "VWNB95",
+          email: "sofia.snyder@motorolasolutions.com",
+          password: await hash_password("sofia"),
+          manager_id: await get_manager_id_by_name("Sahil Patel"),
+          department: "CLOUD",
+          group_sis_id: await get_group_sis_id("CLOUD"),
         },
         {
           // "sis_id": 13,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Ximena Ellis",
-          "core_id": "VWNB96",
-          "email": "ximena.ellis@motorolasolutions.com",
-          "password": await hash_password("ximena"),
-          "manager_id": await get_manager_id_by_name("Rakesh Patel"),
-          "department": "QA",
-          "group_sis_id": await get_group_sis_id("QA")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Ximena Ellis",
+          core_id: "VWNB96",
+          email: "ximena.ellis@motorolasolutions.com",
+          password: await hash_password("ximena"),
+          manager_id: await get_manager_id_by_name("Rakesh Patel"),
+          department: "QA",
+          group_sis_id: await get_group_sis_id("QA"),
         },
         {
           // "sis_id": 14,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Madelynn Farmer",
-          "core_id": "VWNB97",
-          "email": "madelynn.farmer@motorolasolutions.com",
-          "password": await hash_password("madelynn"),
-          "manager_id": await get_manager_id_by_name("Rohan Sahu"),
-          "department": "DEVOPS",
-          "group_sis_id": await get_group_sis_id("DEVOPS")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Madelynn Farmer",
+          core_id: "VWNB97",
+          email: "madelynn.farmer@motorolasolutions.com",
+          password: await hash_password("madelynn"),
+          manager_id: await get_manager_id_by_name("Rohan Sahu"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
         },
         {
           // "sis_id": 16,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Roland Colon",
-          "core_id": "VWNB99",
-          "email": "roland.colon@motorolasolutions.com",
-          "password": await hash_password("roland"),
-          "manager_id": await get_manager_id_by_name("Alia Henson"),
-          "department": "COMPLIANCE",
-          "group_sis_id": await get_group_sis_id("COMPLIANCE")
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Roland Colon",
+          core_id: "VWNB99",
+          email: "roland.colon@motorolasolutions.com",
+          password: await hash_password("roland"),
+          manager_id: await get_manager_id_by_name("Alia Henson"),
+          department: "COMPLIANCE",
+          group_sis_id: await get_group_sis_id("COMPLIANCE"),
         },
         {
           // "sis_id": 17,
-          "created_by": master_sis_id,
-          "updated_by": master_sis_id,
-          "name": "Alondra Browning",
-          "core_id": "VWNB10",
-          "email": "alondra.brown@motorolasolutions.com",
-          "password": await hash_password("alondra"),
-          "manager_id": await get_manager_id_by_name("Alia Henson") ,
-          "department": "COMPLIANCE",
-          "group_sis_id": await get_group_sis_id("COMPLIANCE")
-        }
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Alondra Browning",
+          core_id: "VWNB10",
+          email: "alondra.brown@motorolasolutions.com",
+          password: await hash_password("alondra"),
+          manager_id: await get_manager_id_by_name("Alia Henson"),
+          department: "COMPLIANCE",
+          group_sis_id: await get_group_sis_id("COMPLIANCE"),
+        },
       ];
       await _prisma.employee.createMany({
-        data: employees
-      })
+        data: employees,
+      });
     },
     { timeout: 10000 }
   );
 };
 
+const seedApplication = async (master_sis_id: any) => {
+  await prisma.$transaction(async (_prisma) => {
+    const applicatoions = [
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "MotoCare",
+        owner_gid: await get_group_sis_id("CLOUD"),
+      },
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "JIRA",
+        owner_gid: await get_group_sis_id("QA"),
+      },
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "Confluence",
+        owner_gid: await get_group_sis_id("QA"),
+      },
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "Jenkins",
+        owner_gid: await get_group_sis_id("DEVOPS"),
+      },
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "GitLab",
+        owner_gid: await get_group_sis_id("DEVOPS"),
+      },
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "SonarQube",
+        owner_gid: await get_group_sis_id("CLOUD"),
+      },
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "Splunk",
+        owner_gid: await get_group_sis_id("CLOUD"),
+      },
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "AWS",
+        owner_gid: await get_group_sis_id("CLOUD"),
+      },
+      {
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+        name: "JEST",
+        owner_gid: await get_group_sis_id("QA"),
+      },
+    ];
+    await _prisma.application.createMany({
+      data: applicatoions,
+    });
+  });
+};
 async function main() {
   console.log(`Start seeding ...`);
   // drop all data
@@ -334,12 +396,20 @@ async function main() {
   console.log(`Cleared table employee: affected rows ${res.count}`);
   res = await prisma.review.deleteMany();
   console.log(`Cleared table review: affected rows ${res.count}`);
+  res = await prisma.application.deleteMany();
+  console.log(`Cleared table application: affected rows ${res.count}`);
+
+  // seed data
   const master_sis_id = await seedMasterUser();
   console.log(`Seeded master user: ${master_sis_id}`);
   await seedGroups(master_sis_id);
   console.log(`Seeded groups`);
   await seedEmployee(master_sis_id);
   console.log(`Seeded employees`);
+  await seedApplication(master_sis_id);
+  console.log(`Seeded applications`);
+
+
 }
 
 main()
