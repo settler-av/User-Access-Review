@@ -107,7 +107,7 @@ model application_access {
   created        employee    @relation("createdByRef", fields: [created_by], references: [sis_id])
   updated        employee    @relation("updatedByRef", fields: [updated_by], references: [sis_id])
 
-  access_id      String      @unique
+  access_id      String      @unique@default(cuid())
   application_id Int
   application    application @relation(fields: [application_id], references: [sis_id])
   employee_id    Int
@@ -148,7 +148,7 @@ model review {
   created              employee           @relation("createdByRef", fields: [created_by], references: [sis_id])
   updated              employee           @relation("updatedByRef", fields: [updated_by], references: [sis_id])
   
-  review_id            String             @unique
+  review_id            String             @unique@default(cuid())
   access_id            String
   application_access   application_access @relation(fields: [access_id], references: [access_id])
   application_id       Int

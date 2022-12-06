@@ -1,11 +1,11 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, ReviewType, review_stat, status } from "@prisma/client";
 const prisma = new PrismaClient();
 import bcrypt from "bcrypt";
 import logger from "../src/utils/logger";
 // import { employee } from "./data";
 
 const seedMasterUser = async () => {
-  let master_sis_id;
+  let master_sis_id: number = 0;
   await prisma.$transaction(
     async (_prisma) => {
       const salt = await bcrypt.genSalt(10);
@@ -26,7 +26,7 @@ const seedMasterUser = async () => {
     },
     { timeout: 10000 }
   );
-  console.log({ master_sis_id });
+  console.log(master_sis_id);
   return master_sis_id;
 };
 
@@ -321,6 +321,18 @@ const seedEmployee = async (master_sis_id: any) => {
   );
 };
 
+const get_application_id = async (name: string) => {
+  const application = await prisma.application.findFirst({
+    where: {
+      name: name,
+    },
+  });
+  if(!application) {
+    console.log("Inside get_application_id");
+    throw new Error(`Application ${name} not found`);
+  }
+  return application.sis_id;
+};
 const seedApplication = async (master_sis_id: any) => {
   await prisma.$transaction(async (_prisma) => {
     const applicatoions = [
@@ -384,11 +396,187 @@ const seedApplication = async (master_sis_id: any) => {
     });
   });
 };
+const get_employee_id_by_name = async (name: string) => {
+  const employee = await prisma.employee.findFirst({
+    where: {
+      name: name,
+    },
+  });
+  if(!employee) {
+    console.log("Inside get_employee_id_by_name"); 
+    throw new Error(`Employee ${name} not found`);
+  }
+  return employee.sis_id;
+};
+const seedApplicationAccess = async (master_sis_id: any) => {
+  await prisma.$transaction(async (_prisma) => {
+    const application_access = [
+      {
+        application_id: await get_application_id("MotoCare"),
+        employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
+        role: "EDITOR",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("MotoCare"),
+        employee_id: await get_employee_id_by_name("Rohan Sahu"),
+        role: "ADMIN",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("MotoCare"),
+        employee_id: await get_employee_id_by_name("Gary Long"),
+        role: "READER",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("JIRA"),
+        employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
+        role: "EDITOR",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("JIRA"),
+        employee_id: await get_employee_id_by_name("Armani Best"),
+        role: "ADMIN",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("JIRA"),
+        employee_id: await get_employee_id_by_name("Gary Long"),
+        role: "READER",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("Confluence"),
+        employee_id: await get_employee_id_by_name("Dillan Sharp"),
+        role: "EDITOR",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("Confluence"),
+        employee_id: await get_employee_id_by_name("Armani Best"),
+        role: "ADMIN",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("AWS"),
+        employee_id: await get_employee_id_by_name("Dillan Sharp"),
+        role: "EDITOR",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("AWS"),
+        employee_id: await get_employee_id_by_name("Armani Best"),
+        role: "ADMIN",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("Jenkins"),
+        employee_id: await get_employee_id_by_name("Jay Fowler"),
+        role: "EDITOR",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("Jenkins"),
+        employee_id: await get_employee_id_by_name("Irene Choi"),
+        role: "ADMIN",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      },
+      {
+        application_id: await get_application_id("GitLab"),
+        employee_id: await get_employee_id_by_name("Sofia Snyder"),
+        role: "EDITOR",
+        version: 1,
+        created_by: master_sis_id,
+        updated_by: master_sis_id,
+      }
+    ];
+
+    await _prisma.application_access.createMany({
+      data: application_access,
+    });
+  });
+};
+const get_application_access_id = async (application_name:any, employee_name:any) => {
+  const application_access = await prisma.application_access.findFirst({
+    where: {
+      application_id: await get_application_id(application_name),
+      employee_id: await get_employee_id_by_name(employee_name),
+    },
+  });
+  if(!application_access) {
+    console.log("Inside get_application_access_id");
+    throw new Error(`Application Access ${application_name} not found`);
+  }
+  return application_access.access_id;
+};
+
+const seedReview = async () => {
+  await prisma.$transaction(async (_prisma) => {
+    const reviews = [
+      {
+        access_id: await get_application_access_id("MotoCare", "Gracelyn Frazier"),
+        application_id: await get_application_id("MotoCare"),
+        employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
+        quater: "Q1",
+        month: "Jan",
+        review_type: ReviewType.MONTHLY,
+        status: status.OPEN,
+        review_accept_reject: review_stat.PENDING,
+        review_comments: "This is a test comment",
+        created_by: await get_employee_id_by_name("Gracelyn Frazier"),
+        updated_by: await get_employee_id_by_name("Gracelyn Frazier"),
+      },
+      {
+        access_id: await get_application_access_id("MotoCare", "Gracelyn Frazier"),
+        application_id: await get_application_id("MotoCare"),
+        employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
+        quater: "Q4",
+        month: "Dec",
+        review_type: ReviewType.MONTHLY,
+        status: status.OPEN,
+        review_accept_reject: review_stat.PENDING,
+        review_comments: "This is a test comment",
+        created_by: await get_employee_id_by_name("Gracelyn Frazier"),
+        updated_by: await get_employee_id_by_name("Gracelyn Frazier"),
+      },
+    ];
+    await _prisma.review.createMany({
+      data: reviews,
+    });
+  });
+};
+  
 async function main() {
   console.log(`Start seeding ...`);
   // drop all data
-  // const result:number = await prisma.$executeRaw`DROP DATABASE UserAccessReview`;
-  // console.log(`Dropped database: affected rows ${result}`);
+  const result:number = await prisma.$executeRaw`DROP DATABASE UserAccessReview`;
+  console.log(`Dropped database: affected rows ${result}`);
   // clear all tables
   let res: any = await prisma.group.deleteMany();
   console.log(`Cleared table group: affected rows ${res.count}`);
@@ -408,8 +596,10 @@ async function main() {
   console.log(`Seeded employees`);
   await seedApplication(master_sis_id);
   console.log(`Seeded applications`);
-
-
+  await seedApplicationAccess(110);
+  console.log(`Seeded application access`);
+  await seedReview();
+  console.log(`Seeded reviews`);
 }
 
 main()
