@@ -236,3 +236,375 @@ Unique constraint failed on the fields: (`sis_id`)
 2022-12-05 19:12:34 info: App is running on port localhost:4000
 2022-12-05 19:14:17 info: App is running on port localhost:4000
 2022-12-05 19:14:32 info: App is running on port localhost:4000
+2022-12-06 18:44:03 info: App is running on port localhost:4000
+2022-12-06 18:44:06 info: [/login]
+2022-12-06 18:44:06 warn: [/login] - user not found
+[06/Dec/2022:13:14:06 +0000] POST /api/v1/auth/login 400 28 - 793.536 ms
+2022-12-06 18:44:06 debug: [/login] - body: {"core_id":"VANB84","password":"asif1"}
+2022-12-06 18:44:09 info: [/login]
+2022-12-06 18:44:09 warn: [/login] - user not found
+[06/Dec/2022:13:14:09 +0000] POST /api/v1/auth/login 400 28 - 17.442 ms
+2022-12-06 18:44:09 debug: [/login] - body: {"core_id":"VANB84","password":"asif1"}
+2022-12-06 18:44:20 warn: [auth] User not found - 91
+[06/Dec/2022:13:14:20 +0000] POST /api/v1/auth/register 401 49 - 159.519 ms
+2022-12-06 18:56:40 info: [/login]
+2022-12-06 18:56:40 info: [/login] - success - 110
+[06/Dec/2022:13:26:40 +0000] POST /api/v1/auth/login 200 539 - 259.004 ms
+2022-12-06 18:56:51 info: [/login]
+2022-12-06 18:56:51 info: [/login] - success - 110
+[06/Dec/2022:13:26:51 +0000] POST /api/v1/auth/login 200 539 - 160.178 ms
+2022-12-06 18:58:00 info: [/login]
+2022-12-06 18:58:00 info: [/login] - success - 110
+[06/Dec/2022:13:28:00 +0000] POST /api/v1/auth/login 200 539 - 179.697 ms
+2022-12-06 18:58:53 info: [/login]
+2022-12-06 18:58:54 info: [/login] - success - 110
+[06/Dec/2022:13:28:54 +0000] POST /api/v1/auth/login 200 539 - 156.522 ms
+2022-12-06 18:59:11 info: [/login]
+2022-12-06 18:59:11 info: [/login] - success - 110
+[06/Dec/2022:13:29:11 +0000] POST /api/v1/auth/login 200 539 - 182.659 ms
+2022-12-06 18:59:33 info: [/login]
+2022-12-06 18:59:33 info: [/login] - success - 110
+[06/Dec/2022:13:29:33 +0000] POST /api/v1/auth/login 200 539 - 171.830 ms
+2022-12-06 18:59:51 info: [/login]
+2022-12-06 18:59:51 info: [/login] - success - 110
+[06/Dec/2022:13:29:51 +0000] POST /api/v1/auth/login 200 539 - 173.558 ms
+2022-12-06 19:00:56 info: [/register]
+2022-12-06 19:00:56 error: 
+Invalid `prisma.employee.create()` invocation in
+E:\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Foreign key constraint failed on the field: `employee_group_sis_id_fkey (index)`
+Stack: Error: 
+Invalid `prisma.employee.create()` invocation in
+E:\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Foreign key constraint failed on the field: `employee_group_sis_id_fkey (index)`
+    at RequestHandler.handleRequestError (E:\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34843:13)
+    at RequestHandler.handleAndLogRequestError (E:\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34815:12)
+    at RequestHandler.request (E:\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34810:12)
+    at async PrismaClient._request (E:\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:35900:16)
+    at async register (E:\Angular\UserAccessReview\src\controllers\authController.ts:43:23)
+[06/Dec/2022:13:30:56 +0000] POST /api/v1/auth/register 500 49 - 395.179 ms
+2022-12-06 19:02:40 info: [/getAllApplications]
+2022-12-06 19:02:40 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:13:32:40 +0000] GET /api/v1/home/ 200 2016 - 304.353 ms
+2022-12-06 19:04:41 info: App is running on port localhost:4000
+2022-12-06 19:04:55 info: App is running on port localhost:4000
+2022-12-06 19:05:01 info: App is running on port localhost:4000
+2022-12-06 19:05:23 info: App is running on port localhost:4000
+2022-12-06 19:07:09 info: App is running on port localhost:4000
+2022-12-06 19:07:59 info: App is running on port localhost:4000
+2022-12-06 19:08:21 info: App is running on port localhost:4000
+2022-12-06 19:08:44 info: App is running on port localhost:4000
+2022-12-06 19:09:36 info: App is running on port localhost:4000
+2022-12-06 19:09:45 info: App is running on port localhost:4000
+2022-12-06 19:09:56 info: App is running on port localhost:4000
+2022-12-06 19:11:08 info: App is running on port localhost:4000
+2022-12-06 19:11:44 info: App is running on port localhost:4000
+2022-12-06 19:14:32 info: App is running on port localhost:4000
+2022-12-06 19:14:39 info: App is running on port localhost:4000
+2022-12-06 19:14:51 info: App is running on port localhost:4000
+2022-12-06 19:15:04 info: App is running on port localhost:4000
+2022-12-06 19:15:28 info: App is running on port localhost:4000
+2022-12-06 19:15:53 info: App is running on port localhost:4000
+2022-12-06 19:16:41 info: App is running on port localhost:4000
+2022-12-06 19:16:45 info: App is running on port localhost:4000
+2022-12-06 19:16:51 info: App is running on port localhost:4000
+2022-12-06 19:16:57 info: App is running on port localhost:4000
+2022-12-06 19:17:01 info: App is running on port localhost:4000
+2022-12-06 19:18:26 info: App is running on port localhost:4000
+2022-12-06 19:18:31 info: [/getAllApplications]
+2022-12-06 19:18:31 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:13:48:31 +0000] GET /api/v1/home/ 200 902 - 361.337 ms
+2022-12-06 19:18:51 info: App is running on port localhost:4000
+2022-12-06 19:18:54 info: [/getAllApplications]
+2022-12-06 19:18:54 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:13:48:54 +0000] GET /api/v1/home/ 200 767 - 299.704 ms
+2022-12-06 19:19:17 info: App is running on port localhost:4000
+2022-12-06 19:21:14 info: App is running on port localhost:4000
+2022-12-06 19:22:05 info: App is running on port localhost:4000
+2022-12-06 19:22:18 info: App is running on port localhost:4000
+2022-12-06 19:23:39 info: App is running on port localhost:4000
+2022-12-06 19:24:15 info: App is running on port localhost:4000
+2022-12-06 19:24:22 info: App is running on port localhost:4000
+2022-12-06 19:24:23 info: [/getAllApplications]
+2022-12-06 19:24:23 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:13:54:23 +0000] GET /api/v1/home/ 200 767 - 379.255 ms
+2022-12-06 19:25:04 info: App is running on port localhost:4000
+2022-12-06 19:25:54 info: App is running on port localhost:4000
+2022-12-06 19:26:09 info: [/getAllApplications]
+2022-12-06 19:26:09 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:13:56:09 +0000] GET /api/v1/home/ 200 767 - 387.908 ms
+2022-12-06 19:27:05 info: [/login]
+2022-12-06 19:27:06 info: [/login] - success - 112
+[06/Dec/2022:13:57:06 +0000] POST /api/v1/auth/login 200 533 - 762.297 ms
+2022-12-06 19:27:10 info: [/getAllApplications]
+2022-12-06 19:27:10 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:13:57:10 +0000] GET /api/v1/home/ 500 50 - 40.602 ms
+2022-12-06 19:27:10 error: [/getAllApplications] - TypeError: Cannot read properties of undefined (reading 'group_id')
+2022-12-06 19:29:33 info: App is running on port localhost:4000
+2022-12-06 19:30:39 info: App is running on port localhost:4000
+2022-12-06 19:30:43 info: [/login]
+2022-12-06 19:30:44 info: [/login] - success - 112
+[06/Dec/2022:14:00:44 +0000] POST /api/v1/auth/login 200 551 - 263.029 ms
+2022-12-06 19:30:50 info: [/getAllApplications]
+2022-12-06 19:30:50 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:14:00:50 +0000] GET /api/v1/home/ 500 50 - 314.952 ms
+2022-12-06 19:30:50 error: [/getAllApplications] - TypeError: Cannot read properties of undefined (reading 'group_id')
+2022-12-06 19:31:11 info: App is running on port localhost:4000
+2022-12-06 19:31:15 info: [/getAllApplications]
+2022-12-06 19:31:15 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:14:01:15 +0000] GET /api/v1/home/ 500 50 - 303.132 ms
+2022-12-06 19:31:15 error: [/getAllApplications] - TypeError: Cannot read properties of undefined (reading 'group_sis_id')
+2022-12-06 19:31:53 info: App is running on port localhost:4000
+2022-12-06 19:31:59 info: App is running on port localhost:4000
+2022-12-06 19:32:24 info: App is running on port localhost:4000
+2022-12-06 19:34:26 info: App is running on port localhost:4000
+2022-12-06 19:34:30 info: App is running on port localhost:4000
+2022-12-06 19:34:40 info: App is running on port localhost:4000
+2022-12-06 19:34:46 info: [/getAllApplications]
+2022-12-06 19:34:46 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:14:04:46 +0000] GET /api/v1/home/ 200 461 - 309.117 ms
+2022-12-06 19:36:35 info: App is running on port localhost:4000
+2022-12-06 19:36:39 info: [/login]
+2022-12-06 19:36:39 info: [/login] - success - 112
+[06/Dec/2022:14:06:39 +0000] POST /api/v1/auth/login 200 551 - 257.633 ms
+2022-12-06 19:36:46 info: [/getAllApplications]
+2022-12-06 19:36:46 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:14:06:46 +0000] GET /api/v1/home/ 200 461 - 391.930 ms
+2022-12-06 19:37:17 info: [/login]
+2022-12-06 19:37:17 info: [/login] - success - 114
+[06/Dec/2022:14:07:17 +0000] POST /api/v1/auth/login 200 556 - 192.361 ms
+2022-12-06 19:37:23 info: [/getAllApplications]
+2022-12-06 19:37:23 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:14:07:23 +0000] GET /api/v1/home/ 200 461 - 34.526 ms
+2022-12-06 19:38:10 info: [/login]
+2022-12-06 19:38:10 info: [/login] - success - 110
+[06/Dec/2022:14:08:10 +0000] POST /api/v1/auth/login 200 560 - 187.877 ms
+2022-12-06 19:38:13 info: [/getAllApplications]
+2022-12-06 19:38:13 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:14:08:13 +0000] GET /api/v1/home/ 200 767 - 29.732 ms
+2022-12-06 19:39:13 info: App is running on port localhost:4000
+2022-12-06 19:39:40 info: [/login]
+2022-12-06 19:39:40 info: [/login] - success - 114
+[06/Dec/2022:14:09:40 +0000] POST /api/v1/auth/login 200 556 - 451.773 ms
+2022-12-06 19:39:46 info: [/getAllApplications]
+2022-12-06 19:39:46 info: [/getAllApplications]: applications fetched
+[06/Dec/2022:14:09:46 +0000] GET /api/v1/home/ 200 767 - 435.217 ms
+2022-12-07 10:06:32 info: App is running on port localhost:4000
+2022-12-07 10:06:53 info: App is running on port localhost:4000
+2022-12-07 10:07:00 info: App is running on port localhost:4000
+2022-12-07 10:07:14 info: App is running on port localhost:4000
+2022-12-07 10:07:22 info: App is running on port localhost:4000
+2022-12-07 10:07:35 info: App is running on port localhost:4000
+2022-12-07 10:07:40 info: App is running on port localhost:4000
+2022-12-07 10:08:09 info: App is running on port localhost:4000
+2022-12-07 10:08:16 info: App is running on port localhost:4000
+2022-12-07 10:08:19 info: App is running on port localhost:4000
+2022-12-07 10:08:42 info: App is running on port localhost:4000
+2022-12-07 10:08:55 info: App is running on port localhost:4000
+2022-12-07 10:09:00 info: App is running on port localhost:4000
+2022-12-07 10:23:59 info: App is running on port localhost:4000
+2022-12-07 10:24:03 info: App is running on port localhost:4000
+2022-12-07 10:24:10 info: App is running on port localhost:4000
+2022-12-07 10:35:23 info: App is running on port localhost:4000
+2022-12-07 10:35:31 info: App is running on port localhost:4000
+2022-12-07 10:35:35 info: App is running on port localhost:4000
+2022-12-07 10:35:43 info: App is running on port localhost:4000
+2022-12-07 10:43:28 info: App is running on port localhost:4000
+2022-12-07 10:43:32 info: App is running on port localhost:4000
+2022-12-07 10:43:45 info: App is running on port localhost:4000
+2022-12-07 10:43:51 info: App is running on port localhost:4000
+2022-12-07 10:43:54 info: App is running on port localhost:4000
+2022-12-07 10:43:59 info: App is running on port localhost:4000
+2022-12-07 10:44:05 info: App is running on port localhost:4000
+2022-12-07 10:44:14 info: App is running on port localhost:4000
+2022-12-07 10:44:20 info: App is running on port localhost:4000
+2022-12-07 10:44:29 info: App is running on port localhost:4000
+2022-12-07 10:44:40 info: App is running on port localhost:4000
+2022-12-07 10:44:49 info: App is running on port localhost:4000
+2022-12-07 10:47:28 info: App is running on port localhost:4000
+2022-12-07 10:50:33 info: App is running on port localhost:4000
+2022-12-07 10:52:47 info: App is running on port localhost:4000
+2022-12-07 11:05:11 info: [/login]
+2022-12-07 11:05:11 info: [/login] - success - 114
+[07/Dec/2022:05:35:11 +0000] POST /api/v1/auth/login 200 556 - 426.677 ms
+[07/Dec/2022:05:35:18 +0000] GET /api/v1/MotoCare/user 404 159 - 2.063 ms
+[07/Dec/2022:05:35:52 +0000] GET /api/v1/MotoCare/users 404 160 - 0.578 ms
+[07/Dec/2022:05:37:02 +0000] GET /api/v1/MotoCare/users 404 160 - 0.394 ms
+2022-12-07 11:07:36 info: App is running on port localhost:4000
+[07/Dec/2022:05:37:42 +0000] GET /api/v1/MotoCare 404 154 - 3.610 ms
+[07/Dec/2022:05:37:47 +0000] GET /api/v1/ 404 146 - 1.195 ms
+2022-12-07 11:08:51 info: App is running on port localhost:4000
+2022-12-07 11:09:04 info: [/:applicationName/users]
+[07/Dec/2022:05:39:25 +0000] GET /api/v1/home/:applicationName/users - - - - ms
+2022-12-07 11:09:52 info: App is running on port localhost:4000
+2022-12-07 11:10:08 info: App is running on port localhost:4000
+2022-12-07 11:10:16 info: [/:applicationName/users]
+[07/Dec/2022:05:40:17 +0000] GET /api/v1/home/:applicationName/users 404 61 - 225.001 ms
+2022-12-07 11:10:44 info: App is running on port localhost:4000
+2022-12-07 11:10:51 info: App is running on port localhost:4000
+2022-12-07 11:10:51 info: [/:applicationName/users]
+[07/Dec/2022:05:40:52 +0000] GET /api/v1/home/:applicationName/users 404 61 - 212.513 ms
+2022-12-07 11:11:41 info: App is running on port localhost:4000
+2022-12-07 11:11:44 info: [/:applicationName/users]
+[07/Dec/2022:05:41:44 +0000] GET /api/v1/home/:applicationName/users 404 61 - 297.396 ms
+2022-12-07 11:12:06 info: [/:applicationName/users]
+2022-12-07 11:12:06 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:42:06 +0000] GET /api/v1/home/MotoCare/users 500 50 - 34.851 ms
+2022-12-07 11:12:06 error: [/getAllApplications] - TypeError: Cannot read properties of null (reading 'name')
+2022-12-07 11:12:25 info: App is running on port localhost:4000
+2022-12-07 11:12:31 info: App is running on port localhost:4000
+2022-12-07 11:12:38 info: [/:applicationName/users]
+2022-12-07 11:12:39 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:42:39 +0000] GET /api/v1/home/MotoCare/users 500 50 - 228.488 ms
+2022-12-07 11:12:39 error: [/getAllApplications] - TypeError: Cannot read properties of null (reading 'name')
+2022-12-07 11:14:34 info: App is running on port localhost:4000
+2022-12-07 11:14:41 info: App is running on port localhost:4000
+2022-12-07 11:14:44 info: [/:applicationName/users]
+2022-12-07 11:14:44 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:44:44 +0000] GET /api/v1/home/MotoCare/users 500 50 - 246.256 ms
+2022-12-07 11:14:44 error: [/getAllApplications] - TypeError: Cannot read properties of null (reading 'name')
+2022-12-07 11:15:34 info: App is running on port localhost:4000
+2022-12-07 11:15:43 info: App is running on port localhost:4000
+2022-12-07 11:15:47 info: App is running on port localhost:4000
+2022-12-07 11:15:52 info: [/:applicationName/users]
+2022-12-07 11:15:52 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:45:52 +0000] GET /api/v1/home/MotoCare/users 200 1148 - 234.115 ms
+2022-12-07 11:16:11 info: App is running on port localhost:4000
+2022-12-07 11:17:11 info: [/:applicationName/users]
+2022-12-07 11:17:12 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:47:12 +0000] GET /api/v1/home/MotoCare/users 500 50 - 244.421 ms
+2022-12-07 11:17:12 error: [/getAllApplications] - TypeError: Cannot read properties of null (reading 'name')
+2022-12-07 11:18:32 info: App is running on port localhost:4000
+2022-12-07 11:18:34 info: [/:applicationName/users]
+2022-12-07 11:18:35 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:48:35 +0000] GET /api/v1/home/MotoCare/users 500 50 - 248.222 ms
+2022-12-07 11:18:35 error: [/getAllApplications] - TypeError: Cannot read properties of null (reading 'name')
+2022-12-07 11:18:44 info: App is running on port localhost:4000
+2022-12-07 11:18:48 info: App is running on port localhost:4000
+2022-12-07 11:18:52 info: [/:applicationName/users]
+2022-12-07 11:18:52 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:48:52 +0000] GET /api/v1/home/MotoCare/users 500 50 - 236.809 ms
+2022-12-07 11:18:52 error: [/getAllApplications] - TypeError: Cannot read properties of null (reading 'name')
+2022-12-07 11:19:03 info: App is running on port localhost:4000
+2022-12-07 11:19:06 info: [/:applicationName/users]
+2022-12-07 11:19:06 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:49:06 +0000] GET /api/v1/home/MotoCare/users 500 50 - 241.021 ms
+2022-12-07 11:19:06 error: [/getAllApplications] - TypeError: Cannot read properties of null (reading 'core_id')
+2022-12-07 11:19:26 info: App is running on port localhost:4000
+2022-12-07 11:19:28 info: [/:applicationName/users]
+2022-12-07 11:19:28 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:49:28 +0000] GET /api/v1/home/MotoCare/users 200 676 - 274.849 ms
+2022-12-07 11:19:40 info: App is running on port localhost:4000
+2022-12-07 11:19:44 info: App is running on port localhost:4000
+2022-12-07 11:19:44 info: [/:applicationName/users]
+2022-12-07 11:19:44 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:49:44 +0000] GET /api/v1/home/MotoCare/users 200 879 - 258.106 ms
+2022-12-07 11:20:54 info: App is running on port localhost:4000
+2022-12-07 11:21:03 info: App is running on port localhost:4000
+2022-12-07 11:21:19 info: App is running on port localhost:4000
+2022-12-07 11:21:22 info: [/:applicationName/users]
+2022-12-07 11:21:23 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:51:23 +0000] GET /api/v1/home/MotoCare/users 500 50 - 257.431 ms
+2022-12-07 11:21:23 error: [/getAllApplications] - TypeError: Cannot read properties of null (reading 'name')
+2022-12-07 11:21:39 info: App is running on port localhost:4000
+2022-12-07 11:22:17 info: App is running on port localhost:4000
+2022-12-07 11:22:32 info: App is running on port localhost:4000
+2022-12-07 11:22:33 info: [/:applicationName/users]
+2022-12-07 11:22:33 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:52:33 +0000] GET /api/v1/home/MotoCare/users 200 722 - 361.279 ms
+2022-12-07 11:22:49 info: App is running on port localhost:4000
+2022-12-07 11:22:53 info: App is running on port localhost:4000
+2022-12-07 11:22:55 info: [/:applicationName/users]
+2022-12-07 11:22:55 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:52:55 +0000] GET /api/v1/home/MotoCare/users 200 776 - 340.050 ms
+2022-12-07 11:23:18 info: App is running on port localhost:4000
+2022-12-07 11:23:24 info: App is running on port localhost:4000
+2022-12-07 11:23:30 info: [/:applicationName/users]
+2022-12-07 11:23:30 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:53:30 +0000] GET /api/v1/home/MotoCare/users 200 814 - 265.904 ms
+2022-12-07 11:23:45 info: App is running on port localhost:4000
+2022-12-07 11:23:51 info: App is running on port localhost:4000
+2022-12-07 11:24:27 info: [/login]
+2022-12-07 11:24:28 info: [/login] - success - 111
+[07/Dec/2022:05:54:28 +0000] POST /api/v1/auth/login 200 550 - 323.406 ms
+2022-12-07 11:25:11 info: [/:applicationName/users]
+2022-12-07 11:25:11 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:55:11 +0000] GET /api/v1/home/MotoCare/users 500 50 - 393.514 ms
+2022-12-07 11:25:11 error: [/getAllApplications] - TypeError: Cannot read properties of undefined (reading 'sis_id')
+2022-12-07 11:25:59 info: App is running on port localhost:4000
+2022-12-07 11:26:06 info: App is running on port localhost:4000
+2022-12-07 11:26:11 info: App is running on port localhost:4000
+2022-12-07 11:26:57 info: [/:applicationName/users]
+2022-12-07 11:26:57 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:05:56:57 +0000] GET /api/v1/home/MotoCare/users 500 50 - 242.181 ms
+2022-12-07 11:26:57 error: [/getAllApplications] - TypeError: Cannot read properties of undefined (reading 'sis_id')
+2022-12-07 11:27:43 info: App is running on port localhost:4000
+2022-12-07 11:27:48 info: App is running on port localhost:4000
+2022-12-07 11:27:58 info: App is running on port localhost:4000
+2022-12-07 11:28:31 info: App is running on port localhost:4000
+2022-12-07 11:28:38 warn: [auth] error
+[07/Dec/2022:05:58:38 +0000] GET /api/v1/home/MotoCare/users 401 50 - 233.244 ms
+2022-12-07 11:28:38 error: Cannot set properties of undefined (setting 'sis_id')
+Stack: TypeError: Cannot set properties of undefined (setting 'sis_id')
+    at auth (E:\Angular\UserAccessReview\src\middleware\authentication.ts:25:24)
+2022-12-07 11:29:15 info: App is running on port localhost:4000
+2022-12-07 11:30:21 info: App is running on port localhost:4000
+2022-12-07 11:30:46 info: App is running on port localhost:4000
+2022-12-07 11:30:57 info: App is running on port localhost:4000
+2022-12-07 11:31:09 info: App is running on port localhost:4000
+2022-12-07 11:31:18 info: [/:applicationName/users]
+2022-12-07 11:31:18 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:06:01:18 +0000] GET /api/v1/home/MotoCare/users 200 474 - 233.078 ms
+2022-12-07 11:32:19 info: [/login]
+2022-12-07 11:32:19 info: [/login] - success - 120
+[07/Dec/2022:06:02:19 +0000] POST /api/v1/auth/login 200 547 - 244.495 ms
+2022-12-07 11:32:23 info: [/:applicationName/users]
+2022-12-07 11:32:23 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:06:02:23 +0000] GET /api/v1/home/MotoCare/users 200 66 - 30.765 ms
+2022-12-07 11:33:16 info: App is running on port localhost:4000
+2022-12-07 11:33:33 info: App is running on port localhost:4000
+2022-12-07 11:33:35 info: [/:applicationName/users]
+2022-12-07 11:33:35 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:06:03:35 +0000] GET /api/v1/home/MotoCare/users 200 66 - 254.494 ms
+2022-12-07 11:33:56 info: [/:applicationName/users]
+2022-12-07 11:33:56 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:06:03:56 +0000] GET /api/v1/home/MotoCare/users 200 66 - 19.310 ms
+2022-12-07 11:34:38 info: App is running on port localhost:4000
+2022-12-07 11:34:43 info: App is running on port localhost:4000
+2022-12-07 11:34:45 info: [/:applicationName/users]
+2022-12-07 11:34:45 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:06:04:45 +0000] GET /api/v1/home/MotoCare/users 200 66 - 233.095 ms
+2022-12-07 11:35:27 info: App is running on port localhost:4000
+2022-12-07 11:35:40 info: [/:applicationName/users]
+2022-12-07 11:35:40 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:06:05:40 +0000] GET /api/v1/home/MotoCare/users 200 66 - 228.101 ms
+2022-12-07 11:35:55 info: App is running on port localhost:4000
+2022-12-07 11:35:56 info: [/:applicationName/users]
+2022-12-07 11:35:56 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:06:05:56 +0000] GET /api/v1/home/MotoCare/users 200 66 - 239.504 ms
+2022-12-07 11:36:16 info: App is running on port localhost:4000
+2022-12-07 11:36:21 info: App is running on port localhost:4000
+2022-12-07 11:36:21 info: [/:applicationName/users]
+2022-12-07 11:36:22 info: [/:applicationName/users]: application users fetched
+[07/Dec/2022:06:06:22 +0000] GET /api/v1/home/MotoCare/users 200 263 - 291.111 ms
+2022-12-07 11:36:47 info: App is running on port localhost:4000
+2022-12-07 11:38:32 info: App is running on port localhost:4000
+2022-12-07 11:38:36 info: App is running on port localhost:4000
+2022-12-07 11:38:49 info: App is running on port localhost:4000
+2022-12-07 11:41:41 info: App is running on port localhost:4000
+2022-12-07 11:50:56 info: App is running on port localhost:4000
+2022-12-07 12:04:33 info: App is running on port localhost:4000
+2022-12-07 12:06:40 info: App is running on port localhost:4000
+2022-12-08 11:19:13 info: App is running on port localhost:4000
+2022-12-08 11:22:10 info: App is running on port localhost:4000
+2022-12-08 11:26:00 info: App is running on port localhost:4000

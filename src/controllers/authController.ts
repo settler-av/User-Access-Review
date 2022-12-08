@@ -125,7 +125,7 @@ const login = async (req: Request, res: Response) => {
       }
       // token of user inf time
       let secret: any = process.env.JWT_SECRET;
-      const token = jwt.sign({ userId: employee.sis_id }, secret);
+      const token = jwt.sign({ userId: employee.sis_id, group_id: employee.group_sis_id }, secret);
       console.log(secret);
       
       logger.info(`[/login] - success - ${employee.sis_id}`);

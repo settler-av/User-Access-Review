@@ -22,6 +22,7 @@ const auth = async (req: any, res: any, next: any) => {
         sis_id: payload.userId,
       },
     });
+    
     const master_user = await prisma.employee.findUnique({
       where: {
         core_id: "VWNB84",
@@ -32,6 +33,7 @@ const auth = async (req: any, res: any, next: any) => {
     if (employee) {
       if (master_user) {
         req.user_id = payload.userId;
+        req.group_id = payload.group_sis_id;
         if (employee.sis_id === master_user.sis_id) {
           req.isAdmin = true;
         }
@@ -64,7 +66,7 @@ const auth = async (req: any, res: any, next: any) => {
           }
         })
         
-        if(compliance?.group?.name === "Compliance"){
+        if(compliance?.group?.name === "COMPLIANCE"){
           req.isCompliance = true;
           req.isManager = false;
         }
@@ -108,5 +110,26 @@ export const isAdmin = async (req: any, res: any, next: any) => {
       .status(401);
   }
 };
+export const isCompliance = async (req: any, res: any, next: any) => {
+  try {
+    auth(req, res, () => {
+      if (req.isCompliance) {
+        next();
+      } else {
+        return res
+          .status(401)
+          .send({ isError: true, message: "You are not authorized." });
+      }
+    });
+  } catch (err) {
+    logger.warn("[auth] error");
+    logger.error(err);
+    res
+      .status(400)
+      .send({ isError: true, message: "Something went wrong!" })
+      .status(401);
+  }
+};
+
 
 export default auth;

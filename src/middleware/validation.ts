@@ -1,3 +1,4 @@
+import { ReviewType } from '@prisma/client';
 import joi from 'joi';
 
 const registerSchema = (req: any, res: any, next: any) => {
@@ -31,6 +32,19 @@ const changePasswordSchema = (req: any, res: any, next: any) => {
     }).unknown(false);
     validateRequest(req, res, schema, next);
 };
+
+const makeReviewSchema = (req: any, res: any, next: any) => {
+    const schema = joi.object({
+        access_id: joi.string().required(),
+        application_id: joi.string().required(),
+        employee_id: joi.string().required(),
+        quater: joi.string().required(),
+        month: joi.string().required(),
+        review_type: joi.string().valid(ReviewType.ADHOC, ReviewType.MONTHLY, ReviewType.QUATERLY).required(),
+        review_comments: joi.string().required(),
+    }).unknown(false);
+    validateRequest(req, res, schema, next);
+};
 // helper functions
 
 function validateRequest(req: any, res: any, schema: any, next: any) {
@@ -48,8 +62,10 @@ function validateRequest(req: any, res: any, schema: any, next: any) {
     }
 }
 
+
 export default {
     registerSchema,
     loginSchema,
-    changePasswordSchema
+    changePasswordSchema,
+    makeReviewSchema
 };
