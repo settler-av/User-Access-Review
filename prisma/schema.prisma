@@ -6,26 +6,28 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 enum Role {
   ADMIN
   USER
 }
+
 model employee {
-  sis_id                        Int                  @id @default(autoincrement())
-  rec_st                        Boolean              @default(true)
-  created_at                    DateTime             @default(now())
-  updated_at                    DateTime             @updatedAt
-  created_by                    Int?
-  updated_by                    Int?
-  created                       employee?            @relation("createdByRef", fields: [created_by], references: [sis_id])
-  updated                       employee?            @relation("updatedByRef", fields: [updated_by], references: [sis_id])
-  name                          String
-  core_id                       String               @unique
-  email                         String               @unique
-  password                      String
-  manager_id                    Int?
-  manager                       employee?            @relation("managerRef", fields: [manager_id], references: [sis_id])
-  department                    String?
+  sis_id     Int       @id @default(autoincrement())
+  rec_st     Boolean   @default(true)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  created_by Int?
+  updated_by Int?
+  created    employee? @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated    employee? @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+  name       String
+  core_id    String    @unique
+  email      String    @unique
+  password   String
+  manager_id Int?
+  manager    employee? @relation("managerRef", fields: [manager_id], references: [sis_id])
+  department String?
 
   employees                     employee[]           @relation("managerRef")
   created_employees             employee[]           @relation("createdByRef")
@@ -41,20 +43,20 @@ model employee {
   review_created_by             review[]             @relation("createdByRef")
   review_updated_by             review[]             @relation("updatedByRef")
 
-  group                         group?               @relation(fields: [group_sis_id], references: [sis_id])
-  group_sis_id                   Int?
-  employee_group                employee_group[]
-  application_access            application_access[]
-  review                        review[]
+  group              group?               @relation(fields: [group_sis_id], references: [sis_id])
+  group_sis_id       Int?
+  employee_group     employee_group[]
+  application_access application_access[]
+  review             review[]
 }
 
 model group {
-  sis_id         Int              @id @default(autoincrement())
-  rec_st         Boolean          @default(true)
-  created_at     DateTime         @default(now())
-  updated_at     DateTime         @updatedAt
-  created_by     Int
-  updated_by     Int
+  sis_id     Int      @id @default(autoincrement())
+  rec_st     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  created_by Int
+  updated_by Int
 
   created        employee         @relation("createdByRef", fields: [created_by], references: [sis_id])
   updated        employee         @relation("updatedByRef", fields: [updated_by], references: [sis_id])
@@ -65,14 +67,14 @@ model group {
 }
 
 model employee_group {
-  sis_id      Int      @id @default(autoincrement())
-  rec_st      Boolean  @default(true)
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  created_by  Int
-  updated_by  Int
-  created     employee @relation("createdByRef", fields: [created_by], references: [sis_id])
-  updated     employee @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+  sis_id     Int      @id @default(autoincrement())
+  rec_st     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  created_by Int
+  updated_by Int
+  created    employee @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated    employee @relation("updatedByRef", fields: [updated_by], references: [sis_id])
 
   employee_id Int
   employee    employee @relation(fields: [employee_id], references: [sis_id])
@@ -81,33 +83,33 @@ model employee_group {
 }
 
 model application {
-  sis_id             Int                  @id @default(autoincrement())
-  rec_st             Boolean              @default(true)
-  created_at         DateTime             @default(now())
-  updated_at         DateTime             @updatedAt
-  created_by         Int
-  updated_by         Int
-  created            employee             @relation("createdByRef", fields: [created_by], references: [sis_id])
-  updated            employee             @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+  sis_id     Int      @id @default(autoincrement())
+  rec_st     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  created_by Int
+  updated_by Int
+  created    employee @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated    employee @relation("updatedByRef", fields: [updated_by], references: [sis_id])
 
   name               String
-  owner_gid          Int 
+  owner_gid          Int
   owner_group        group                @relation(fields: [owner_gid], references: [sis_id])
   application_access application_access[]
   review             review[]
 }
 
 model application_access {
-  sis_id         Int         @id @default(autoincrement())
-  rec_st         Boolean     @default(true)
-  created_at     DateTime    @default(now())
-  updated_at     DateTime    @updatedAt
-  created_by     Int
-  updated_by     Int
-  created        employee    @relation("createdByRef", fields: [created_by], references: [sis_id])
-  updated        employee    @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+  sis_id     Int      @id @default(autoincrement())
+  rec_st     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  created_by Int
+  updated_by Int
+  created    employee @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated    employee @relation("updatedByRef", fields: [updated_by], references: [sis_id])
 
-  access_id      String      @unique@default(cuid())
+  access_id      String      @unique @default(cuid())
   application_id Int
   application    application @relation(fields: [application_id], references: [sis_id])
   employee_id    Int
@@ -136,19 +138,20 @@ enum review_stat {
   APP_OWNER_ACEEPTED
   APP_OWNER_REJECTED
   PENDING
+  DONE
 }
 
 model review {
-  sis_id               Int                @id @default(autoincrement())
-  rec_st               Boolean            @default(true)
-  created_at           DateTime           @default(now())
-  updated_at           DateTime           @updatedAt
-  created_by           Int
-  updated_by           Int
-  created              employee           @relation("createdByRef", fields: [created_by], references: [sis_id])
-  updated              employee           @relation("updatedByRef", fields: [updated_by], references: [sis_id])
-  
-  review_id            String             @unique@default(cuid())
+  sis_id     Int      @id @default(autoincrement())
+  rec_st     Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  created_by Int
+  updated_by Int
+  created    employee @relation("createdByRef", fields: [created_by], references: [sis_id])
+  updated    employee @relation("updatedByRef", fields: [updated_by], references: [sis_id])
+
+  review_id            String             @unique @default(cuid())
   access_id            String
   application_access   application_access @relation(fields: [access_id], references: [access_id])
   application_id       Int
@@ -161,4 +164,5 @@ model review {
   status               status             @default(OPEN)
   review_accept_reject review_stat        @default(PENDING)
   review_comments      String
+  due_date             DateTime?
 }

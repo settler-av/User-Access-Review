@@ -1,4 +1,4 @@
-import { ReviewType } from '@prisma/client';
+import { ReviewType, status } from '@prisma/client';
 import joi from 'joi';
 
 const registerSchema = (req: any, res: any, next: any) => {
@@ -45,8 +45,23 @@ const makeReviewSchema = (req: any, res: any, next: any) => {
     }).unknown(false);
     validateRequest(req, res, schema, next);
 };
-// helper functions
 
+const createReview = (req: any, res: any, next: any) => {
+    const schema = joi.object({
+        access_id: joi.string().required(),
+        application_id: joi.string().required(),
+        employee_id: joi.string().required(),
+        quater: joi.string().required(),
+        month: joi.string().required(),
+        review_type: joi.string().valid(ReviewType.ADHOC, ReviewType.MONTHLY, ReviewType.QUATERLY).required(),
+        status: joi.string().valid(status.OPEN, status.APP_OWNER_REVIEW_COM, status.MANAGER_REVIEW_COM, status.CLOSED).required(),
+        review_comments: joi.string().required(),
+        due_date: joi.date(),
+    }).unknown(true);
+    validateRequest(req, res, schema, next);
+};
+
+// helper functions
 function validateRequest(req: any, res: any, schema: any, next: any) {
     const options = {
         abortEarly: false, // include all errors
@@ -67,5 +82,6 @@ export default {
     registerSchema,
     loginSchema,
     changePasswordSchema,
-    makeReviewSchema
+    makeReviewSchema,
+    createReview
 };

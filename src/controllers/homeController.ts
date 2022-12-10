@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import { NextFunction, Request, Response } from 'express';
 import logger from '../utils/logger';
 import { PrismaClient, ReviewType } from "@prisma/client";
-import { deprecate } from "util";
 const prisma = new PrismaClient();
 dotenv.config();
 

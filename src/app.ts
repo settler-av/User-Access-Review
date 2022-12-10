@@ -17,6 +17,7 @@ import cors from "cors";
 
 const authRouter = require("./routes/authRoutes");
 const homeRouter = require("./routes/homeRoutes");
+const reportRouter = require("./routers/reportRouter")
 
 // save the logs
 var accessLogStream = fs.createWriteStream("./server.log", { flags: "a" });
@@ -38,6 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/home", homeRouter);
+app.use("/api/v1/report",reportRouter);
 app.get('/api/v1/check', (req,res)=>{
   res.send("hello")
 })
