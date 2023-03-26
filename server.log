@@ -609,3 +609,657 @@ Stack: TypeError: Cannot set properties of undefined (setting 'sis_id')
 2022-12-08 11:22:10 info: App is running on port localhost:4000
 2022-12-08 11:26:00 info: App is running on port localhost:4000
 2022-12-08 11:27:41 info: App is running on port localhost:4000
+2023-03-11 17:12:35 info: App is running on port localhost:4000
+2023-03-13 20:28:01 info: App is running on port localhost:4000
+2023-03-13 20:28:49 info: [/login]
+2023-03-13 20:28:49 info: [/login] - success - 1
+[13/Mar/2023:14:58:49 +0000] POST /api/v1/auth/login 200 554 - 216.665 ms
+2023-03-13 20:29:11 info: [/register]
+2023-03-13 20:29:11 error: 
+Invalid `prisma.employee.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Foreign key constraint failed on the field: `employee_group_sis_id_fkey (index)`
+Stack: Error: 
+Invalid `prisma.employee.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Foreign key constraint failed on the field: `employee_group_sis_id_fkey (index)`
+    at RequestHandler.handleRequestError (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34843:13)
+    at RequestHandler.handleAndLogRequestError (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34815:12)
+    at RequestHandler.request (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34810:12)
+    at async PrismaClient._request (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:35900:16)
+    at async register (D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:23)
+[13/Mar/2023:14:59:11 +0000] POST /api/v1/auth/register 500 49 - 280.286 ms
+2023-03-13 20:29:27 info: [/register]
+2023-03-13 20:29:27 error: 
+Invalid `prisma.employee.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Foreign key constraint failed on the field: `employee_group_sis_id_fkey (index)`
+Stack: Error: 
+Invalid `prisma.employee.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Foreign key constraint failed on the field: `employee_group_sis_id_fkey (index)`
+    at RequestHandler.handleRequestError (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34843:13)
+    at RequestHandler.handleAndLogRequestError (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34815:12)
+    at RequestHandler.request (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34810:12)
+    at async PrismaClient._request (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:35900:16)
+    at async register (D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:23)
+[13/Mar/2023:14:59:27 +0000] POST /api/v1/auth/register 500 49 - 112.064 ms
+2023-03-13 20:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-13 20:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-13 20:43:24 info: App is running on port localhost:4000
+2023-03-13 20:43:26 info: [/login]
+2023-03-13 20:43:26 info: [/login] - success - 1
+[13/Mar/2023:15:13:26 +0000] POST /api/v1/auth/login 200 554 - 326.757 ms
+2023-03-13 21:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-13 21:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-20 15:58:14 info: App is running on port localhost:4000
+2023-03-20 16:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-20 16:00:01 info: [/report/sendReminder] - 0 reports due today
+2023-03-20 20:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-20 20:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-20 21:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-20 21:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-20 23:28:38 info: App is running on port localhost:4000
+2023-03-20 23:28:47 info: [/login]
+2023-03-20 23:28:47 info: [/login] - success - 1
+[20/Mar/2023:17:58:47 +0000] POST /api/v1/auth/login 200 554 - 216.939 ms
+2023-03-20 23:29:03 info: [/register]
+2023-03-20 23:29:03 error: 
+Invalid `prisma.employee.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Foreign key constraint failed on the field: `employee_group_sis_id_fkey (index)`
+Stack: Error: 
+Invalid `prisma.employee.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:45
+
+  40 });
+  41 
+  42 // create user
+→ 43 const newUser = await prisma.employee.create(
+Foreign key constraint failed on the field: `employee_group_sis_id_fkey (index)`
+    at RequestHandler.handleRequestError (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34843:13)
+    at RequestHandler.handleAndLogRequestError (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34815:12)
+    at RequestHandler.request (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:34810:12)
+    at async PrismaClient._request (D:\Projects\Angular\UserAccessReview\node_modules\@prisma\client\runtime\index.js:35900:16)
+    at async register (D:\Projects\Angular\UserAccessReview\src\controllers\authController.ts:43:23)
+[20/Mar/2023:17:59:03 +0000] POST /api/v1/auth/register 500 49 - 217.944 ms
+2023-03-20 23:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-20 23:30:00 info: [/report/sendReminder] - 0 reports due today
+[20/Mar/2023:18:00:21 +0000] POST /api/v1/auth/register 400 1053 - 5.579 ms
+2023-03-20 23:30:44 info: App is running on port localhost:4000
+[20/Mar/2023:18:00:47 +0000] POST /api/v1/auth/register 400 1053 - 14.294 ms
+[20/Mar/2023:18:00:49 +0000] POST /api/v1/auth/register 400 1053 - 1.349 ms
+2023-03-20 23:31:24 info: App is running on port localhost:4000
+[20/Mar/2023:18:01:27 +0000] POST /api/v1/auth/register 400 1053 - 20.467 ms
+2023-03-20 23:31:44 info: [/register]
+2023-03-20 23:31:44 info: [/register]: user created
+[20/Mar/2023:18:01:44 +0000] POST /api/v1/auth/register 200 212 - 314.901 ms
+2023-03-20 23:31:44 info: [/register]: success
+2023-03-20 23:32:21 info: [/getAllApplications]
+2023-03-20 23:32:22 info: [/getAllApplications]: applications fetched
+[20/Mar/2023:18:02:22 +0000] GET /api/v1/home/ 200 767 - 105.938 ms
+2023-03-20 23:32:33 info: [/:applicationName/users]
+2023-03-20 23:32:33 info: [/:applicationName/users]: application users fetched
+[20/Mar/2023:18:02:33 +0000] GET /api/v1/home/MotoCare/users 200 814 - 20.199 ms
+[20/Mar/2023:18:09:58 +0000] POST /api/v1/home/make-review 500 270 - 3.206 ms
+2023-03-20 23:40:20 info: [/home/make-review]
+[20/Mar/2023:18:10:20 +0000] POST /api/v1/home/make-review 500 50 - 71.415 ms
+2023-03-20 23:40:20 error: [/home/make-review] - Error: 
+Invalid `prisma.review.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:241:44
+
+  238     })
+  239 }
+  240 
+→ 241 const review = await prisma.review.create({
+        data: {
+          created_by: 1,
+          updated_by: 1,
+          access_id: '1',
+          application_id: '2',
+                          ~~~
+          employee_id: '16',
+                       ~~~~
+          quater: 'Q4',
+          month: 'JAN',
+          review_type: 'ADHOC',
+          review_comments: 'this is comment'
+        }
+      })
+
+Argument application_id: Got invalid value '2' on prisma.createOnereview. Provided String, expected Int.
+Argument employee_id: Got invalid value '16' on prisma.createOnereview. Provided String, expected Int.
+
+
+2023-03-20 23:41:05 info: App is running on port localhost:4000
+2023-03-20 23:41:06 info: [/home/make-review]
+2023-03-20 23:41:06 error: [/home/make-review] - Error: 
+Invalid `prisma.review.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:241:44
+
+  238     })
+  239 }
+  240 
+→ 241 const review = await prisma.review.create(
+Foreign key constraint failed on the field: `review_access_id_fkey (index)`
+[20/Mar/2023:18:11:06 +0000] POST /api/v1/home/make-review 500 50 - 313.625 ms
+2023-03-20 23:42:26 info: [/home/make-review]
+2023-03-20 23:42:26 info: [/home/make-review]: review created
+[20/Mar/2023:18:12:26 +0000] POST /api/v1/home/make-review 200 456 - 26.361 ms
+2023-03-20 23:42:32 info: [/home/make-review]
+2023-03-20 23:42:32 info: [/home/make-review]: review created
+[20/Mar/2023:18:12:32 +0000] POST /api/v1/home/make-review 200 456 - 24.881 ms
+[20/Mar/2023:18:13:09 +0000] GET /api/v1/report/ 401 22 - 1.301 ms
+2023-03-20 23:43:35 error: [/report/]
+2023-03-20 23:43:35 error: [/report/] - Error: 
+Invalid `prisma.review.findMany()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\reportController.ts:14:46
+
+  11 logger.error(`[/report/]`);
+  12 
+  13 // fetch all the user access
+→ 14 const reports: any = await prisma.review.findMany(
+called `Option::unwrap()` on a `None` value
+
+This is a non-recoverable error which probably happens when the Prisma Query Engine has a panic.
+
+https://github.com/prisma/prisma/issues/new?body=Hi+Prisma+Team%21+My+Prisma+Client+just+crashed.+This+is+the+report%3A%0A%23%23+Versions%0A%0A%7C+Name++++++++++++%7C+Version++++++++++++%7C%0A%7C-----------------%7C--------------------%7C%0A%7C+Node++++++++++++%7C+v16.17.0+++++++++++%7C+%0A%7C+OS++++++++++++++%7C+windows++++++++++++%7C%0A%7C+Prisma+Client+++%7C+4.7.0++++++++++++++%7C%0A%7C+Query+Engine++++%7C+39190b250ebc338586e25e6da45e5e783bc8a635%7C%0A%7C+Database++++++++%7C+postgresql+++++++++%7C%0A%0A%0A%0A%23%23+Logs%0A%60%60%60%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0Aprisma%3Aclient%3Arequest_handler+%7B%22code%22%3A%22P2003%22%2C%22clientVersion%22%3A%224.7.0%22%2C%22meta%22%3A%7B%22field_name%22%3A%22review_access_id_fkey+%28index%29%22%7D%7D%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0A%60%60%60%0A%0A%23%23+Client+Snippet%0A%60%60%60ts%0A%2F%2F+PLEASE+FILL+YOUR+CODE+SNIPPET+HERE%0A%60%60%60%0A%0A%23%23+Schema%0A%60%60%60prisma%0A%2F%2F+PLEASE+ADD+YOUR+SCHEMA+HERE+IF+POSSIBLE%0A%60%60%60%0A%0A%23%23+Prisma+Engine+Query%0A%60%60%60%0A%7B%22X%22%3A%7B%7D%7D%0A%60%60%60%0A&title=called+%60Option%3A%3Aunwrap%28%29%60+on+a+%60None%60+value&template=bug_report.md
+
+If you want the Prisma team to look into it, please open the link above 🙏
+To increase the chance of success, please post your schema and a snippet of
+how you used Prisma Client in the issue. 
+
+[20/Mar/2023:18:13:35 +0000] GET /api/v1/report/ 500 49 - 136.207 ms
+2023-03-20 23:44:27 info: [/login]
+2023-03-20 23:44:27 info: [/login] - success - 1
+[20/Mar/2023:18:14:27 +0000] POST /api/v1/auth/login 200 554 - 157.432 ms
+2023-03-20 23:44:32 error: [/report/]
+2023-03-20 23:44:32 error: [/report/] - Error: 
+Invalid `prisma.review.findMany()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\reportController.ts:14:46
+
+  11 logger.error(`[/report/]`);
+  12 
+  13 // fetch all the user access
+→ 14 const reports: any = await prisma.review.findMany(
+called `Option::unwrap()` on a `None` value
+
+This is a non-recoverable error which probably happens when the Prisma Query Engine has a panic.
+
+https://github.com/prisma/prisma/issues/new?body=Hi+Prisma+Team%21+My+Prisma+Client+just+crashed.+This+is+the+report%3A%0A%23%23+Versions%0A%0A%7C+Name++++++++++++%7C+Version++++++++++++%7C%0A%7C-----------------%7C--------------------%7C%0A%7C+Node++++++++++++%7C+v16.17.0+++++++++++%7C+%0A%7C+OS++++++++++++++%7C+windows++++++++++++%7C%0A%7C+Prisma+Client+++%7C+4.7.0++++++++++++++%7C%0A%7C+Query+Engine++++%7C+39190b250ebc338586e25e6da45e5e783bc8a635%7C%0A%7C+Database++++++++%7C+postgresql+++++++++%7C%0A%0A%0A%0A%23%23+Logs%0A%60%60%60%0A%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0Aprisma%3Aclient%3Arequest_handler+%7B%22code%22%3A%22P2003%22%2C%22clientVersion%22%3A%224.7.0%22%2C%22meta%22%3A%7B%22field_name%22%3A%22review_access_id_fkey+%28index%29%22%7D%7D%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0Aprisma%3Aclient%3Arequest_handler+%7B%22clientVersion%22%3A%224.7.0%22%7D%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0A%60%60%60%0A%0A%23%23+Client+Snippet%0A%60%60%60ts%0A%2F%2F+PLEASE+FILL+YOUR+CODE+SNIPPET+HERE%0A%60%60%60%0A%0A%23%23+Schema%0A%60%60%60prisma%0A%2F%2F+PLEASE+ADD+YOUR+SCHEMA+HERE+IF+POSSIBLE%0A%60%60%60%0A%0A%23%23+Prisma+Engine+Query%0A%60%60%60%0A%7B%22X%22%3A%7B%7D%7D%0A%60%60%60%0A&title=called+%60Option%3A%3Aunwrap%28%29%60+on+a+%60None%60+value&template=bug_report.md
+
+If you want the Prisma team to look into it, please open the link above 🙏
+To increase the chance of success, please post your schema and a snippet of
+how you used Prisma Client in the issue. 
+
+[20/Mar/2023:18:14:32 +0000] GET /api/v1/report/ 500 49 - 24.881 ms
+2023-03-20 23:51:17 info: App is running on port localhost:4000
+2023-03-20 23:51:21 error: [/report/]
+2023-03-20 23:51:21 error: [/report/] - TypeError: Cannot read properties of undefined (reading 'name')
+[20/Mar/2023:18:21:21 +0000] GET /api/v1/report/ 500 49 - 224.525 ms
+2023-03-20 23:51:59 info: App is running on port localhost:4000
+2023-03-20 23:52:06 error: [/report/]
+2023-03-20 23:52:06 warn: [/report/] - unauthorized access
+[20/Mar/2023:18:22:06 +0000] GET /api/v1/report/ 401 70 - 328.873 ms
+2023-03-20 23:55:07 info: App is running on port localhost:4000
+2023-03-20 23:55:12 error: [/report/]
+2023-03-20 23:55:12 info: [/report/] - Admin fetched reports - undefined
+[20/Mar/2023:18:25:12 +0000] GET /api/v1/report/ 200 1706 - 217.548 ms
+2023-03-20 23:55:25 error: [/report/]
+2023-03-20 23:55:25 info: [/report/] - Admin fetched reports - undefined
+[20/Mar/2023:18:25:25 +0000] GET /api/v1/report/ 200 1706 - 16.404 ms
+2023-03-20 23:55:47 info: App is running on port localhost:4000
+2023-03-20 23:56:13 info: App is running on port localhost:4000
+2023-03-20 23:56:20 info: [/report/]
+2023-03-20 23:56:20 info: [/report/] - Admin fetched reports - 1
+[20/Mar/2023:18:26:20 +0000] GET /api/v1/report/ 200 1706 - 219.172 ms
+2023-03-20 23:56:43 info: App is running on port localhost:4000
+2023-03-20 23:59:00 info: App is running on port localhost:4000
+2023-03-21 00:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-21 00:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-21 00:00:42 info: [/report/]
+2023-03-21 00:00:42 error: [/report/] - Error: 
+Invalid `prisma.review.findMany()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\reportController.ts:14:46
+
+  11 logger.info(`[/report/]`);
+  12 
+  13 // fetch all the user access
+→ 14 const reports: any = await prisma.review.findMany(
+called `Option::unwrap()` on a `None` value
+
+This is a non-recoverable error which probably happens when the Prisma Query Engine has a panic.
+
+https://github.com/prisma/prisma/issues/new?body=Hi+Prisma+Team%21+My+Prisma+Client+just+crashed.+This+is+the+report%3A%0A%23%23+Versions%0A%0A%7C+Name++++++++++++%7C+Version++++++++++++%7C%0A%7C-----------------%7C--------------------%7C%0A%7C+Node++++++++++++%7C+v16.17.0+++++++++++%7C+%0A%7C+OS++++++++++++++%7C+windows++++++++++++%7C%0A%7C+Prisma+Client+++%7C+4.7.0++++++++++++++%7C%0A%7C+Query+Engine++++%7C+39190b250ebc338586e25e6da45e5e783bc8a635%7C%0A%7C+Database++++++++%7C+postgresql+++++++++%7C%0A%0A%0A%0A%23%23+Logs%0A%60%60%60%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3AtryLoadEnv+Environment+variables+loaded+from+D%3A%5CProjects%5CAngular%5CUserAccessReview%5C.env%0Aprisma%3Aclient+dirname+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient+relativePath+..%5C..%5C..%5Cprisma%0Aprisma%3Aclient+cwd+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cprisma%0Aprisma%3Aclient+clientVersion+4.7.0%0Aprisma%3Aclient+clientEngineType+library%0Aprisma%3Aclient%3AlibraryEngine+internalSetup%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+Searching+for+Query+Engine+Library+in+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine%3Aloader+loadEngine+using+D%3A%5CProjects%5CAngular%5CUserAccessReview%5Cnode_modules%5C.prisma%5Cclient%5Cquery_engine-windows.dll.node%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+false%0Aprisma%3Aclient%3AlibraryEngine+library+starting%0Aprisma%3Aclient%3AlibraryEngine+library+started%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0Aprisma%3Aclient%3AlibraryEngine+sending+request%2C+this.libraryStarted%3A+true%0A%60%60%60%0A%0A%23%23+Client+Snippet%0A%60%60%60ts%0A%2F%2F+PLEASE+FILL+YOUR+CODE+SNIPPET+HERE%0A%60%60%60%0A%0A%23%23+Schema%0A%60%60%60prisma%0A%2F%2F+PLEASE+ADD+YOUR+SCHEMA+HERE+IF+POSSIBLE%0A%60%60%60%0A%0A%23%23+Prisma+Engine+Query%0A%60%60%60%0A%7B%22X%22%3A%7B%7D%7D%0A%60%60%60%0A&title=called+%60Option%3A%3Aunwrap%28%29%60+on+a+%60None%60+value&template=bug_report.md
+
+If you want the Prisma team to look into it, please open the link above 🙏
+To increase the chance of success, please post your schema and a snippet of
+how you used Prisma Client in the issue. 
+
+[20/Mar/2023:18:30:42 +0000] GET /api/v1/report/ 500 49 - 162.987 ms
+2023-03-21 00:00:56 info: App is running on port localhost:4000
+2023-03-21 00:01:03 info: App is running on port localhost:4000
+2023-03-21 00:03:57 info: [/home/make-review]
+2023-03-21 00:03:57 info: [/home/make-review]: review created
+[20/Mar/2023:18:33:57 +0000] POST /api/v1/home/make-review 200 456 - 233.097 ms
+2023-03-21 00:06:41 info: App is running on port localhost:4000
+2023-03-21 00:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-21 00:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-21 01:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-21 01:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-21 01:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-21 01:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-21 02:20:06 info: App is running on port localhost:4000
+2023-03-21 02:21:53 info: App is running on port localhost:4000
+2023-03-21 02:29:59 info: App is running on port localhost:4000
+2023-03-21 02:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-21 02:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-21 02:31:59 info: App is running on port localhost:4000
+2023-03-21 02:34:19 info: App is running on port localhost:4000
+2023-03-21 02:34:51 info: App is running on port localhost:4000
+2023-03-21 02:38:59 info: App is running on port localhost:4000
+[20/Mar/2023:21:09:04 +0000] POST /api/v1/home/upload 500 273 - 11.423 ms
+2023-03-21 02:42:03 info: App is running on port localhost:4000
+[20/Mar/2023:21:12:11 +0000] POST /api/v1/home/upload 500 273 - 8.985 ms
+2023-03-22 19:23:53 info: App is running on port localhost:4000
+[22/Mar/2023:13:54:12 +0000] POST /api/v1/home/upload 500 273 - 10.466 ms
+2023-03-22 19:24:18 info: [/login]
+2023-03-22 19:24:18 info: [/login] - success - 1
+[22/Mar/2023:13:54:18 +0000] POST /api/v1/auth/login 200 554 - 254.038 ms
+[22/Mar/2023:13:54:24 +0000] POST /api/v1/home/upload 500 273 - 3.850 ms
+2023-03-22 19:25:25 info: [/uploadExcel]
+[22/Mar/2023:13:55:25 +0000] POST /api/v1/home/upload 200 1460 - 47.508 ms
+2023-03-22 22:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-22 22:30:01 info: [/report/sendReminder] - 0 reports due today
+2023-03-22 23:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-22 23:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-23 20:31:51 info: App is running on port localhost:4000
+2023-03-23 20:47:19 info: [/login]
+2023-03-23 20:47:20 info: [/login] - success - 1
+[23/Mar/2023:15:17:20 +0000] POST /api/v1/auth/login 200 554 - 358.785 ms
+2023-03-23 20:47:33 info: [/report/]
+2023-03-23 20:47:33 info: [/report/] - Admin fetched reports - 1
+[23/Mar/2023:15:17:33 +0000] GET /api/v1/report/ 200 2110 - 238.790 ms
+2023-03-23 20:48:03 info: [/uploadExcel]
+[23/Mar/2023:15:18:03 +0000] POST /api/v1/home/upload 500 50 - 8.829 ms
+2023-03-23 20:48:03 error: [/uploadExcel] - TypeError: Cannot read properties of undefined (reading 'path')
+2023-03-23 20:48:47 info: [/uploadExcel]
+[23/Mar/2023:15:18:47 +0000] POST /api/v1/home/upload 500 50 - 3.653 ms
+2023-03-23 20:48:47 error: [/uploadExcel] - TypeError: Cannot read properties of undefined (reading 'path')
+2023-03-23 20:57:17 info: App is running on port localhost:4000
+2023-03-23 20:57:36 info: [/uploadExcel]
+[23/Mar/2023:15:27:36 +0000] POST /api/v1/home/upload 500 50 - 171.585 ms
+2023-03-23 20:57:36 error: [/uploadExcel] - TypeError: Cannot read properties of undefined (reading 'path')
+2023-03-23 21:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-23 21:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-23 21:04:24 info: [/uploadExcel]
+[23/Mar/2023:15:34:24 +0000] POST /api/v1/home/upload 500 50 - 185.978 ms
+2023-03-23 21:04:24 error: [/uploadExcel] - TypeError: Cannot read properties of undefined (reading 'path')
+2023-03-23 21:06:23 info: App is running on port localhost:4000
+2023-03-23 21:06:34 info: [/uploadExcel]
+[23/Mar/2023:15:36:34 +0000] POST /api/v1/home/upload 500 50 - 28.340 ms
+2023-03-23 21:06:34 error: [/uploadExcel] - TypeError: Cannot read properties of undefined (reading 'path')
+2023-03-23 21:11:47 info: [/uploadExcel]
+[23/Mar/2023:15:41:47 +0000] POST /api/v1/home/upload 500 50 - 6.683 ms
+2023-03-23 21:11:47 error: [/uploadExcel] - TypeError: Cannot read properties of undefined (reading 'path')
+2023-03-23 21:16:11 info: App is running on port localhost:4000
+2023-03-23 21:16:19 info: [/uploadExcel]
+[23/Mar/2023:15:46:19 +0000] POST /api/v1/home/upload 500 50 - 22.711 ms
+2023-03-23 21:16:19 error: [/uploadExcel] - TypeError: Cannot read properties of undefined (reading 'path')
+2023-03-23 21:39:22 info: App is running on port localhost:4000
+2023-03-23 21:39:30 info: [/uploadExcel]
+[23/Mar/2023:16:09:30 +0000] POST /api/v1/home/upload 500 50 - 15.056 ms
+2023-03-23 21:39:30 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 21:39:41 info: App is running on port localhost:4000
+2023-03-23 21:42:26 info: App is running on port localhost:4000
+2023-03-23 21:42:30 info: [/uploadExcel]
+[23/Mar/2023:16:12:30 +0000] POST /api/v1/home/upload 500 50 - 22.558 ms
+2023-03-23 21:42:30 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 21:49:25 info: App is running on port localhost:4000
+2023-03-23 21:49:34 info: [/uploadExcel]
+[23/Mar/2023:16:19:34 +0000] POST /api/v1/home/upload 500 50 - 16.496 ms
+2023-03-23 21:49:34 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 21:51:15 info: App is running on port localhost:4000
+2023-03-23 21:51:44 info: App is running on port localhost:4000
+2023-03-23 22:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-23 22:00:01 info: [/report/sendReminder] - 0 reports due today
+2023-03-23 22:13:09 info: App is running on port localhost:4000
+2023-03-23 22:13:33 info: App is running on port localhost:4000
+2023-03-23 22:13:43 info: App is running on port localhost:4000
+2023-03-23 22:13:46 info: [/uploadExcel]
+[23/Mar/2023:16:43:46 +0000] POST /api/v1/home/upload 500 50 - 15.641 ms
+2023-03-23 22:13:46 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:19:32 info: App is running on port localhost:4000
+2023-03-23 22:22:49 info: App is running on port localhost:4000
+2023-03-23 22:23:14 info: App is running on port localhost:4000
+2023-03-23 22:23:21 info: [/uploadExcel]
+[23/Mar/2023:16:53:21 +0000] POST /api/v1/home/upload 500 50 - 14.973 ms
+2023-03-23 22:23:21 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:23:48 info: App is running on port localhost:4000
+2023-03-23 22:23:50 info: [/uploadExcel]
+[23/Mar/2023:16:53:50 +0000] POST /api/v1/home/upload 500 50 - 107.056 ms
+2023-03-23 22:23:50 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:23:52 info: [/uploadExcel]
+[23/Mar/2023:16:53:52 +0000] POST /api/v1/home/upload 500 50 - 205.045 ms
+2023-03-23 22:23:52 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:26:38 info: App is running on port localhost:4000
+2023-03-23 22:28:39 info: [/uploadExcel]
+[23/Mar/2023:16:58:39 +0000] POST /api/v1/home/upload 500 50 - 191.259 ms
+2023-03-23 22:28:39 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:29:56 info: [/uploadExcel]
+[23/Mar/2023:16:59:56 +0000] POST /api/v1/home/upload 500 50 - 62.487 ms
+2023-03-23 22:29:56 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-23 22:30:01 info: [/report/sendReminder] - 0 reports due today
+2023-03-23 22:30:09 info: [/uploadExcel]
+[23/Mar/2023:17:00:09 +0000] POST /api/v1/home/upload 500 50 - 65.492 ms
+2023-03-23 22:30:09 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:30:35 info: App is running on port localhost:4000
+2023-03-23 22:31:36 info: App is running on port localhost:4000
+2023-03-23 22:32:28 info: App is running on port localhost:4000
+2023-03-23 22:32:33 info: [/uploadExcel]
+[23/Mar/2023:17:02:33 +0000] POST /api/v1/home/upload 500 50 - 14.594 ms
+2023-03-23 22:32:33 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:34:48 info: App is running on port localhost:4000
+2023-03-23 22:34:59 info: App is running on port localhost:4000
+2023-03-23 22:35:07 info: [/uploadExcel]
+[23/Mar/2023:17:05:07 +0000] POST /api/v1/home/upload 500 50 - 14.939 ms
+2023-03-23 22:35:07 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:40:03 info: App is running on port localhost:4000
+2023-03-23 22:40:31 info: [/uploadExcel]
+[23/Mar/2023:17:10:31 +0000] POST /api/v1/home/upload 500 50 - 37.108 ms
+2023-03-23 22:40:31 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received undefined
+2023-03-23 22:41:05 info: [/uploadExcel]
+[23/Mar/2023:17:11:05 +0000] POST /api/v1/home/upload 500 50 - 23.079 ms
+2023-03-23 22:41:05 error: [/uploadExcel] - TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string or an instance of Buffer or URL. Received an instance of Object
+2023-03-23 22:41:58 info: App is running on port localhost:4000
+2023-03-23 22:42:03 info: [/uploadExcel]
+[23/Mar/2023:17:12:03 +0000] POST /api/v1/home/upload 200 1460 - 52.800 ms
+2023-03-24 08:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 08:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 09:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 09:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 09:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 09:30:01 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 10:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 10:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 10:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 10:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 11:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 11:00:01 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 11:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 11:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 12:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 12:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 12:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 12:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 13:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 13:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 16:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 16:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 17:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 17:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-24 19:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-24 19:00:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-25 10:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-25 10:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-25 17:19:21 info: [/uploadExcel]
+[25/Mar/2023:11:49:21 +0000] POST /api/v1/home/upload 200 1460 - 110.670 ms
+2023-03-25 18:02:41 info: App is running on port localhost:4000
+2023-03-25 18:02:45 info: [/uploadExcel]
+[25/Mar/2023:12:32:45 +0000] POST /api/v1/home/upload 200 1460 - 58.461 ms
+2023-03-25 18:04:41 info: App is running on port localhost:4000
+2023-03-25 18:05:26 info: App is running on port localhost:4000
+2023-03-25 18:05:44 info: [/uploadExcel]
+[25/Mar/2023:12:35:44 +0000] POST /api/v1/home/upload 200 64 - 45.503 ms
+2023-03-25 22:27:18 info: App is running on port localhost:4000
+2023-03-25 22:27:27 info: [/uploadExcel]
+[25/Mar/2023:16:57:27 +0000] POST /api/v1/home/upload 200 64 - 44.416 ms
+2023-03-25 22:27:46 info: [/uploadExcel]
+[25/Mar/2023:16:57:46 +0000] POST /api/v1/home/upload 200 64 - 18.110 ms
+2023-03-25 22:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-25 22:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-25 22:38:06 info: App is running on port localhost:4000
+2023-03-25 22:38:52 info: [/uploadExcel]
+[25/Mar/2023:17:08:52 +0000] POST /api/v1/home/upload 200 64 - 64.750 ms
+2023-03-25 22:41:41 info: App is running on port localhost:4000
+2023-03-25 22:41:58 info: [/uploadExcel]
+[25/Mar/2023:17:11:58 +0000] POST /api/v1/home/upload 200 64 - 87.438 ms
+2023-03-25 22:42:47 info: App is running on port localhost:4000
+2023-03-25 22:42:53 info: [/uploadExcel]
+[25/Mar/2023:17:12:53 +0000] POST /api/v1/home/upload 200 64 - 65.654 ms
+2023-03-25 22:56:46 info: App is running on port localhost:4000
+2023-03-25 23:04:55 info: App is running on port localhost:4000
+2023-03-25 23:05:06 info: [/uploadExcel]
+[25/Mar/2023:17:35:06 +0000] POST /api/v1/home/upload 200 64 - 51.723 ms
+2023-03-25 23:06:32 info: App is running on port localhost:4000
+2023-03-25 23:06:52 info: App is running on port localhost:4000
+2023-03-25 23:07:07 info: App is running on port localhost:4000
+2023-03-25 23:07:15 info: [/uploadExcel]
+[25/Mar/2023:17:37:16 +0000] POST /api/v1/home/upload 200 64 - 44.542 ms
+2023-03-25 23:08:10 info: App is running on port localhost:4000
+2023-03-25 23:08:12 info: [/uploadExcel]
+[25/Mar/2023:17:38:12 +0000] POST /api/v1/home/upload 200 64 - 55.249 ms
+2023-03-25 23:08:45 info: App is running on port localhost:4000
+2023-03-25 23:08:51 info: [/uploadExcel]
+[25/Mar/2023:17:38:51 +0000] POST /api/v1/home/upload 200 64 - 80.103 ms
+2023-03-25 23:10:58 info: App is running on port localhost:4000
+2023-03-25 23:11:04 info: [/uploadExcel]
+[25/Mar/2023:17:41:04 +0000] POST /api/v1/home/upload 200 64 - 71.403 ms
+2023-03-25 23:12:12 info: App is running on port localhost:4000
+2023-03-25 23:13:15 info: [/uploadExcel]
+[25/Mar/2023:17:43:15 +0000] POST /api/v1/home/upload 200 64 - 71.209 ms
+2023-03-25 23:19:11 info: App is running on port localhost:4000
+2023-03-25 23:19:13 info: [/uploadExcel]
+[25/Mar/2023:17:49:14 +0000] POST /api/v1/home/upload 200 64 - 146.779 ms
+2023-03-25 23:20:07 info: App is running on port localhost:4000
+2023-03-25 23:20:07 info: [/uploadExcel]
+[25/Mar/2023:17:50:08 +0000] POST /api/v1/home/upload 200 64 - 70.759 ms
+2023-03-25 23:20:37 info: App is running on port localhost:4000
+2023-03-25 23:20:41 info: [/uploadExcel]
+[25/Mar/2023:17:50:41 +0000] POST /api/v1/home/upload 200 64 - 70.189 ms
+2023-03-25 23:20:56 info: App is running on port localhost:4000
+2023-03-25 23:21:02 info: [/uploadExcel]
+[25/Mar/2023:17:51:02 +0000] POST /api/v1/home/upload 200 64 - 74.766 ms
+2023-03-25 23:23:52 info: App is running on port localhost:4000
+2023-03-25 23:23:55 info: [/uploadExcel]
+[25/Mar/2023:17:53:55 +0000] POST /api/v1/home/upload 200 64 - 77.780 ms
+2023-03-25 23:25:35 info: App is running on port localhost:4000
+2023-03-25 23:25:46 info: [/uploadExcel]
+[25/Mar/2023:17:55:46 +0000] POST /api/v1/home/upload 200 64 - 75.850 ms
+2023-03-25 23:26:23 info: App is running on port localhost:4000
+2023-03-25 23:26:24 info: [/uploadExcel]
+[25/Mar/2023:17:56:24 +0000] POST /api/v1/home/upload 200 64 - 75.719 ms
+2023-03-25 23:27:25 info: App is running on port localhost:4000
+2023-03-25 23:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-25 23:30:00 info: [/report/sendReminder] - 0 reports due today
+2023-03-25 23:33:16 info: App is running on port localhost:4000
+2023-03-25 23:33:36 info: App is running on port localhost:4000
+2023-03-25 23:34:36 info: App is running on port localhost:4000
+2023-03-25 23:35:00 info: [/uploadExcel]
+[25/Mar/2023:18:05:00 +0000] POST /api/v1/home/upload 200 1213 - 238.479 ms
+2023-03-26 10:18:20 info: App is running on port localhost:4000
+2023-03-26 10:18:33 info: [/uploadExcel]
+[26/Mar/2023:04:48:33 +0000] POST /api/v1/home/upload 200 1213 - 541.035 ms
+2023-03-26 10:19:58 info: App is running on port localhost:4000
+2023-03-26 10:20:05 info: [/uploadExcel]
+2023-03-26 10:20:05 error: [/uploadExcel] - Error: 
+Invalid `prisma.application_access.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:425:69
+
+  422 for (let ele of validatedData.data.filteredData){
+  423     let { ApplicationName, CoreId, Email, Name, UserType, ManagerCoreId, Permission, application_sis_id, employee_sis_id } = ele;
+  424     console.log('ele', ele)
+→ 425     let applicationAccess = await prisma.application_access.create({
+            data: {
+              created_by: undefined,
+              updated_by: undefined,
+              application_id: 4,
+              ~~~~~~~~~~~~~~
+              employee_id: 6,
+              ~~~~~~~~~~~
+              permission: 'ClusterRole_admin',
+              version: 1,
+          +   created: {
+          +     create?: employeeCreateWithoutCreated_employeesInput | employeeUncheckedCreateWithoutCreated_employeesInput,
+          +     connectOrCreate?: employeeCreateOrConnectWithoutCreated_employeesInput,
+          +     connect?: employeeWhereUniqueInput
+          +   },
+          +   updated: {
+          +     create?: employeeCreateWithoutUpdated_employeesInput | employeeUncheckedCreateWithoutUpdated_employeesInput,
+          +     connectOrCreate?: employeeCreateOrConnectWithoutUpdated_employeesInput,
+          +     connect?: employeeWhereUniqueInput
+          +   },
+          +   application: {
+          +     create?: applicationCreateWithoutApplication_accessInput | applicationUncheckedCreateWithoutApplication_accessInput,
+          +     connectOrCreate?: applicationCreateOrConnectWithoutApplication_accessInput,
+          +     connect?: applicationWhereUniqueInput
+          +   },
+          +   employee: {
+          +     create?: employeeCreateWithoutApplication_accessInput | employeeUncheckedCreateWithoutApplication_accessInput,
+          +     connectOrCreate?: employeeCreateOrConnectWithoutApplication_accessInput,
+          +     connect?: employeeWhereUniqueInput
+          +   },
+          ?   rec_st?: Boolean,
+          ?   created_at?: DateTime,
+          ?   updated_at?: DateTime,
+          ?   access_id?: String,
+          ?   review?: {
+          ?     create?: reviewCreateWithoutApplication_accessInput | reviewCreateWithoutApplication_accessInput | reviewUncheckedCreateWithoutApplication_accessInput | reviewUncheckedCreateWithoutApplication_accessInput,
+          ?     connectOrCreate?: reviewCreateOrConnectWithoutApplication_accessInput | reviewCreateOrConnectWithoutApplication_accessInput,
+          ?     createMany?: reviewCreateManyApplication_accessInputEnvelope,
+          ?     connect?: reviewWhereUniqueInput | reviewWhereUniqueInput
+          ?   }
+            }
+          })
+
+Unknown arg `application_id` in data.application_id for type application_accessCreateInput. Did you mean `application`?
+Unknown arg `employee_id` in data.employee_id for type application_accessCreateInput. Did you mean `employee`?
+Argument created for data.created is missing.
+Argument updated for data.updated is missing.
+Argument application for data.application is missing.
+Argument employee for data.employee is missing.
+
+Note: Lines with + are required, lines with ? are optional.
+
+[26/Mar/2023:04:50:05 +0000] POST /api/v1/home/upload 500 50 - 277.608 ms
+2023-03-26 10:23:49 info: App is running on port localhost:4000
+2023-03-26 10:24:24 info: [/uploadExcel]
+2023-03-26 10:24:24 error: [/uploadExcel] - Error: 
+Invalid `prisma.application_access.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:425:69
+
+  422 for (let ele of validatedData.data.filteredData){
+  423     let { ApplicationName, CoreId, Email, Name, UserType, ManagerCoreId, Permission, application_sis_id, employee_sis_id } = ele;
+  424     console.log('ele', ele)
+→ 425     let applicationAccess = await prisma.application_access.create({
+            data: {
+              created_by: NaN,
+                          ~~~
+              updated_by: NaN,
+                          ~~~
+              application_id: 4,
+              employee_id: 6,
+              permission: 'ClusterRole_admin',
+              version: 1
+            }
+          })
+
+Argument created_by: Got invalid value NaN on prisma.createOneapplication_access. Provided Float, expected Int.
+Argument updated_by: Got invalid value NaN on prisma.createOneapplication_access. Provided Float, expected Int.
+
+
+[26/Mar/2023:04:54:24 +0000] POST /api/v1/home/upload 500 50 - 253.972 ms
+2023-03-26 10:26:43 info: App is running on port localhost:4000
+2023-03-26 10:27:19 info: [/uploadExcel]
+2023-03-26 10:27:20 error: [/uploadExcel] - Error: 
+Invalid `prisma.application_access.create()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:425:69
+
+  422 for (let ele of validatedData.data.filteredData){
+  423     let { ApplicationName, CoreId, Email, Name, UserType, ManagerCoreId, Permission, application_sis_id, employee_sis_id } = ele;
+  424     console.log('ele', ele)
+→ 425     let applicationAccess = await prisma.application_access.create({
+            data: {
+              created_by: undefined,
+              updated_by: undefined,
+              application_id: 4,
+              ~~~~~~~~~~~~~~
+              employee_id: 6,
+              ~~~~~~~~~~~
+              permission: 'ClusterRole_admin',
+              version: 1,
+          +   created: {
+          +     create?: employeeCreateWithoutCreated_employeesInput | employeeUncheckedCreateWithoutCreated_employeesInput,
+          +     connectOrCreate?: employeeCreateOrConnectWithoutCreated_employeesInput,
+          +     connect?: employeeWhereUniqueInput
+          +   },
+          +   updated: {
+          +     create?: employeeCreateWithoutUpdated_employeesInput | employeeUncheckedCreateWithoutUpdated_employeesInput,
+          +     connectOrCreate?: employeeCreateOrConnectWithoutUpdated_employeesInput,
+          +     connect?: employeeWhereUniqueInput
+          +   },
+          +   application: {
+          +     create?: applicationCreateWithoutApplication_accessInput | applicationUncheckedCreateWithoutApplication_accessInput,
+          +     connectOrCreate?: applicationCreateOrConnectWithoutApplication_accessInput,
+          +     connect?: applicationWhereUniqueInput
+          +   },
+          +   employee: {
+          +     create?: employeeCreateWithoutApplication_accessInput | employeeUncheckedCreateWithoutApplication_accessInput,
+          +     connectOrCreate?: employeeCreateOrConnectWithoutApplication_accessInput,
+          +     connect?: employeeWhereUniqueInput
+          +   },
+          ?   rec_st?: Boolean,
+          ?   created_at?: DateTime,
+          ?   updated_at?: DateTime,
+          ?   access_id?: String,
+          ?   review?: {
+          ?     create?: reviewCreateWithoutApplication_accessInput | reviewCreateWithoutApplication_accessInput | reviewUncheckedCreateWithoutApplication_accessInput | reviewUncheckedCreateWithoutApplication_accessInput,
+          ?     connectOrCreate?: reviewCreateOrConnectWithoutApplication_accessInput | reviewCreateOrConnectWithoutApplication_accessInput,
+          ?     createMany?: reviewCreateManyApplication_accessInputEnvelope,
+          ?     connect?: reviewWhereUniqueInput | reviewWhereUniqueInput
+          ?   }
+            }
+          })
+
+Unknown arg `application_id` in data.application_id for type application_accessCreateInput. Did you mean `application`?
+Unknown arg `employee_id` in data.employee_id for type application_accessCreateInput. Did you mean `employee`?
+Argument created for data.created is missing.
+Argument updated for data.updated is missing.
+Argument application for data.application is missing.
+Argument employee for data.employee is missing.
+
+Note: Lines with + are required, lines with ? are optional.
+
+[26/Mar/2023:04:57:20 +0000] POST /api/v1/home/upload 500 50 - 641.862 ms
+2023-03-26 10:28:59 info: App is running on port localhost:4000
+2023-03-26 10:41:00 info: App is running on port localhost:4000
+2023-03-26 10:41:03 info: [/login]
+2023-03-26 10:41:03 info: [/login] - success - 1
+[26/Mar/2023:05:11:03 +0000] POST /api/v1/auth/login 200 554 - 235.174 ms
+2023-03-26 10:41:10 info: [/uploadExcel]

@@ -114,7 +114,7 @@ model application_access {
   application    application @relation(fields: [application_id], references: [sis_id])
   employee_id    Int
   employee       employee    @relation(fields: [employee_id], references: [sis_id])
-  role           String
+  permission     String
   version        Int
   review         review[]
 }

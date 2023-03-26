@@ -8,73 +8,73 @@ dotenv.config();
 
 const getAllreports = async (req: any, res: any) => {
   try {
-    logger.error(`[/report/]`);
+    logger.info(`[/report/]`);
 
     // fetch all the user access
     const reports: any = await prisma.review.findMany({
       where: {
         rec_st: true,
       },
-      select: {
-        review_id: true,
-        access_id: true,
-        application_id: true,
-        created_by: true,
-        created: {
-          select: {
-            core_id: true,
-            name: true,
-          },
-        },
-        application: {
-          select: {
-            name: true,
-            owner_group: {
-              select: {
-                name: true,
-              },
-            },
-          },
-        },
-        employee_id: true,
-        employee: {
-          select: {
-            name: true,
-            email: true,
-            group: {
-              select: {
-                sis_id: true,
-                name: true,
-              },
-            },
-          },
-        },
-        quater: true,
-        month: true,
-        review_type: true,
-        status: true,
-        review_accept_reject: true,
-        review_comments: true,
-      },
+      // select: {
+      //   review_id: true,
+      //   access_id: true,
+      //   application_id: true,
+      //   created_by: true,
+      //   created: {
+      //     select: {
+      //       core_id: true,
+      //       name: true,
+      //     },
+      //   },
+      //   application: {
+      //     select: {
+      //       name: true,
+      //       owner_group: {
+      //         select: {
+      //           name: true,
+      //         },
+      //       },
+      //     },
+      //   },
+      //   employee_id: true,
+      //   employee: {
+      //     select: {
+      //       name: true,
+      //       email: true,
+      //       group: {
+      //         select: {
+      //           sis_id: true,
+      //           name: true,
+      //         },
+      //       },
+      //     },
+      //   },
+      //   quater: true,
+      //   month: true,
+      //   review_type: true,
+      //   status: true,
+      //   review_accept_reject: true,
+      //   review_comments: true,
+      // },
     });
 
-    reports.forEach((report) => {
-      report.created_by_name = report.created.name;
-      report.created_by_core_id = report.created.core_id;
-      report.application_name = report.application.name;
-      report.application_owner_group_name = report.application.owner_group.name;
-      report.employee_name = report.employee.name;
-      report.employee_email = report.employee.email;
-      report.employee_group_name = report.employee.group.name;
-      report.employee_group_id = report.employee.group.sis_id;
-      delete report.application.owner_group;
-      delete report.employee.group;
-      delete report.employee.email;
-      delete report.created;
-    });
+    // reports.forEach((report:any) => {
+    //   report.created_by_name = report.created.name;
+    //   report.created_by_core_id = report.created.core_id;
+    //   report.application_name = report.application.name;
+    //   report.application_owner_group_name = report.application.owner_group.name;
+    //   report.employee_name = report.employee.name;
+    //   report.employee_email = report.employee.email;
+    //   report.employee_group_name = report.employee.group.name;
+    //   report.employee_group_id = report.employee.group.sis_id;
+    //   delete report.application.owner_group;
+    //   delete report.employee.group;
+    //   delete report.employee.email;
+    //   delete report.created;
+    // });
 
     if (req.isCompliance) {
-      logger.info(`[/report/] - Compliance fetched reports - ${req.sis_id}`);
+      logger.info(`[/report/] - Compliance fetched reports - ${req.user_id}`);
       res.status(200).json({
         message: "Fetched Reports of all users",
         is_error: false,
@@ -84,7 +84,7 @@ const getAllreports = async (req: any, res: any) => {
       const ManagerReports = reports.filter((report: any) => {
         return report.employee_group_id === req.group_id;
       });
-      logger.info(`[/report/] - Manager fetched reports - ${req.sis_id}`);
+      logger.info(`[/report/] - Manager fetched reports - ${req.user_id}`);
       res.status(200).json({
         message: "Fetched Reports of all the users under your group",
         is_error: false,
@@ -94,11 +94,19 @@ const getAllreports = async (req: any, res: any) => {
       const OwnerReports = reports.filter((report: any) => {
         return report.application_group_id === req.group_id;
       });
-      logger.info(`[/report/] - Owner fetched reports - ${req.sis_id}`);
+      logger.info(`[/report/] - Owner fetched reports - ${req.user_id}`);
       res.status(200).json({
         message: "Fetched Reports of your application",
         is_error: false,
         data: OwnerReports,
+      });
+    }
+    else if( req.isAdmin){
+      logger.info(`[/report/] - Admin fetched reports - ${req.user_id}`);
+      res.status(200).json({
+        message: "Fetched Reports of all users",
+        is_error: false,
+        data: reports,
       });
     } else {
       logger.warn(`[/report/] - unauthorized access`);
@@ -171,7 +179,7 @@ const createReview = async (req: any, res: any) => {
         status: status,
         review_accept_reject: review_accept_reject,
         review_comments: review_comments,
-        due_date: due_date
+        due_date: due_date? new Date(due_date): null,
       },
     });
 

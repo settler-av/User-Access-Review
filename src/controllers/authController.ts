@@ -47,7 +47,7 @@ const register = async (req: any, res: any) => {
             password: hashedPassword,
             core_id: core_id,
             department: department,
-            group_sis_id: group_sis_id,
+            group_sis_id: group_sis_id?group_sis_id:null,
             created_by: req.user_id,
             updated_by: req.user_id,
          }

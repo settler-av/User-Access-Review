@@ -17,7 +17,7 @@ import cors from "cors";
 
 const authRouter = require("./routes/authRoutes");
 const homeRouter = require("./routes/homeRoutes");
-const reportRouter = require("./routers/reportRouter")
+const reportRouter = require("./routes/reportRouter")
 
 // save the logs
 var accessLogStream = fs.createWriteStream("./server.log", { flags: "a" });

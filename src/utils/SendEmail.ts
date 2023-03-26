@@ -9,7 +9,7 @@ export const dueReminderEmail = async (
     to: any,
     from: any,
 ) => {
-    const message = "Hi, <br> <br> This is a reminder that your review is due. <br> <br> Thanks, <br> <br> Neelkanth Tandel <br> <br>"
+    const message = "Hi, <br> <br> This is a reminder that your review is due. <br> <br> Thanks, <br> <br> Adnan Vahora <br> <br>"
 
     if (await sendEmail([to], from, "User registered", message)) {
         logger.info(`[send account confirmation email]- successfull`);

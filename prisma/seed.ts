@@ -113,6 +113,7 @@ const seedEmployee = async (master_sis_id: any) => {
   await prisma.$transaction(
     async (_prisma) => {
       const employees = [
+        
         {
           // "sis_id": 2,
           created_by: master_sis_id,
@@ -168,6 +169,66 @@ const seedEmployee = async (master_sis_id: any) => {
   await prisma.$transaction(
     async (_prisma) => {
       const employees = [
+        {
+          // "sis_id": 2,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Shaun Meyer",
+          core_id: "DHVK37",
+          email: "shaun.meyer@motorolasolutions.com",
+          password: await hash_password("shaun"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
+          manager_id: await get_manager_id_by_name('Rohan Sahu')
+        },
+        {
+          // "sis_id": 2,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Jason Fullmer",
+          core_id: "KQC843",
+          email: "jason.fullmer@motorolasolutions.com",
+          password: await hash_password("jason"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
+          manager_id: await get_manager_id_by_name('Sahil Patel')
+        },
+        {
+          // "sis_id": 2,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "GLO-OKTA-APP-SE-Champions-Users",
+          core_id: "GVF476",
+          email: "GVF476@motorolasolutions.com",
+          password: await hash_password("okta"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
+          manager_id: await get_manager_id_by_name('Rohan Sahu')
+        },
+        {
+          // "sis_id": 2,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Jeremiah Nelson",
+          core_id: "mwxg43",
+          email: "jeremiah.nelson@motorolasolutions.com",
+          password: await hash_password("nelson"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
+          manager_id: await get_manager_id_by_name('Sahil Patel')
+        },
+        {
+          // "sis_id": 2,
+          created_by: master_sis_id,
+          updated_by: master_sis_id,
+          name: "Brad Keller",
+          core_id: "GJRT74",
+          email: "brad.keller@motorolasolutions.com",
+          password: await hash_password("nelson"),
+          department: "DEVOPS",
+          group_sis_id: await get_group_sis_id("DEVOPS"),
+          manager_id: await get_manager_id_by_name('Rakesh Patel')
+        },
         {
           // "sis_id": 5,
           created_by: master_sis_id,
@@ -339,7 +400,7 @@ const seedApplication = async (master_sis_id: any) => {
       {
         created_by: master_sis_id,
         updated_by: master_sis_id,
-        name: "MotoCare",
+        name: "Github",
         owner_gid: await get_group_sis_id("CLOUD"),
       },
       {
@@ -357,7 +418,7 @@ const seedApplication = async (master_sis_id: any) => {
       {
         created_by: master_sis_id,
         updated_by: master_sis_id,
-        name: "Jenkins",
+        name: "Kubernetes",
         owner_gid: await get_group_sis_id("DEVOPS"),
       },
       {
@@ -369,19 +430,19 @@ const seedApplication = async (master_sis_id: any) => {
       {
         created_by: master_sis_id,
         updated_by: master_sis_id,
-        name: "SonarQube",
+        name: "Sendgrid",
         owner_gid: await get_group_sis_id("CLOUD"),
       },
       {
         created_by: master_sis_id,
         updated_by: master_sis_id,
-        name: "Splunk",
+        name: "CCAdmin",
         owner_gid: await get_group_sis_id("CLOUD"),
       },
       {
         created_by: master_sis_id,
         updated_by: master_sis_id,
-        name: "AWS",
+        name: "Twistlock",
         owner_gid: await get_group_sis_id("CLOUD"),
       },
       {
@@ -410,27 +471,29 @@ const get_employee_id_by_name = async (name: string) => {
 };
 const seedApplicationAccess = async (master_sis_id: any) => {
   await prisma.$transaction(async (_prisma) => {
+    console.log("Inside seedApplicationAccess");
+    console.log("master_sis_id", master_sis_id)
     const application_access = [
       {
-        application_id: await get_application_id("MotoCare"),
+        application_id: await get_application_id("Kubernetes"),
         employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
-        role: "EDITOR",
+        permission: "EDITOR",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
       {
-        application_id: await get_application_id("MotoCare"),
+        application_id: await get_application_id("Kubernetes"),
         employee_id: await get_employee_id_by_name("Rohan Sahu"),
-        role: "ADMIN",
+        permission: "ADMIN",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
       {
-        application_id: await get_application_id("MotoCare"),
+        application_id: await get_application_id("Kubernetes"),
         employee_id: await get_employee_id_by_name("Gary Long"),
-        role: "READER",
+        permission: "READER",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
@@ -438,7 +501,7 @@ const seedApplicationAccess = async (master_sis_id: any) => {
       {
         application_id: await get_application_id("JIRA"),
         employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
-        role: "EDITOR",
+        permission: "EDITOR",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
@@ -446,7 +509,7 @@ const seedApplicationAccess = async (master_sis_id: any) => {
       {
         application_id: await get_application_id("JIRA"),
         employee_id: await get_employee_id_by_name("Armani Best"),
-        role: "ADMIN",
+        permission: "ADMIN",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
@@ -454,55 +517,55 @@ const seedApplicationAccess = async (master_sis_id: any) => {
       {
         application_id: await get_application_id("JIRA"),
         employee_id: await get_employee_id_by_name("Gary Long"),
-        role: "READER",
+        permission: "READER",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
       {
-        application_id: await get_application_id("Confluence"),
+        application_id: await get_application_id("CCAdmin"),
         employee_id: await get_employee_id_by_name("Dillan Sharp"),
-        role: "EDITOR",
+        permission: "EDITOR",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
       {
-        application_id: await get_application_id("Confluence"),
+        application_id: await get_application_id("CCAdmin"),
         employee_id: await get_employee_id_by_name("Armani Best"),
-        role: "ADMIN",
+        permission: "ADMIN",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
       {
-        application_id: await get_application_id("AWS"),
+        application_id: await get_application_id("Twistlock"),
         employee_id: await get_employee_id_by_name("Dillan Sharp"),
-        role: "EDITOR",
+        permission: "EDITOR",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
       {
-        application_id: await get_application_id("AWS"),
+        application_id: await get_application_id("Twistlock"),
         employee_id: await get_employee_id_by_name("Armani Best"),
-        role: "ADMIN",
+        permission: "ADMIN",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
       {
-        application_id: await get_application_id("Jenkins"),
+        application_id: await get_application_id("Github"),
         employee_id: await get_employee_id_by_name("Jay Fowler"),
-        role: "EDITOR",
+        permission: "EDITOR",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
       {
-        application_id: await get_application_id("Jenkins"),
+        application_id: await get_application_id("Github"),
         employee_id: await get_employee_id_by_name("Irene Choi"),
-        role: "ADMIN",
+        permission: "ADMIN",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
@@ -510,7 +573,7 @@ const seedApplicationAccess = async (master_sis_id: any) => {
       {
         application_id: await get_application_id("GitLab"),
         employee_id: await get_employee_id_by_name("Sofia Snyder"),
-        role: "EDITOR",
+        permission: "EDITOR",
         version: 1,
         created_by: master_sis_id,
         updated_by: master_sis_id,
@@ -536,70 +599,76 @@ const get_application_access_id = async (application_name:any, employee_name:any
   return application_access.access_id;
 };
 
-const seedReview = async () => {
-  await prisma.$transaction(async (_prisma) => {
-    const reviews = [
-      {
-        access_id: await get_application_access_id("MotoCare", "Gracelyn Frazier"),
-        application_id: await get_application_id("MotoCare"),
-        employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
-        quater: "Q1",
-        month: "Jan",
-        review_type: ReviewType.MONTHLY,
-        status: status.OPEN,
-        review_accept_reject: review_stat.PENDING,
-        review_comments: "This is a test comment",
-        created_by: await get_employee_id_by_name("Gracelyn Frazier"),
-        updated_by: await get_employee_id_by_name("Gracelyn Frazier"),
-      },
-      {
-        access_id: await get_application_access_id("MotoCare", "Gracelyn Frazier"),
-        application_id: await get_application_id("MotoCare"),
-        employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
-        quater: "Q4",
-        month: "Dec",
-        review_type: ReviewType.MONTHLY,
-        status: status.OPEN,
-        review_accept_reject: review_stat.PENDING,
-        review_comments: "This is a test comment",
-        created_by: await get_employee_id_by_name("Gracelyn Frazier"),
-        updated_by: await get_employee_id_by_name("Gracelyn Frazier"),
-      },
-    ];
-    await _prisma.review.createMany({
-      data: reviews,
-    });
-  });
-};
+// const seedReview = async () => {
+//   await prisma.$transaction(async (_prisma) => {
+//     const reviews = [
+//       {
+//         access_id: await get_application_access_id("MotoCare", "Gracelyn Frazier"),
+//         application_id: await get_application_id("MotoCare"),
+//         employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
+//         quater: "Q1",
+//         month: "Jan",
+//         review_type: ReviewType.MONTHLY,
+//         status: status.OPEN,
+//         review_accept_reject: review_stat.PENDING,
+//         review_comments: "This is a test comment",
+//         created_by: await get_employee_id_by_name("Gracelyn Frazier"),
+//         updated_by: await get_employee_id_by_name("Gracelyn Frazier"),
+//       },
+//       {
+//         access_id: await get_application_access_id("MotoCare", "Gracelyn Frazier"),
+//         application_id: await get_application_id("MotoCare"),
+//         employee_id: await get_employee_id_by_name("Gracelyn Frazier"),
+//         quater: "Q4",
+//         month: "Dec",
+//         review_type: ReviewType.MONTHLY,
+//         status: status.OPEN,
+//         review_accept_reject: review_stat.PENDING,
+//         review_comments: "This is a test comment",
+//         created_by: await get_employee_id_by_name("Gracelyn Frazier"),
+//         updated_by: await get_employee_id_by_name("Gracelyn Frazier"),
+//       },
+//     ];
+//     await _prisma.review.createMany({
+//       data: reviews,
+//     });
+//   });
+// };
   
 async function main() {
   console.log(`Start seeding ...`);
   // drop all data
-  const result:number = await prisma.$executeRaw`DROP DATABASE UserAccessReview`;
-  console.log(`Dropped database: affected rows ${result}`);
+  // const result:number = await prisma.$executeRaw`DROP DATABASE UserAccessReview`;
+  // console.log(`Dropped database: affected rows ${result}`);
   // clear all tables
-  let res: any = await prisma.group.deleteMany();
-  console.log(`Cleared table group: affected rows ${res.count}`);
-  res = await prisma.employee.deleteMany();
-  console.log(`Cleared table employee: affected rows ${res.count}`);
-  res = await prisma.review.deleteMany();
-  console.log(`Cleared table review: affected rows ${res.count}`);
-  res = await prisma.application.deleteMany();
-  console.log(`Cleared table application: affected rows ${res.count}`);
+  // let res: any = await prisma.group.deleteMany();
+  // console.log(`Cleared table group: affected rows ${res.count}`);
+  // res = await prisma.employee.deleteMany();
+  // console.log(`Cleared table employee: affected rows ${res.count}`);
+  // res = await prisma.review.deleteMany();
+  // console.log(`Cleared table review: affected rows ${res.count}`);
+  // res = await prisma.application.deleteMany();
+  // console.log(`Cleared table application: affected rows ${res.count}`);
 
   // seed data
-  const master_sis_id = await seedMasterUser();
-  console.log(`Seeded master user: ${master_sis_id}`);
-  await seedGroups(master_sis_id);
-  console.log(`Seeded groups`);
-  await seedEmployee(master_sis_id);
-  console.log(`Seeded employees`);
-  await seedApplication(master_sis_id);
-  console.log(`Seeded applications`);
-  await seedApplicationAccess(110);
-  console.log(`Seeded application access`);
-  await seedReview();
-  console.log(`Seeded reviews`);
+  try{
+    const master_sis_id = await seedMasterUser();
+    console.log(`Seeded master user: ${master_sis_id}`);
+    await seedGroups(master_sis_id);
+    console.log(`Seeded groups`);
+    await seedEmployee(master_sis_id);
+    console.log(`Seeded employees`);
+    await seedApplication(master_sis_id);
+    console.log(`Seeded applications`);
+    await seedApplicationAccess(master_sis_id);
+    console.log(`Seeded application access`);
+    // await seedReview();
+    // console.log(`Seeded reviews`);
+  }
+  catch(err){
+    console.log(err);
+  }
+  
 }
 
 main()

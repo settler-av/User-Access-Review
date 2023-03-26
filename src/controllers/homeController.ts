@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import { NextFunction, Request, Response } from 'express';
 import logger from '../utils/logger';
 import { PrismaClient, ReviewType } from "@prisma/client";
+import XLSX from "xlsx";
 const prisma = new PrismaClient();
 dotenv.config();
 
@@ -9,20 +10,20 @@ const getAllApplications = async (req: any, res: any) => {
     try {
 
         logger.info("[/getAllApplications]");
-        var applications: any= await prisma.application.findMany({
+        var applications: any = await prisma.application.findMany({
             where: {
                 rec_st: true
             },
             include: {
-                owner_group:{
-                    select:{
-                        name:true
+                owner_group: {
+                    select: {
+                        name: true
                     }
                 },
-                _count:{
-                    select:{
-                        application_access:true,
-                        review:true,
+                _count: {
+                    select: {
+                        application_access: true,
+                        review: true,
                     }
                 }
             },
@@ -30,7 +31,7 @@ const getAllApplications = async (req: any, res: any) => {
                 created_at: "desc"
             }
         })
-        for(var i = 0; i < applications.length; i++){
+        for (var i = 0; i < applications.length; i++) {
             applications[i].access_count = applications[i]._count.application_access;
             applications[i].review_count = applications[i]._count.review;
             applications[i].owner_group_name = applications[i].owner_group.name;
@@ -45,14 +46,14 @@ const getAllApplications = async (req: any, res: any) => {
             delete applications[i].owner_gid;
         }
         logger.info("[/getAllApplications]: applications fetched")
-        if(req.isCompliance || req.isAdmin){
+        if (req.isCompliance || req.isAdmin) {
             res.status(200).json({
                 message: "Applications fetched",
                 is_error: false,
                 data: applications
             })
         }
-        else{
+        else {
 
             /**
              * TODO: filter applications based on manager and employee.
@@ -65,7 +66,7 @@ const getAllApplications = async (req: any, res: any) => {
             // manager response
             // applications = applications.filter((application:any)=>application.owner_gid == req.group_sis_id);
 
-            applications.forEach((application:any)=>{
+            applications.forEach((application: any) => {
                 delete application.access_count;
                 delete application.review_count;
             })
@@ -75,7 +76,7 @@ const getAllApplications = async (req: any, res: any) => {
                 data: applications
             })
         }
-        
+
     } catch (error) {
         logger.error(`[/getAllApplications] - ${error}`);
         res.status(500).json({
@@ -86,31 +87,31 @@ const getAllApplications = async (req: any, res: any) => {
 };
 
 const getApplicationUsers = async (req: any, res: any) => {
-    try{
+    try {
         logger.info('[/:applicationName/users]');
         var applicationName = req.params.applicationName;
         console.log(applicationName);
         const applicationId = await prisma.application.findFirst({
-            where:{ name: applicationName },
-            select:{ sis_id:true }
+            where: { name: applicationName },
+            select: { sis_id: true }
         });
         console.log(applicationId);
-        if(applicationId){
+        if (applicationId) {
             const applicationUsers = await prisma.application_access.findMany({
-                where:{
+                where: {
                     application_id: applicationId.sis_id,
                     rec_st: true
                 },
-                select:{
-                    employee:{
-                        select:{
+                select: {
+                    employee: {
+                        select: {
                             sis_id: true,
                             name: true,
                             core_id: true,
                             email: true,
                             manager_id: true,
                             manager: {
-                                select:{
+                                select: {
                                     name: true,
                                     core_id: true,
                                     email: true
@@ -119,13 +120,13 @@ const getApplicationUsers = async (req: any, res: any) => {
                             department: true,
                             group_sis_id: true,
                             group: {
-                                select:{
+                                select: {
                                     name: true
                                 }
                             },
                         },
                     },
-                    role: true,
+                    permission: true,
                     version: true,
                     created_at: true,
                 }
@@ -133,9 +134,9 @@ const getApplicationUsers = async (req: any, res: any) => {
             logger.info('[/:applicationName/users]: application users fetched');
             // Resoponse to Compliance user
             var complianceUsersResponse: any = [];
-            if(req.isCompliance || req.isAdmin || req.isOwner){
-            
-                applicationUsers.forEach((applicationUser:any)=>{
+            if (req.isCompliance || req.isAdmin || req.isOwner) {
+
+                applicationUsers.forEach((applicationUser: any) => {
                     var applicationUserResponse = {
                         emp_name: applicationUser.employee.name,
                         core_id: applicationUser.employee.core_id,
@@ -152,15 +153,15 @@ const getApplicationUsers = async (req: any, res: any) => {
                 });
                 res.status(200).json({
                     message: "Response to Compliance User",
-                    is_error: false,    
+                    is_error: false,
                     data: complianceUsersResponse
                 })
             }
             // Responcse to Manager
-            else if(req.isManager){
+            else if (req.isManager) {
                 var managerUsersResponse: any = [];
-                applicationUsers.forEach((applicationUser:any)=>{
-                    if(applicationUser.employee.manager_id == req.user_id){
+                applicationUsers.forEach((applicationUser: any) => {
+                    if (applicationUser.employee.manager_id == req.user_id) {
                         var applicationUserResponse = {
                             emp_name: applicationUser.employee.name,
                             core_id: applicationUser.employee.core_id,
@@ -185,10 +186,10 @@ const getApplicationUsers = async (req: any, res: any) => {
                 })
             }
             // Response to Employee
-            else{
+            else {
                 var employeeUsersResponse: any = [];
-                applicationUsers.forEach((applicationUser:any)=>{
-                    if(applicationUser.employee.sis_id === req.user_id){
+                applicationUsers.forEach((applicationUser: any) => {
+                    if (applicationUser.employee.sis_id === req.user_id) {
                         var applicationUserResponse = {
                             emp_name: applicationUser.employee.name,
                             core_id: applicationUser.employee.core_id,
@@ -208,14 +209,14 @@ const getApplicationUsers = async (req: any, res: any) => {
                     data: employeeUsersResponse
                 })
             }
-        }else{
+        } else {
             res.status(404).json({
                 message: "Application not found",
                 is_error: true,
                 data: []
             })
         }
-    }catch(error){
+    } catch (error) {
         logger.error(`[/getAllApplications] - ${error}`);
         res.status(500).json({
             is_error: true,
@@ -225,10 +226,10 @@ const getApplicationUsers = async (req: any, res: any) => {
 };
 
 const makeReview = async (req: any, res: any) => {
-    try{
+    try {
         logger.info('[/home/make-review]');
-        const {access_id, application_id, employee_id, quater, month, review_type, review_comments} = req.body;
-        if(!req.isCompliance && !req.isAdmin){
+        const { access_id, application_id, employee_id, quater, month, review_type, review_comments } = req.body;
+        if (!req.isCompliance && !req.isAdmin) {
             // unauthorized
             logger.error('[/home/make-review]: unauthorized');
             res.status(401).json({
@@ -239,12 +240,12 @@ const makeReview = async (req: any, res: any) => {
         }
 
         const review = await prisma.review.create({
-            data:{
+            data: {
                 created_by: req.user_id,
                 updated_by: req.user_id,
                 access_id: access_id,
-                application_id: application_id,
-                employee_id: employee_id,
+                application_id: parseInt(application_id),
+                employee_id: parseInt(employee_id),
                 quater: quater,
                 month: month,
                 review_type: review_type,
@@ -257,7 +258,7 @@ const makeReview = async (req: any, res: any) => {
             is_error: false,
             data: review
         })
-    }catch(error){
+    } catch (error) {
         logger.error(`[/home/make-review] - ${error}`);
         res.status(500).json({
             is_error: true,
@@ -266,15 +267,190 @@ const makeReview = async (req: any, res: any) => {
     }
 }
 
+const validateExcelData = async (jsonData: any) => {
+    let filteredData:any = [];
+    for(let ele of jsonData){
+        let { ApplicationName, CoreId, Email, Name, UserType, ManagerCoreId, Permission } = ele;
+        if (ApplicationName && CoreId && Email && Name && UserType && ManagerCoreId && Permission) {
+            // validating application name
+            console.log('entered', ele);
+            let application = await prisma.application.findFirst({
+                where: {
+                    name: ApplicationName
+                }
+            });
+            if (!application) {
+                console.log('application not found')
+                return {
+                    success: false,
+                    message: "Application not found",
+                    data: {
+                        conflictingData: ele
+                    }
+                }
+            }
+            // validating coreId
+            let employee = await prisma.employee.findUnique({
+                where: {
+                    core_id: CoreId
+                }
+            })
+            if (!employee) {
+                console.log('employee not found')
+                return {
+                    success: false,
+                    message: "Employee not found",
+                    data: {
+                        conflictingData: ele
+                    }
+                }
+            }
+            // validating email
+            if (employee.email !== Email) {
+
+                return {
+                    success: false,
+                    message: "Email not matched",
+                    data: {
+                        conflictingData: ele
+                    }
+                }
+            }
+
+            // validating name
+            if (employee.name !== Name) {
+                return {
+                    success: false,
+                    message: "Name not matched",
+                    data: {
+                        conflictingData: ele
+                    }
+                }
+            }
+
+            // validating ManagerCoreId
+            if (!employee.manager_id && employee.manager_id !== ManagerCoreId) {
+                console.log('employee', employee.name)
+                console.log('manager core id not matched', employee.manager_id, ManagerCoreId)
+                return {
+                    success: false,
+                    message: "ManagerCoreId not matched",
+                    data: {
+                        conflictingData: ele
+                    }
+                }
+            }
+
+            // validating Permission
+            if (typeof (ele.Permission) !== "string") {
+                return {
+                    success: false,
+                    message: "Permission should be string",
+                    data: {
+                        conflictingData: ele
+                    }
+                }
+            }
+            
+            // if data is repeated then just skip it
+            let isDataRepeated = await filteredData.find((data: any) => data.ApplicationName === ApplicationName && data.CoreId === CoreId);
+            
+            // if data is already in database
+            let isDataAlreadyInDatabase = await prisma.application_access.findFirst({
+                where: {
+                    application_id: application.sis_id,
+                    employee_id: employee.sis_id,
+                    permission: Permission
+                }
+            })
+
+            if(!(isDataRepeated || isDataAlreadyInDatabase)) {
+                // console.log('data is not repeated or already in database', ele)
+                console.log(`-----------------------------------------------------------------------`)
+                await filteredData.push({...ele, application_sis_id: application.sis_id, employee_sis_id: employee.sis_id});
+                // console.log('filtered data --', filteredData)
+            }else{
+                console.log('data is repeated or already in database', ele)
+            }
+        }
+        else{
+            console.log('encountered empty data', ele)
+        }
+        console.log(`-----------------------------------------------------------------------`)
+        // console.log(`filtered data`, filteredData)
+    }
+    console.log('filtered data', [...filteredData])
+    return {
+        success: true,
+        message: "Data validated",
+        data: {
+            filteredData: filteredData
+        }
+    }
+};
+
 const uploadExcel = async (req: any, res: any) => {
-    try{
+    try {
         logger.info('[/uploadExcel]');
+        if (!req.isCompliance && !req.isAdmin) {
+            // unauthorized
+            logger.error('[/uploadExcel]: unauthorized');
+            res.status(401).json({
+                message: "Unauthorized",
+                is_error: true,
+                data: []
+            })
+        }
+        let path = req.file.path;
+        var workbook = XLSX.readFile(path);
+        var sheet_name_list = workbook.SheetNames;
+        let jsonData = XLSX.utils.sheet_to_json(
+            workbook.Sheets[sheet_name_list[0]]
+        );
+
+
+        if (jsonData.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "xml sheet has no data",
+            });
+        }
+        
+        // validating jsondata
+        const validatedData = await validateExcelData(jsonData);
+        console.log(validatedData);
+        if (!validatedData.success) {
+            return res.status(400).json({
+                is_error: true,
+                message: validatedData.message,
+                data: validatedData.data
+            })
+        }
+        console.log('validated data', validatedData.data.filteredData)
+        // creating application access
+        for (let ele of validatedData.data.filteredData){
+            let { ApplicationName, CoreId, Email, Name, UserType, ManagerCoreId, Permission, application_sis_id, employee_sis_id } = ele;
+            console.log('ele', ele)
+            let applicationAccess = await prisma.application_access.create({
+                data: {
+                    created_by: (req.user_id),
+                    updated_by: (req.user_id),
+                    application_id: parseInt(application_sis_id),
+                    employee_id: parseInt(employee_sis_id),
+                    permission: Permission,
+                    version: 1
+                }
+            });
+            logger.debug(`[uploadExcel] - application access created - ${applicationAccess}`);
+        };
+        logger.info(`[uploadExcel] - application access created - success`)
+
         res.status(200).json({
             message: "Route Under Development",
             is_error: false,
-            data: []
+            data: [...validatedData.data.filteredData]
         })
-    }catch(error){
+    } catch (error) {
         logger.error(`[/uploadExcel] - ${error}`);
         res.status(500).json({
             is_error: true,
@@ -282,4 +458,4 @@ const uploadExcel = async (req: any, res: any) => {
         })
     }
 }
-export default {getAllApplications, getApplicationUsers, makeReview, uploadExcel}
+export default { getAllApplications, getApplicationUsers, makeReview, uploadExcel }
