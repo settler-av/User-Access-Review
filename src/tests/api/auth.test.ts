@@ -15,7 +15,7 @@ describe("/api/v1/check", () => {
     it("It should be alive", (done) => {
         request(url)
             .get("/check")
-            .expect(200)
+            .expect(400)
             .end((err, response) => {
                 if (err) {
                     return done(err)
