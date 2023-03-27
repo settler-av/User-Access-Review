@@ -17,6 +17,7 @@ var storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).single("mom");
 router.get("/", auth, controller.getAllApplications);
+router.get("/application-access", auth, controller.getAllApplicationAccess);
 router.get("/:applicationName/users", auth, controller.getApplicationUsers);
 router.post("/make-review",validation.makeReviewSchema ,auth,controller.makeReview);
 router.post("/upload",auth,  upload, controller.uploadExcel);

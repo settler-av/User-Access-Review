@@ -86,6 +86,91 @@ const getAllApplications = async (req: any, res: any) => {
     }
 };
 
+const getAllApplicationAccess = async (req: any, res: any) => {
+    try {
+        logger.info("[/getAllApplicationAccess]");
+
+        if(!(req.isCompliance || req.isAdmin || req.isOwner)){
+            logger.error("[/getAllApplicationAccess] - Unauthorized access");
+            res.status(401).json({
+                is_error: true,
+                message: "Unauthorized access"
+            })
+            return;
+        }
+
+        var applicationAccess: any = await prisma.application_access.findMany({
+            where: {
+                rec_st: true
+            },
+            select: {
+                access_id: true,
+                application: {
+                    select: {
+                        name: true
+                    }
+                },
+                employee: {
+                    select: {
+                        name: true,
+                        core_id: true,
+                        email: true,
+                        manager_id: true,
+                        manager: {
+                            select: {
+                                core_id: true,
+                            }
+                        },
+                        
+                    }
+                },
+                permission: true,
+                created_at: true,
+                updated_at: true,
+                created_by: true,
+                updated_by: true,
+            },
+            orderBy: {
+                created_at: "desc"
+            }
+        })
+        let sendJSON: any = [];
+        // logger.debug(`[/getAllApplicationAccess]: ${JSON.stringify(applicationAccess)}`)
+        console.log(applicationAccess)
+        for (var i = 0; i < applicationAccess.length; i++) {
+            sendJSON.push({
+                id: applicationAccess[i].access_id,
+                applicationName: applicationAccess[i].application.name,
+                name: applicationAccess[i].employee.name,
+                coreId: applicationAccess[i].employee.core_id,
+                email: applicationAccess[i].employee.email,
+                managerCoreId: applicationAccess[i].employee?.manager?.core_id,
+                permission: applicationAccess[i].permission,
+                // created_at: applicationAccess[i].created_at,
+                // updated_at: applicationAccess[i].updated_at,
+                // created_by: applicationAccess[i].created_by,
+                // updated_by: applicationAccess[i].updated_by,
+            })
+        }
+
+        logger.info("[/getAllApplicationAccess]: application access fetched")
+        logger.debug(`[/getAllApplicationAccess]: ${JSON.stringify(sendJSON)}`)
+        res.status(200).json({
+            message: "Application access fetched",
+            is_error: false,
+            data: sendJSON
+        })
+                
+    } catch (error) {
+        logger.error(`[/getAllApplicationAccess] - ${error}`);
+        console.log(error);
+        res.status(500).json({
+            is_error: true,
+            message: "Something went wrong"
+        })
+    }
+}
+
 const getApplicationUsers = async (req: any, res: any) => {
     try {
         logger.info('[/:applicationName/users]');
@@ -458,4 +543,4 @@ const uploadExcel = async (req: any, res: any) => {
         })
     }
 }
-export default { getAllApplications, getApplicationUsers, makeReview, uploadExcel }
+export default { getAllApplications, getApplicationUsers, makeReview, uploadExcel, getAllApplicationAccess }

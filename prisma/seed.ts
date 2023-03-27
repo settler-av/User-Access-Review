@@ -482,14 +482,14 @@ const seedApplicationAccess = async (master_sis_id: any) => {
         created_by: master_sis_id,
         updated_by: master_sis_id,
       },
-      {
-        application_id: await get_application_id("Kubernetes"),
-        employee_id: await get_employee_id_by_name("Rohan Sahu"),
-        permission: "ADMIN",
-        version: 1,
-        created_by: master_sis_id,
-        updated_by: master_sis_id,
-      },
+      // {
+      //   application_id: await get_application_id("Kubernetes"),
+      //   employee_id: await get_employee_id_by_name("Rohan Sahu"),
+      //   permission: "ADMIN",
+      //   version: 1,
+      //   created_by: master_sis_id,
+      //   updated_by: master_sis_id,
+      // },
       {
         application_id: await get_application_id("Kubernetes"),
         employee_id: await get_employee_id_by_name("Gary Long"),
