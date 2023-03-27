@@ -378,7 +378,7 @@ const seedEmployee = async (master_sis_id: any) => {
         data: employees,
       });
     },
-    { timeout: 10000 }
+    { timeout: 20000 }
   );
 };
 
@@ -583,7 +583,7 @@ const seedApplicationAccess = async (master_sis_id: any) => {
     await _prisma.application_access.createMany({
       data: application_access,
     });
-  });
+  }, { timeout: 20000 });
 };
 const get_application_access_id = async (application_name:any, employee_name:any) => {
   const application_access = await prisma.application_access.findFirst({

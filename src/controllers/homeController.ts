@@ -145,6 +145,7 @@ const getAllApplicationAccess = async (req: any, res: any) => {
                 coreId: applicationAccess[i].employee.core_id,
                 email: applicationAccess[i].employee.email,
                 managerCoreId: applicationAccess[i].employee?.manager?.core_id,
+                userType: "User",
                 permission: applicationAccess[i].permission,
                 // created_at: applicationAccess[i].created_at,
                 // updated_at: applicationAccess[i].updated_at,
