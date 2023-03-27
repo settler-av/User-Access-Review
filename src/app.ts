@@ -41,10 +41,14 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/home", homeRouter);
 app.use("/api/v1/report",reportRouter);
 app.get('/api/v1/check', (req,res)=>{
-  res.send("hello")
+  return res.send({
+    isAlive:true
+  })
 })
 
 app.listen(port, async () => {
   prisma.$connect;
   logger.info(`App is running on port localhost:${port}`);
 });
+
+export default app;
