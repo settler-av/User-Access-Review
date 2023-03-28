@@ -1394,3 +1394,266 @@ Note: Lines with + are required, lines with ? are optional.
 2023-03-28 16:48:35 info: [/changePassword]
 2023-03-28 16:48:40 info: [/changePassword] - success - 1
 [28/Mar/2023:11:18:40 +0000] POST /api/v1/auth/change-password 200 435 - 8897.231 ms
+2023-03-28 17:28:23 info: App is running on port localhost:4000
+2023-03-28 17:28:39 info: [/getAllApplicationAccess]
+2023-03-28 17:28:44 info: [/getAllApplicationAccess]: application access fetched
+[28/Mar/2023:11:58:44 +0000] GET /api/v1/home/application-access 200 3705 - 8391.836 ms
+2023-03-28 17:28:44 debug: [/getAllApplicationAccess]: [{"id":"clfq8jwnk0005ty98oj1dkaax","applicationName":"Github","name":"Brad Keller","coreId":"GJRT74","email":"brad.keller@motorolasolutions.com","managerCoreId":"VWNB87","userType":"User","permission":"Member"},{"id":"clfq8jvvq0004ty98zlz4txsm","applicationName":"JIRA","name":"Jeremiah Nelson","coreId":"mwxg43","email":"jeremiah.nelson@motorolasolutions.com","managerCoreId":"VWNB86","userType":"User","permission":"ReadOnly"},{"id":"clfq8jv400003ty98k1wsp1k1","applicationName":"Twistlock","name":"GLO-OKTA-APP-SE-Champions-Users","coreId":"GVF476","email":"GVF476@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"auditor"},{"id":"clfq8ju9r0002ty98bxqugkji","applicationName":"CCAdmin","name":"Jason Fullmer","coreId":"KQC843","email":"jason.fullmer@motorolasolutions.com","managerCoreId":"VWNB86","userType":"User","permission":"ReadOnly"},{"id":"clfq8jt3r0000ty9831adpvy6","applicationName":"Kubernetes","name":"Shaun Meyer","coreId":"DHVK37","email":"shaun.meyer@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"ClusterRole_admin"},{"id":"clfq8j3w8000btyd446c4tum7","applicationName":"CCAdmin","name":"Dillan Sharp","coreId":"VWNB90","email":"dillan.sharp@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w8000ctyd4bngdybfp","applicationName":"CCAdmin","name":"Armani Best","coreId":"VWNB89","email":"armani.best@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"ADMIN"},{"id":"clfq8j3w8000dtyd45sxv11dx","applicationName":"Twistlock","name":"Dillan Sharp","coreId":"VWNB90","email":"dillan.sharp@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w80006tyd4dcm9ztyn","applicationName":"Kubernetes","name":"Gracelyn Frazier","coreId":"VWNB94","email":"gracelyn.frazier@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w8000ftyd42k7gwgzy","applicationName":"Github","name":"Jay Fowler","coreId":"VWNB92","email":"jay.fowler@motorolasolutions.com","managerCoreId":"VWNB87","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w8000gtyd4jlt8tqvm","applicationName":"Github","name":"Irene Choi","coreId":"VWNB88","email":"irene.choi@motorolasolutions.com","managerCoreId":"VWNB87","userType":"User","permission":"ADMIN"},{"id":"clfq8j3w8000htyd4zuapbz62","applicationName":"GitLab","name":"Sofia Snyder","coreId":"VWNB95","email":"sofia.snyder@motorolasolutions.com","managerCoreId":"VWNB86","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w8000etyd4myjr24zm","applicationName":"Twistlock","name":"Armani Best","coreId":"VWNB89","email":"armani.best@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"ADMIN"},{"id":"clfq8j3w80007tyd4yjxfrqm2","applicationName":"Kubernetes","name":"Gary Long","coreId":"VWNB93","email":"gary.long@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"READER"},{"id":"clfq8j3w80008tyd44vo8hbqm","applicationName":"JIRA","name":"Gracelyn Frazier","coreId":"VWNB94","email":"gracelyn.frazier@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w80009tyd4lnonjgbr","applicationName":"JIRA","name":"Armani Best","coreId":"VWNB89","email":"armani.best@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"ADMIN"},{"id":"clfq8j3w8000atyd4ubki78uf","applicationName":"JIRA","name":"Gary Long","coreId":"VWNB93","email":"gary.long@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"READER"}]
+2023-03-28 17:29:12 info: [/getAllApplicationAccess]
+2023-03-28 17:29:13 info: [/getAllApplicationAccess]: application access fetched
+[28/Mar/2023:11:59:13 +0000] GET /api/v1/home/application-access 200 3705 - 2641.749 ms
+2023-03-28 17:29:13 debug: [/getAllApplicationAccess]: [{"id":"clfq8jwnk0005ty98oj1dkaax","applicationName":"Github","name":"Brad Keller","coreId":"GJRT74","email":"brad.keller@motorolasolutions.com","managerCoreId":"VWNB87","userType":"User","permission":"Member"},{"id":"clfq8jvvq0004ty98zlz4txsm","applicationName":"JIRA","name":"Jeremiah Nelson","coreId":"mwxg43","email":"jeremiah.nelson@motorolasolutions.com","managerCoreId":"VWNB86","userType":"User","permission":"ReadOnly"},{"id":"clfq8jv400003ty98k1wsp1k1","applicationName":"Twistlock","name":"GLO-OKTA-APP-SE-Champions-Users","coreId":"GVF476","email":"GVF476@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"auditor"},{"id":"clfq8ju9r0002ty98bxqugkji","applicationName":"CCAdmin","name":"Jason Fullmer","coreId":"KQC843","email":"jason.fullmer@motorolasolutions.com","managerCoreId":"VWNB86","userType":"User","permission":"ReadOnly"},{"id":"clfq8jt3r0000ty9831adpvy6","applicationName":"Kubernetes","name":"Shaun Meyer","coreId":"DHVK37","email":"shaun.meyer@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"ClusterRole_admin"},{"id":"clfq8j3w8000btyd446c4tum7","applicationName":"CCAdmin","name":"Dillan Sharp","coreId":"VWNB90","email":"dillan.sharp@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w8000ctyd4bngdybfp","applicationName":"CCAdmin","name":"Armani Best","coreId":"VWNB89","email":"armani.best@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"ADMIN"},{"id":"clfq8j3w8000dtyd45sxv11dx","applicationName":"Twistlock","name":"Dillan Sharp","coreId":"VWNB90","email":"dillan.sharp@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w80006tyd4dcm9ztyn","applicationName":"Kubernetes","name":"Gracelyn Frazier","coreId":"VWNB94","email":"gracelyn.frazier@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w8000ftyd42k7gwgzy","applicationName":"Github","name":"Jay Fowler","coreId":"VWNB92","email":"jay.fowler@motorolasolutions.com","managerCoreId":"VWNB87","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w8000gtyd4jlt8tqvm","applicationName":"Github","name":"Irene Choi","coreId":"VWNB88","email":"irene.choi@motorolasolutions.com","managerCoreId":"VWNB87","userType":"User","permission":"ADMIN"},{"id":"clfq8j3w8000htyd4zuapbz62","applicationName":"GitLab","name":"Sofia Snyder","coreId":"VWNB95","email":"sofia.snyder@motorolasolutions.com","managerCoreId":"VWNB86","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w8000etyd4myjr24zm","applicationName":"Twistlock","name":"Armani Best","coreId":"VWNB89","email":"armani.best@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"ADMIN"},{"id":"clfq8j3w80007tyd4yjxfrqm2","applicationName":"Kubernetes","name":"Gary Long","coreId":"VWNB93","email":"gary.long@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"READER"},{"id":"clfq8j3w80008tyd44vo8hbqm","applicationName":"JIRA","name":"Gracelyn Frazier","coreId":"VWNB94","email":"gracelyn.frazier@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"EDITOR"},{"id":"clfq8j3w80009tyd4lnonjgbr","applicationName":"JIRA","name":"Armani Best","coreId":"VWNB89","email":"armani.best@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"ADMIN"},{"id":"clfq8j3w8000atyd4ubki78uf","applicationName":"JIRA","name":"Gary Long","coreId":"VWNB93","email":"gary.long@motorolasolutions.com","managerCoreId":"VWNB85","userType":"User","permission":"READER"}]
+2023-03-28 17:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-28 17:30:04 info: [/report/sendReminder] - 0 reports due today
+2023-03-28 17:30:04 info: [/getAllApplications]
+2023-03-28 17:30:05 info: [/getAllApplications]: applications fetched
+[28/Mar/2023:12:00:05 +0000] GET /api/v1/home/applications 200 774 - 2617.934 ms
+[28/Mar/2023:12:02:05 +0000] GET /api/v1/home/users 401 22 - 1.170 ms
+2023-03-28 17:32:10 info: [/login]
+2023-03-28 17:32:12 warn: [/login] - incorrect username or password
+[28/Mar/2023:12:02:12 +0000] POST /api/v1/auth/login 400 44 - 2525.154 ms
+2023-03-28 17:32:12 debug: [/login] - body: {"core_id":"VWNB84","password":"master"}
+2023-03-28 17:32:22 info: [/login]
+2023-03-28 17:32:23 info: [/login] - success - sis_id - 1, email - adnan.vahora@motorolasolutions.com
+[28/Mar/2023:12:02:23 +0000] POST /api/v1/auth/login 200 550 - 341.627 ms
+[28/Mar/2023:12:02:26 +0000] GET /api/v1/home/users 401 22 - 1.182 ms
+[28/Mar/2023:12:02:28 +0000] GET /api/v1/home/users 401 22 - 0.899 ms
+2023-03-28 17:32:31 info: [/login]
+2023-03-28 17:32:31 info: [/login] - success - sis_id - 1, email - adnan.vahora@motorolasolutions.com
+[28/Mar/2023:12:02:31 +0000] POST /api/v1/auth/login 200 550 - 596.498 ms
+2023-03-28 17:32:39 info: [/getAllUsers]
+2023-03-28 17:32:40 info: [/getAllUsers]: users fetched
+[28/Mar/2023:12:02:40 +0000] GET /api/v1/home/users 200 3525 - 2546.068 ms
+2023-03-28 17:35:22 info: App is running on port localhost:4000
+2023-03-28 17:35:38 info: [/getAllApplications]
+2023-03-28 17:35:41 info: [/getAllApplications]: applications fetched
+[28/Mar/2023:12:05:41 +0000] GET /api/v1/home/applications 200 873 - 6748.835 ms
+2023-03-28 17:36:32 info: App is running on port localhost:4000
+2023-03-28 17:36:50 info: [/getAllUsers]
+2023-03-28 17:36:54 info: [/getAllUsers]: users fetched
+[28/Mar/2023:12:06:54 +0000] GET /api/v1/home/users 200 3780 - 6865.564 ms
+2023-03-28 17:36:57 info: [/getAllUsers]
+2023-03-28 17:36:58 info: [/getAllUsers]: users fetched
+[28/Mar/2023:12:06:58 +0000] GET /api/v1/home/users 200 3780 - 1528.848 ms
+2023-03-28 17:38:53 info: [/addApplicationAccess]
+[28/Mar/2023:12:08:53 +0000] POST /api/v1/home/add 500 50 - 1449.220 ms
+2023-03-28 17:38:53 error: [/addApplicationAccess] - Error: 
+Invalid `prisma.application_access.findFirst()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:645:66
+
+  642         message: "application_id, employee_id, permission are required"
+  643     })
+  644 }
+→ 645 let application_access = await prisma.application_access.findFirst({
+        where: {
+          application_id: '2',
+                          ~~~
+          employee_id: '18',
+                       ~~~~
+          permission: 'Owner'
+        }
+      })
+
+Argument application_id: Got invalid value '2' on prisma.findFirstapplication_access. Provided String, expected IntFilter or Int:
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+Argument employee_id: Got invalid value '18' on prisma.findFirstapplication_access. Provided String, expected IntFilter or Int:
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+type IntFilter {
+  equals?: Int
+  in?: List<Int>
+  notIn?: List<Int>
+  lt?: Int
+  lte?: Int
+  gt?: Int
+  gte?: Int
+  not?: Int | NestedIntFilter
+}
+
+
+2023-03-28 17:40:28 info: App is running on port localhost:4000
+2023-03-28 17:40:42 info: [/addApplicationAccess]
+2023-03-28 17:40:45 error: [/addApplicationAccess] - Error: 
+Invalid `prisma.application_access.upsert()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:654:65
+
+  651 })
+  652 
+  653 
+→ 654 let applicationAccess = await prisma.application_access.upsert({
+        create: {
+          created_by: 1,
+          updated_by: 1,
+          application_id: 2,
+          employee_id: 18,
+          permission: 'Owner',
+          version: 1
+        },
+        update: {
+          updated_by: 1,
+          permission: 'Owner',
+          version: {
+            increment: 1
+          }
+        },
+        where: {
+      ?   sis_id?: Int,
+      ?   access_id?: String
+        }
+      })
+
+Argument where of type application_accessWhereUniqueInput needs at least one argument. Available args are listed in green.
+
+Note: Lines with ? are optional.
+
+[28/Mar/2023:12:10:45 +0000] POST /api/v1/home/add 500 50 - 6774.479 ms
+2023-03-28 17:41:16 info: [/addApplicationAccess]
+2023-03-28 17:41:17 error: [/addApplicationAccess] - Error: 
+Invalid `prisma.application_access.upsert()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:654:65
+
+  651 })
+  652 
+  653 
+→ 654 let applicationAccess = await prisma.application_access.upsert({
+        create: {
+          created_by: 1,
+          updated_by: 1,
+          application_id: 2,
+          employee_id: 18,
+          permission: 'Owner',
+          version: 1
+        },
+        update: {
+          updated_by: 1,
+          permission: 'Owner',
+          version: {
+            increment: 1
+          }
+        },
+        where: {
+      ?   sis_id?: Int,
+      ?   access_id?: String
+        }
+      })
+
+Argument where of type application_accessWhereUniqueInput needs at least one argument. Available args are listed in green.
+
+Note: Lines with ? are optional.
+
+[28/Mar/2023:12:11:17 +0000] POST /api/v1/home/add 500 50 - 1814.428 ms
+2023-03-28 17:42:11 info: App is running on port localhost:4000
+2023-03-28 17:42:20 info: [/addApplicationAccess]
+2023-03-28 17:42:22 debug: [addApplicationAccess] - application access found - null
+[28/Mar/2023:12:12:22 +0000] POST /api/v1/home/add 500 50 - 6421.904 ms
+2023-03-28 17:42:22 error: [/addApplicationAccess] - Error: 
+Invalid `prisma.application_access.upsert()` invocation in
+D:\Projects\Angular\UserAccessReview\src\controllers\homeController.ts:654:65
+
+  651 })
+  652 
+  653 logger.debug(`[addApplicationAccess] - application access found - ${application_access}`);
+→ 654 let applicationAccess = await prisma.application_access.upsert({
+        create: {
+          created_by: 1,
+          updated_by: 1,
+          application_id: 2,
+          employee_id: 18,
+          permission: 'Owner',
+          version: 1
+        },
+        update: {
+          updated_by: 1,
+          permission: 'Owner',
+          version: {
+            increment: 1
+          }
+        },
+        where: {
+      ?   sis_id?: Int,
+      ?   access_id?: String
+        }
+      })
+
+Argument where of type application_accessWhereUniqueInput needs at least one argument. Available args are listed in green.
+
+Note: Lines with ? are optional.
+
+2023-03-28 17:42:59 info: App is running on port localhost:4000
+2023-03-28 17:43:09 info: [/addApplicationAccess]
+2023-03-28 17:43:12 debug: [addApplicationAccess] - application access found - null
+[28/Mar/2023:12:13:12 +0000] POST /api/v1/home/add 500 50 - 6315.451 ms
+2023-03-28 17:43:12 error: [/addApplicationAccess] - TypeError: Cannot read properties of null (reading 'sis_id')
+2023-03-28 17:43:47 info: App is running on port localhost:4000
+2023-03-28 17:43:56 info: [/addApplicationAccess]
+2023-03-28 17:43:59 debug: [addApplicationAccess] - application access found - null
+[28/Mar/2023:12:13:59 +0000] POST /api/v1/home/add 500 50 - 6227.749 ms
+2023-03-28 17:43:59 error: [/addApplicationAccess] - TypeError: Cannot read properties of null (reading 'sis_id')
+2023-03-28 17:44:30 info: [/addApplicationAccess]
+2023-03-28 17:44:31 debug: [addApplicationAccess] - application access found - null
+[28/Mar/2023:12:14:31 +0000] POST /api/v1/home/add 500 50 - 1813.627 ms
+2023-03-28 17:44:31 error: [/addApplicationAccess] - TypeError: Cannot read properties of null (reading 'sis_id')
+2023-03-28 17:46:37 info: App is running on port localhost:4000
+2023-03-28 17:46:54 info: [/addApplicationAccess]
+2023-03-28 17:46:59 debug: [addApplicationAccess] - application access created - [object Object]
+2023-03-28 17:48:13 info: App is running on port localhost:4000
+2023-03-28 17:48:28 info: [/addApplicationAccess]
+2023-03-28 17:48:30 warn: [addApplicationAccess] - application access already exists - [object Object]
+2023-03-28 17:48:32 debug: [addApplicationAccess] - application access updated - [object Object]
+[28/Mar/2023:12:18:32 +0000] POST /api/v1/home/add 200 311 - 8184.843 ms
+2023-03-28 17:48:32 info: [addApplicationAccess] - application access created - success
+2023-03-28 17:49:06 info: App is running on port localhost:4000
+2023-03-28 17:49:14 info: [/addApplicationAccess]
+2023-03-28 17:49:16 warn: [addApplicationAccess] - application access already exists - {"sis_id":18,"rec_st":true,"created_at":"2023-03-28T12:16:57.522Z","updated_at":"2023-03-28T12:18:30.659Z","created_by":1,"updated_by":1,"access_id":"clfs8354i0000ty7cyuemywka","application_id":2,"employee_id":18,"permission":"Owner","version":2}
+2023-03-28 17:49:18 debug: [addApplicationAccess] - application access updated - {"sis_id":18,"rec_st":true,"created_at":"2023-03-28T12:16:57.522Z","updated_at":"2023-03-28T12:19:16.974Z","created_by":1,"updated_by":1,"access_id":"clfs8354i0000ty7cyuemywka","application_id":2,"employee_id":18,"permission":"Owner","version":3}
+[28/Mar/2023:12:19:19 +0000] POST /api/v1/home/add 200 311 - 8343.135 ms
+2023-03-28 17:49:18 info: [addApplicationAccess] - application access created - success
+2023-03-28 17:49:24 info: [/addApplicationAccess]
+2023-03-28 17:49:25 warn: [addApplicationAccess] - application access already exists - {"sis_id":18,"rec_st":true,"created_at":"2023-03-28T12:16:57.522Z","updated_at":"2023-03-28T12:19:16.974Z","created_by":1,"updated_by":1,"access_id":"clfs8354i0000ty7cyuemywka","application_id":2,"employee_id":18,"permission":"Owner","version":3}
+2023-03-28 17:49:26 debug: [addApplicationAccess] - application access updated - {"sis_id":18,"rec_st":true,"created_at":"2023-03-28T12:16:57.522Z","updated_at":"2023-03-28T12:19:25.168Z","created_by":1,"updated_by":1,"access_id":"clfs8354i0000ty7cyuemywka","application_id":2,"employee_id":18,"permission":"Owner","version":4}
+[28/Mar/2023:12:19:26 +0000] POST /api/v1/home/add 200 311 - 2564.334 ms
+2023-03-28 17:49:26 info: [addApplicationAccess] - application access created - success
+2023-03-28 17:49:33 info: [/addApplicationAccess]
+2023-03-28 17:49:35 debug: [addApplicationAccess] - application access created - {"sis_id":19,"rec_st":true,"created_at":"2023-03-28T12:19:33.805Z","updated_at":"2023-03-28T12:19:33.805Z","created_by":1,"updated_by":1,"access_id":"clfs86hpo0001tyh4j5z6gnap","application_id":2,"employee_id":18,"permission":"new Owner","version":1}
+[28/Mar/2023:12:19:35 +0000] POST /api/v1/home/add 200 315 - 3204.298 ms
+2023-03-28 17:49:35 info: [addApplicationAccess] - application access created - success
+2023-03-28 17:49:43 info: [/addApplicationAccess]
+2023-03-28 17:49:43 warn: [addApplicationAccess] - application access already exists - {"sis_id":19,"rec_st":true,"created_at":"2023-03-28T12:19:33.805Z","updated_at":"2023-03-28T12:19:33.805Z","created_by":1,"updated_by":1,"access_id":"clfs86hpo0001tyh4j5z6gnap","application_id":2,"employee_id":18,"permission":"new Owner","version":1}
+2023-03-28 17:49:44 debug: [addApplicationAccess] - application access updated - {"sis_id":19,"rec_st":true,"created_at":"2023-03-28T12:19:33.805Z","updated_at":"2023-03-28T12:19:43.458Z","created_by":1,"updated_by":1,"access_id":"clfs86hpo0001tyh4j5z6gnap","application_id":2,"employee_id":18,"permission":"new Owner","version":2}
+[28/Mar/2023:12:19:44 +0000] POST /api/v1/home/add 200 315 - 2563.365 ms
+2023-03-28 17:49:44 info: [addApplicationAccess] - application access created - success
+2023-03-28 18:00:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-28 18:00:04 info: [/report/sendReminder] - 0 reports due today
+2023-03-28 18:30:00 info: Cron JOB: Due review reminder email sent to employee
+2023-03-28 18:30:04 info: [/report/sendReminder] - 0 reports due today
+2023-03-28 18:32:49 info: App is running on port localhost:4000
+2023-03-28 18:37:37 info: App is running on port localhost:4000
+2023-03-28 18:38:08 info: App is running on port localhost:4000
+2023-03-28 18:38:23 info: App is running on port localhost:4000

@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/register",validation.registerSchema, isAdmin, controller.register);
 router.post('/login',validation.loginSchema, controller.login);
 router.post('/change-password',validation.changePasswordSchema, auth, controller.changePassword);
+router.get('/me', auth, controller.getUser);
 // router.post('/edit-profile', auth, controller.editProfile);
 
 // export default router;

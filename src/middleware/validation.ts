@@ -77,11 +77,38 @@ function validateRequest(req: any, res: any, schema: any, next: any) {
     }
 }
 
+function addApplicationAccessSchema(req: any, res: any, next: any) {
+    const schema = joi.object({
+        application_sis_id: joi.string().required(),
+        employee_id: joi.string().required(),
+        permission: joi.string().required(),
+    }).unknown(false);
+    validateRequest(req, res, schema, next);
+}
+
+function editApplicationAccessSchema(req: any, res: any, next: any) {
+    const schema = joi.object({
+        application_sis_id: joi.string().required(),
+        employee_id: joi.string().required(),
+        permission: joi.string().required(),
+    }).unknown(false);
+    validateRequest(req, res, schema, next);
+}
+
+function deleteApplicationAccessSchema(req: any, res: any, next: any) {
+    const schema = joi.object({
+        application_id: joi.string().required(),
+    }).unknown(false);
+    validateRequest(req, res, schema, next);
+}
 
 export default {
     registerSchema,
     loginSchema,
     changePasswordSchema,
     makeReviewSchema,
-    createReview
+    createReview,
+    addApplicationAccessSchema,
+    editApplicationAccessSchema,
+    deleteApplicationAccessSchema
 };

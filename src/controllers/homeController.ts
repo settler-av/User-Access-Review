@@ -35,7 +35,7 @@ const getAllApplications = async (req: any, res: any) => {
             applications[i].access_count = applications[i]._count.application_access;
             applications[i].review_count = applications[i]._count.review;
             applications[i].owner_group_name = applications[i].owner_group.name;
-            delete applications[i].sis_id;
+            // delete applications[i].sis_id;
             delete applications[i]._count;
             delete applications[i].rec_st;
             delete applications[i].updated_at;
@@ -85,12 +85,78 @@ const getAllApplications = async (req: any, res: any) => {
         })
     }
 };
+const getAllUsers = async (req: any, res: any) => {
+    try {
+        logger.info("[/getAllUsers]");
+        if (!(req.isCompliance || req.isAdmin || req.isOwner)) {
+            logger.error("[/getAllUsers] - Unauthorized access");
+            res.status(401).json({
+                is_error: true,
+                message: "Unauthorized access"
+            })
+            return;
+        }
+
+        var users: any = await prisma.employee.findMany({
+            where: {
+                rec_st: true
+            },
+            select: {
+                sis_id: true,
+                core_id: true,
+                name: true,
+                email: true,
+                manager_id: true,
+                manager: {
+                    select: {
+                        core_id: true,
+                    }
+                },
+                _count: {
+                    select: {
+                        application_access: true,
+                        review: true,
+                    }
+                }
+            },
+            orderBy: {
+                created_at: "desc"
+            }
+        })
+        for (var i = 0; i < users.length; i++) {
+            users[i].access_count = users[i]._count.application_access;
+            users[i].review_count = users[i]._count.review;
+            users[i].managerCoreId = users[i].manager?.core_id;
+            delete users[i]._count;
+            delete users[i].rec_st;
+            delete users[i].updated_at;
+            delete users[i].created_at;
+            delete users[i].updated_by;
+            delete users[i].created_by;
+            delete users[i].manager;
+        }
+        logger.info("[/getAllUsers]: users fetched")
+        res.status(200).json({
+            message: "Users fetched",
+            is_error: false,
+            data: users
+        })
+
+    } catch (error) {
+        logger.error(`[/getAllUsers] - ${error}`);
+        res.status(500).json({
+            is_error: true,
+            message: "Something went wrong"
+        })
+    }
+}
+
 
 const getAllApplicationAccess = async (req: any, res: any) => {
     try {
         logger.info("[/getAllApplicationAccess]");
 
-        if(!(req.isCompliance || req.isAdmin || req.isOwner)){
+        if (!(req.isCompliance || req.isAdmin || req.isOwner)) {
             logger.error("[/getAllApplicationAccess] - Unauthorized access");
             res.status(401).json({
                 is_error: true,
@@ -121,7 +187,7 @@ const getAllApplicationAccess = async (req: any, res: any) => {
                                 core_id: true,
                             }
                         },
-                        
+
                     }
                 },
                 permission: true,
@@ -161,7 +227,7 @@ const getAllApplicationAccess = async (req: any, res: any) => {
             is_error: false,
             data: sendJSON
         })
-                
+
     } catch (error) {
         logger.error(`[/getAllApplicationAccess] - ${error}`);
         console.log(error);
@@ -355,15 +421,16 @@ const makeReview = async (req: any, res: any) => {
 
 const validateExcelData = async (jsonData: any) => {
     logger.info('[/validateExcelData]');
-    let filteredData:any = [];
-    for(let ele of jsonData){
+    let filteredData: any = [];
+    for (let ele of jsonData) {
         let { ApplicationName, CoreId, Email, Name, UserType, ManagerCoreId, Permission } = ele;
         if (ApplicationName && CoreId && Email && Name && UserType && ManagerCoreId && Permission) {
             // validating application name
             console.log('entered', ele);
             let application = await prisma.application.findFirst({
                 where: {
-                    name: ApplicationName
+                    name: ApplicationName,
+                    rec_st: true
                 }
             });
             if (!application) {
@@ -379,7 +446,7 @@ const validateExcelData = async (jsonData: any) => {
             // validating coreId
             let employee = await prisma.employee.findUnique({
                 where: {
-                    core_id: CoreId
+                    core_id: CoreId,
                 }
             })
             if (!employee) {
@@ -387,6 +454,16 @@ const validateExcelData = async (jsonData: any) => {
                 return {
                     success: false,
                     message: "Employee not found",
+                    data: {
+                        conflictingData: ele
+                    }
+                }
+            }
+            if(employee.rec_st === false){
+                logger.info('[/validateExcelData]: employee is deleted');
+                return {
+                    success: false,
+                    message: "Employee is deleted",
                     data: {
                         conflictingData: ele
                     }
@@ -438,10 +515,10 @@ const validateExcelData = async (jsonData: any) => {
                     }
                 }
             }
-            
+
             // if data is repeated then just skip it
             let isDataRepeated = await filteredData.find((data: any) => data.ApplicationName === ApplicationName && data.CoreId === CoreId);
-            
+
             // if data is already in database
             let isDataAlreadyInDatabase = await prisma.application_access.findFirst({
                 where: {
@@ -451,16 +528,16 @@ const validateExcelData = async (jsonData: any) => {
                 }
             })
 
-            if(!(isDataRepeated || isDataAlreadyInDatabase)) {
+            if (!(isDataRepeated || isDataAlreadyInDatabase)) {
                 // console.log('data is not repeated or already in database', ele)
                 console.log(`-----------------------------------------------------------------------`)
-                await filteredData.push({...ele, application_sis_id: application.sis_id, employee_sis_id: employee.sis_id});
+                await filteredData.push({ ...ele, application_sis_id: application.sis_id, employee_sis_id: employee.sis_id });
                 // console.log('filtered data --', filteredData)
-            }else{
+            } else {
                 console.log('data is repeated or already in database', ele)
             }
         }
-        else{
+        else {
             console.log('encountered empty data', ele)
         }
         console.log(`-----------------------------------------------------------------------`)
@@ -502,7 +579,7 @@ const uploadExcel = async (req: any, res: any) => {
                 message: "xml sheet has no data",
             });
         }
-        
+
         // validating jsondata
         const validatedData = await validateExcelData(jsonData);
         console.log(validatedData);
@@ -515,9 +592,9 @@ const uploadExcel = async (req: any, res: any) => {
         }
         console.log('validated data', validatedData.data.filteredData)
         // creating application access
-        for (let ele of validatedData.data.filteredData){
+        for (let ele of validatedData.data.filteredData) {
             let { ApplicationName, CoreId, Email, Name, UserType, ManagerCoreId, Permission, application_sis_id, employee_sis_id } = ele;
-            console.log('ele', ele)
+            // console.log('ele', ele)
             let applicationAccess = await prisma.application_access.create({
                 data: {
                     created_by: (req.user_id),
@@ -545,4 +622,172 @@ const uploadExcel = async (req: any, res: any) => {
         })
     }
 }
-export default { getAllApplications, getApplicationUsers, makeReview, uploadExcel, getAllApplicationAccess }
+
+const addApplicationAccess = async (req: any, res: any) => {
+    try {
+        logger.info('[/addApplicationAccess]');
+        if (!req.isCompliance && !req.isAdmin) {
+            // unauthorized
+            logger.error('[/addApplicationAccess]: unauthorized');
+            res.status(401).json({
+                message: "Unauthorized",
+                is_error: true,
+                data: []
+            })
+        }
+        let { application_sis_id, employee_id, permission } = req.body;
+        if (!application_sis_id || !employee_id || !permission) {
+            return res.status(400).json({
+                is_error: true,
+                message: "application_id, employee_id, permission are required"
+            })
+        }
+        let application_access = await prisma.application_access.findFirst({
+            where: {
+                application_id: parseInt(application_sis_id),
+                employee_id: parseInt(employee_id),
+                permission: permission
+            }
+        })
+        let new_access;
+        if (application_access) {
+            logger.warn(`[addApplicationAccess] - application access already exists - ${JSON.stringify(application_access)}`);
+            let updated_application_access = await prisma.application_access.update({
+                where: {
+                    access_id: application_access.access_id
+                },
+                data: {
+                    updated_by: (req.user_id),
+                    version: application_access.version + 1
+                }
+            })
+            new_access = updated_application_access;
+            logger.debug(`[addApplicationAccess] - application access updated - ${JSON.stringify(updated_application_access)}`);
+        }else{
+            let applicationAccess = await prisma.application_access.create({
+                data: {
+                    created_by: (req.user_id),
+                    updated_by: (req.user_id),
+                    application_id: parseInt(application_sis_id),
+                    employee_id: parseInt(employee_id),
+                    permission: permission,
+                    version: 1
+                }
+            });
+            new_access = applicationAccess;
+            logger.debug(`[addApplicationAccess] - application access created - ${JSON.stringify(applicationAccess)}`);
+        }
+        logger.info(`[addApplicationAccess] - application access created - success`)
+        res.status(200).json({
+            message: "created application access",
+            is_error: false,
+            data: new_access
+        })
+    } catch (error) {
+        logger.error(`[/addApplicationAccess] - ${error}`);
+        res.status(500).json({
+            is_error: true,
+            message: "Something went wrong"
+        })
+    }
+}
+
+const editApplicationAccess = async (req: any, res: any) => {
+    try {
+        logger.info('[/editApplicationAccess]');
+        if (!req.isCompliance && !req.isAdmin) {
+            // unauthorized
+            logger.error('[/editApplicationAccess]: unauthorized');
+            res.status(401).json({
+                message: "Unauthorized",
+                is_error: true,
+                data: []
+            })
+        }
+        let { application_sis_id, employee_id, permission } = req.body;
+        if (!application_sis_id || !employee_id || !permission) {
+            return res.status(400).json({
+                is_error: true,
+                message: "application_id, employee_id, permission are required"
+            })
+        }
+        const id = parseInt(req.params.id);
+
+        let applicationAccess = await prisma.application_access.update({
+            where: {
+                sis_id: id,
+            },
+            data: {
+                updated_by: (req.user_id),
+                application_id: parseInt(application_sis_id),
+                employee_id: parseInt(employee_id),
+                permission: permission,
+                version: 1
+            }
+        });
+        logger.debug(`[editApplicationAccess] - application access updated - ${applicationAccess}`);
+        logger.info(`[editApplicationAccess] - application access updated - success`)
+        res.status(200).json({
+            message: "Application Access Updated",
+            is_error: false,
+            data: applicationAccess
+        })
+    } catch (error) {
+        logger.error(`[/editApplicationAccess] - ${error}`);
+        res.status(500).json({
+            is_error: true,
+            message: "Something went wrong"
+        })
+    }
+}
+
+const deleteApplicationAccess = async (req: any, res: any) => {
+    try {
+        logger.info('[/deleteApplicationAccess]');
+        if (!req.isCompliance && !req.isAdmin) {
+            // unauthorized
+            logger.error('[/deleteApplicationAccess]: unauthorized');
+            res.status(401).json({
+                message: "Unauthorized",
+                is_error: true,
+                data: []
+            })
+        }
+        const id = parseInt(req.params.id);
+        let applicationAccess = await prisma.application_access.update({
+            where: {
+                sis_id: id
+            },
+            data: {
+                updated_by: (req.user_id),
+                rec_st: false
+            }
+        });
+        logger.debug(`[deleteApplicationAccess] - application access deleted - ${applicationAccess}`);
+        logger.info(`[deleteApplicationAccess] - application access deleted - success`)
+        res.status(200).json({
+            message: "Application Access Deleted",
+            is_error: false,
+            data: applicationAccess
+        })
+    } catch (error) {
+        logger.error(`[/deleteApplicationAccess] - ${error}`);
+        res.status(500).json({
+            is_error: true,
+            message: "Something went wrong"
+        })
+    }
+}
+
+
+export default { 
+    getAllApplications, 
+    getApplicationUsers, 
+    makeReview, 
+    uploadExcel, 
+    getAllApplicationAccess,
+    addApplicationAccess,
+    editApplicationAccess,
+    deleteApplicationAccess,
+    getAllUsers
+}

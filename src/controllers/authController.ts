@@ -210,6 +210,34 @@ const changePassword = async (req: any, res: any) => {
    }
 };
 
+const getUser = async (req: any, res: any) => {
+   try {
+      const user_sis_id = req.user_id;
+
+      const user = await prisma.employee.findFirst({
+         where: {
+            sis_id: user_sis_id,
+            rec_st: true,
+         }
+      });
+
+      if (user) {
+         return res.status(200).send({ 
+            is_error: false, 
+            user, 
+            isAdmin: req.isAdmin ? true : false, 
+            isCompliance: req.isCompliance ? true : false,
+         });
+      } else {
+         return res.status(400).send({ is_error: true, error: "User not found" });
+      }
+   } catch (err) {
+      logger.error(`[/getUser] - ${err}`);
+      logger.debug(`[/getUser] - body: ${JSON.stringify(req.body)}`);
+      return res.status(500).send({ is_error: true, error: "Something went wrong" });
+   }
+}
+
 // const editProfile = async (req: any, res: any) => {
 //    logger.info("[/userDetails]");
 //    try {
@@ -251,4 +279,4 @@ const changePassword = async (req: any, res: any) => {
 // };
 
 
-export default { register, login, changePassword };
+export default { register, login, changePassword, getUser };
