@@ -2,10 +2,13 @@ import controller from "../controllers/homeController";
 import validation from "../middleware/validation";
 import auth, { isAdmin } from "../middleware/authentication";
 import multer from "multer";
+import { mkdirSync } from "fs";
 const express = require("express");
 const router = express.Router();
 var storage = multer.diskStorage({
     destination: function (req:any, file:any, cb:any) {
+        let path = "./uploads";
+        mkdirSync(path)
         cb(null, "./uploads");
     },
     filename: function (req: any, file: any, cb: any) {

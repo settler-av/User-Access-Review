@@ -136,7 +136,7 @@ const getAllApplicationAccess = async (req: any, res: any) => {
         })
         let sendJSON: any = [];
         // logger.debug(`[/getAllApplicationAccess]: ${JSON.stringify(applicationAccess)}`)
-        console.log(applicationAccess)
+        // console.log(applicationAccess)
         for (var i = 0; i < applicationAccess.length; i++) {
             sendJSON.push({
                 id: applicationAccess[i].access_id,
@@ -354,6 +354,7 @@ const makeReview = async (req: any, res: any) => {
 }
 
 const validateExcelData = async (jsonData: any) => {
+    logger.info('[/validateExcelData]');
     let filteredData:any = [];
     for(let ele of jsonData){
         let { ApplicationName, CoreId, Email, Name, UserType, ManagerCoreId, Permission } = ele;
