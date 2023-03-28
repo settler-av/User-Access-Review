@@ -107,7 +107,7 @@ const login = async (req: Request, res: Response) => {
 
       let _employee: any = { ...employee };
       if (!employee) {
-         logger.warn(`[/login] - user not found`);
+         logger.warn(`[/login] - user not found - ${email}`);
          logger.debug(`[/login] - body: ${JSON.stringify(req.body)}`);
          return res.status(400).json({
             message: "User not found",
@@ -128,7 +128,7 @@ const login = async (req: Request, res: Response) => {
       const token = jwt.sign({ userId: employee.sis_id, group_id: employee.group_sis_id }, secret);
       console.log(secret);
       
-      logger.info(`[/login] - success - ${employee.sis_id}`);
+      logger.info(`[/login] - success - sis_id - ${employee.sis_id}, email - ${employee.email}`);
       delete _employee.password;
 
       return res.status(200).json({
@@ -156,10 +156,34 @@ const changePassword = async (req: any, res: any) => {
    logger.info("[/changePassword]");
    try {
       const { password, new_password } = req.body;
-      
-
+            
+      const user = await prisma.employee.findUnique({
+         where: {
+            sis_id: req.user_id,
+         }
+      });
+      if (!user) {
+         logger.warn(`[/changePassword] - user not found`);
+         logger.debug(`[/changePassword] - body: ${JSON.stringify(req.body)}`);
+         return res.status(400).json({
+            is_error: true,
+            message: "User not found",
+         });
+      }
       // update password
       const hashedPassword = await bcrypt.hash(password, 10);
+      // check password
+
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+         logger.warn(`[/changePassword] - incorrect password`);
+         logger.debug(`[/changePassword] - body: ${JSON.stringify(req.body)}`);
+         return res.status(400).json({
+            is_error: true,
+            message: "Incorrect password",
+         });
+      }
+
       const updatedUser = await prisma.employee.update({
          where: {
             sis_id: req.user_id,
@@ -171,7 +195,7 @@ const changePassword = async (req: any, res: any) => {
       });
       logger.info(`[/changePassword] - success - ${req.user_id}`);
       return res.status(200).json({
-         isError: false,
+         is_error: false,
          message: "Password changed successfully",
          data: {
             user: updatedUser
@@ -180,7 +204,7 @@ const changePassword = async (req: any, res: any) => {
    } catch (err) {
       logger.error(`[/changePassword] - ${err}`);
       return res.status(400).send({
-         isError: true,
+         is_error: true,
          message: "Server error",
       });
    }
