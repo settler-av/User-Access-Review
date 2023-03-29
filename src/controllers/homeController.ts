@@ -525,7 +525,8 @@ const validateExcelData = async (jsonData: any) => {
                 where: {
                     application_id: application.sis_id,
                     employee_id: employee.sis_id,
-                    permission: Permission
+                    permission: Permission,
+                    rec_st: true
                 }
             })
 
