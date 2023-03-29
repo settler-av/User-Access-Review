@@ -481,7 +481,6 @@ const validateExcelData = async (jsonData: any) => {
                     }
                 }
             }
-
             // validating name
             if (employee.name !== Name) {
                 return {
@@ -492,7 +491,6 @@ const validateExcelData = async (jsonData: any) => {
                     }
                 }
             }
-
             // validating ManagerCoreId
             if (!employee.manager_id && employee.manager_id !== ManagerCoreId) {
                 console.log('employee', employee.name)
@@ -505,7 +503,6 @@ const validateExcelData = async (jsonData: any) => {
                     }
                 }
             }
-
             // validating Permission
             if (typeof (ele.Permission) !== "string") {
                 return {
