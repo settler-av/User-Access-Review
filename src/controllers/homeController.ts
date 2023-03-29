@@ -8,8 +8,14 @@ dotenv.config();
 
 const getAllApplications = async (req: any, res: any) => {
     try {
-
         logger.info("[/getAllApplications]");
+        if (!(req.isCompliance || req.isAdmin || req.isOwner)) {
+            logger.error("[/getAllUsers] - Unauthorized access");
+            return res.status(401).json({
+                is_error: true,
+                message: "Unauthorized access"
+            })
+        }
         var applications: any = await prisma.application.findMany({
             where: {
                 rec_st: true
@@ -47,7 +53,7 @@ const getAllApplications = async (req: any, res: any) => {
         }
         logger.info("[/getAllApplications]: applications fetched")
         if (req.isCompliance || req.isAdmin) {
-            res.status(200).json({
+            return res.status(200).json({
                 message: "Applications fetched",
                 is_error: false,
                 data: applications
@@ -70,7 +76,7 @@ const getAllApplications = async (req: any, res: any) => {
                 delete application.access_count;
                 delete application.review_count;
             })
-            res.status(200).json({
+            return res.status(200).json({
                 message: "Applications fetched",
                 is_error: false,
                 data: applications
@@ -79,7 +85,7 @@ const getAllApplications = async (req: any, res: any) => {
 
     } catch (error) {
         logger.error(`[/getAllApplications] - ${error}`);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })
@@ -90,11 +96,10 @@ const getAllUsers = async (req: any, res: any) => {
         logger.info("[/getAllUsers]");
         if (!(req.isCompliance || req.isAdmin || req.isOwner)) {
             logger.error("[/getAllUsers] - Unauthorized access");
-            res.status(401).json({
+            return res.status(401).json({
                 is_error: true,
                 message: "Unauthorized access"
             })
-            return;
         }
 
         var users: any = await prisma.employee.findMany({
@@ -136,7 +141,7 @@ const getAllUsers = async (req: any, res: any) => {
             delete users[i].manager;
         }
         logger.info("[/getAllUsers]: users fetched")
-        res.status(200).json({
+        return res.status(200).json({
             message: "Users fetched",
             is_error: false,
             data: users
@@ -144,7 +149,7 @@ const getAllUsers = async (req: any, res: any) => {
 
     } catch (error) {
         logger.error(`[/getAllUsers] - ${error}`);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })
@@ -155,52 +160,139 @@ const getAllUsers = async (req: any, res: any) => {
 const getAllApplicationAccess = async (req: any, res: any) => {
     try {
         logger.info("[/getAllApplicationAccess]");
+        let applicationAccess: any = []
+        // if compliance or admin or owner fetch all application access
+        if (req.isCompliance || req.isAdmin || req.isOwner) {
+            logger.info("[/getAllApplicationAccess]: compliance, admin or owner");
+            applicationAccess = await prisma.application_access.findMany({
+                where: {
+                    rec_st: true
+                },
+                select: {
+                    sis_id: true,
+                    access_id: true,
+                    application: {
+                        select: {
+                            name: true
+                        }
+                    },
+                    employee: {
+                        select: {
+                            name: true,
+                            core_id: true,
+                            email: true,
+                            manager_id: true,
+                            manager: {
+                                select: {
+                                    core_id: true,
+                                }
+                            },
 
-        if (!(req.isCompliance || req.isAdmin || req.isOwner)) {
-            logger.error("[/getAllApplicationAccess] - Unauthorized access");
-            res.status(401).json({
-                is_error: true,
-                message: "Unauthorized access"
+                        }
+                    },
+                    permission: true,
+                    created_at: true,
+                    updated_at: true,
+                    created_by: true,
+                    updated_by: true,
+                },
+                orderBy: {
+                    created_at: "desc"
+                }
             })
-            return;
+            logger.debug(`[/getAllApplicationAccess]: applicationAccess: ${JSON.stringify(applicationAccess)}`);
+        } else if (req.isManager) {
+            logger.info("[/getAllApplicationAccess]: manager");
+            applicationAccess = await prisma.application_access.findMany({
+                where: {
+                    rec_st: true,
+                    employee: {
+                        manager_id: req.user_id
+                    }
+                },
+                select: {
+                    sis_id: true,
+                    access_id: true,
+                    application: {
+                        select: {
+                            name: true
+                        }
+                    },
+                    employee: {
+                        select: {
+                            name: true,
+                            core_id: true,
+                            email: true,
+                            manager_id: true,
+                            manager: {
+                                select: {
+                                    core_id: true,
+                                }
+                            },
+
+                        }
+                    },
+                    permission: true,
+                    created_at: true,
+                    updated_at: true,
+                    created_by: true,
+                    updated_by: true,
+                },
+                orderBy: {
+                    created_at: "desc"
+                }
+            })
+            // logger.debug(`[/getAllApplicationAccess]: applicationAccess: ${JSON.stringify(applicationAccess)}`);
+        } else {
+            logger.info("[/getAllApplicationAccess]: employee");
+            applicationAccess = await prisma.application_access.findMany({
+                where: {
+                    rec_st: true,
+                    employee_id: req.user_id
+                },
+                select: {
+                    sis_id: true,
+                    access_id: true,
+                    application: {
+                        select: {
+                            name: true
+                        }
+                    },
+                    employee: {
+                        select: {
+                            name: true,
+                            core_id: true,
+                            email: true,
+                            manager_id: true,
+                            manager: {
+                                select: {
+                                    core_id: true,
+                                }
+                            },
+
+                        }
+                    },
+                    permission: true,
+                    created_at: true,
+                    updated_at: true,
+                    created_by: true,
+                    updated_by: true,
+                },
+                orderBy: {
+                    created_at: "desc"
+                }
+            })
         }
+        logger.debug(`[/getAllApplicationAccess]: applicationAccess: ${JSON.stringify(applicationAccess)}`);
 
-        var applicationAccess: any = await prisma.application_access.findMany({
-            where: {
-                rec_st: true
-            },
-            select: {
-                sis_id: true,
-                access_id: true,
-                application: {
-                    select: {
-                        name: true
-                    }
-                },
-                employee: {
-                    select: {
-                        name: true,
-                        core_id: true,
-                        email: true,
-                        manager_id: true,
-                        manager: {
-                            select: {
-                                core_id: true,
-                            }
-                        },
 
-                    }
-                },
-                permission: true,
-                created_at: true,
-                updated_at: true,
-                created_by: true,
-                updated_by: true,
-            },
-            orderBy: {
-                created_at: "desc"
-            }
-        })
+        // if employee is manager then he can see all the application access of his group members.
+
+
+
+        // if employee is not manager then he can see all the application access of himself.
+
+
         let sendJSON: any = [];
         // logger.debug(`[/getAllApplicationAccess]: ${JSON.stringify(applicationAccess)}`)
         // console.log(applicationAccess)
@@ -214,25 +306,20 @@ const getAllApplicationAccess = async (req: any, res: any) => {
                 managerCoreId: applicationAccess[i].employee?.manager?.core_id,
                 userType: "User",
                 permission: applicationAccess[i].permission,
-                // created_at: applicationAccess[i].created_at,
-                // updated_at: applicationAccess[i].updated_at,
-                // created_by: applicationAccess[i].created_by,
-                // updated_by: applicationAccess[i].updated_by,
             })
         }
 
         logger.info("[/getAllApplicationAccess]: application access fetched")
         logger.debug(`[/getAllApplicationAccess]: ${JSON.stringify(sendJSON)}`)
-        res.status(200).json({
+        return res.status(200).json({
             message: "Application access fetched",
             is_error: false,
             data: sendJSON
         })
-
     } catch (error) {
         logger.error(`[/getAllApplicationAccess] - ${error}`);
         console.log(error);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })
@@ -304,7 +391,7 @@ const getApplicationUsers = async (req: any, res: any) => {
                     }
                     complianceUsersResponse.push(applicationUserResponse);
                 });
-                res.status(200).json({
+                return res.status(200).json({
                     message: "Response to Compliance User",
                     is_error: false,
                     data: complianceUsersResponse
@@ -329,7 +416,7 @@ const getApplicationUsers = async (req: any, res: any) => {
                     }
                 });
                 var ownerUserResponse: any = complianceUsersResponse;
-                res.status(200).json({
+                return res.status(200).json({
                     message: "Response to Manager/Owner User",
                     is_error: false,
                     data: {
@@ -356,14 +443,14 @@ const getApplicationUsers = async (req: any, res: any) => {
                         employeeUsersResponse.push(applicationUserResponse);
                     }
                 });
-                res.status(200).json({
+                return res.status(200).json({
                     message: "Response to Employee User",
                     is_error: false,
                     data: employeeUsersResponse
                 })
             }
         } else {
-            res.status(404).json({
+            return res.status(404).json({
                 message: "Application not found",
                 is_error: true,
                 data: []
@@ -371,7 +458,7 @@ const getApplicationUsers = async (req: any, res: any) => {
         }
     } catch (error) {
         logger.error(`[/getAllApplications] - ${error}`);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })
@@ -385,7 +472,7 @@ const makeReview = async (req: any, res: any) => {
         if (!req.isCompliance && !req.isAdmin) {
             // unauthorized
             logger.error('[/home/make-review]: unauthorized');
-            res.status(401).json({
+            return res.status(401).json({
                 message: "Unauthorized",
                 is_error: true,
                 data: []
@@ -406,14 +493,14 @@ const makeReview = async (req: any, res: any) => {
             }
         });
         logger.info('[/home/make-review]: review created');
-        res.status(200).json({
+        return res.status(200).json({
             message: "Review created",
             is_error: false,
             data: review
         })
     } catch (error) {
         logger.error(`[/home/make-review] - ${error}`);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })
@@ -558,7 +645,7 @@ const uploadExcel = async (req: any, res: any) => {
         if (!req.isCompliance && !req.isAdmin) {
             // unauthorized
             logger.error('[/uploadExcel]: unauthorized');
-            res.status(401).json({
+            return res.status(401).json({
                 message: "Unauthorized",
                 is_error: true,
                 data: []
@@ -608,14 +695,14 @@ const uploadExcel = async (req: any, res: any) => {
         };
         logger.info(`[uploadExcel] - application access created - success`)
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "Route Under Development",
             is_error: false,
             data: [...validatedData.data.filteredData]
         })
     } catch (error) {
         logger.error(`[/uploadExcel] - ${error}`);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })
@@ -628,7 +715,7 @@ const addApplicationAccess = async (req: any, res: any) => {
         if (!req.isCompliance && !req.isAdmin) {
             // unauthorized
             logger.error('[/addApplicationAccess]: unauthorized');
-            res.status(401).json({
+            return res.status(401).json({
                 message: "Unauthorized",
                 is_error: true,
                 data: []
@@ -677,14 +764,14 @@ const addApplicationAccess = async (req: any, res: any) => {
             logger.debug(`[addApplicationAccess] - application access created - ${JSON.stringify(applicationAccess)}`);
         }
         logger.info(`[addApplicationAccess] - application access created - success`)
-        res.status(200).json({
+        return res.status(200).json({
             message: "created application access",
             is_error: false,
             data: new_access
         })
     } catch (error) {
         logger.error(`[/addApplicationAccess] - ${error}`);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })
@@ -697,7 +784,7 @@ const editApplicationAccess = async (req: any, res: any) => {
         if (!req.isCompliance && !req.isAdmin) {
             // unauthorized
             logger.error('[/editApplicationAccess]: unauthorized');
-            res.status(401).json({
+            return res.status(401).json({
                 message: "Unauthorized",
                 is_error: true,
                 data: []
@@ -726,14 +813,14 @@ const editApplicationAccess = async (req: any, res: any) => {
         });
         logger.debug(`[editApplicationAccess] - application access updated - ${applicationAccess}`);
         logger.info(`[editApplicationAccess] - application access updated - success`)
-        res.status(200).json({
+        return res.status(200).json({
             message: "Application Access Updated",
             is_error: false,
             data: applicationAccess
         })
     } catch (error) {
         logger.error(`[/editApplicationAccess] - ${error}`);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })
@@ -746,7 +833,7 @@ const deleteApplicationAccess = async (req: any, res: any) => {
         if (!req.isCompliance && !req.isAdmin) {
             // unauthorized
             logger.error('[/deleteApplicationAccess]: unauthorized');
-            res.status(401).json({
+            return  res.status(401).json({
                 message: "Unauthorized",
                 is_error: true,
                 data: []
@@ -764,14 +851,14 @@ const deleteApplicationAccess = async (req: any, res: any) => {
         });
         logger.debug(`[deleteApplicationAccess] - application access deleted - ${applicationAccess}`);
         logger.info(`[deleteApplicationAccess] - application access deleted - success`)
-        res.status(200).json({
+        return res.status(200).json({
             message: "Application Access Deleted",
             is_error: false,
             data: applicationAccess
         })
     } catch (error) {
         logger.error(`[/deleteApplicationAccess] - ${error}`);
-        res.status(500).json({
+        return res.status(500).json({
             is_error: true,
             message: "Something went wrong"
         })

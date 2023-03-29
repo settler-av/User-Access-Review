@@ -75,7 +75,7 @@ const getAllreports = async (req: any, res: any) => {
 
     if (req.isCompliance) {
       logger.info(`[/report/] - Compliance fetched reports - ${req.user_id}`);
-      res.status(200).json({
+      return res.status(200).json({
         message: "Fetched Reports of all users",
         is_error: false,
         data: reports,
@@ -85,7 +85,7 @@ const getAllreports = async (req: any, res: any) => {
         return report.employee_group_id === req.group_id;
       });
       logger.info(`[/report/] - Manager fetched reports - ${req.user_id}`);
-      res.status(200).json({
+      return res.status(200).json({
         message: "Fetched Reports of all the users under your group",
         is_error: false,
         data: ManagerReports,
@@ -95,7 +95,7 @@ const getAllreports = async (req: any, res: any) => {
         return report.application_group_id === req.group_id;
       });
       logger.info(`[/report/] - Owner fetched reports - ${req.user_id}`);
-      res.status(200).json({
+      return res.status(200).json({
         message: "Fetched Reports of your application",
         is_error: false,
         data: OwnerReports,
@@ -103,21 +103,21 @@ const getAllreports = async (req: any, res: any) => {
     }
     else if( req.isAdmin){
       logger.info(`[/report/] - Admin fetched reports - ${req.user_id}`);
-      res.status(200).json({
+      return res.status(200).json({
         message: "Fetched Reports of all users",
         is_error: false,
         data: reports,
       });
     } else {
       logger.warn(`[/report/] - unauthorized access`);
-      res.status(401).json({
+      return res.status(401).json({
         message: "You are not authorized to view this page",
         is_error: true,
       });
     }
   } catch (error) {
     logger.error(`[/report/] - ${error}`);
-    res.status(500).json({
+    return res.status(500).json({
       is_error: true,
       message: "Somthing went wrong",
     });
@@ -128,13 +128,13 @@ const getAllreports = async (req: any, res: any) => {
 //   try {
 //     // Under Development
 //     logger.warn(`[/report/dashboard] - under construction`);
-//     res.status(200).json({
+//     return res.status(200).json({
 //       message: "Under Development",
 //       is_error: false,
 //     });
 //   } catch (error) {
 //     logger.error(`[/report/dashboard] - ${error}`);
-//     res.status(500).json({
+//     return res.status(500).json({
 //       is_error: true,
 //       message: "Somthing went wrong",
 //     });
@@ -145,7 +145,7 @@ const createReview = async (req: any, res: any) => {
   try {
     if (!req.isCompliance) {
       logger.warn(`[/report/create] - unauthorized access`);
-      res.status(401).json({
+      return res.status(401).json({
         message: "You are not authorized to view this page",
         is_error: true,
       });
@@ -186,14 +186,14 @@ const createReview = async (req: any, res: any) => {
     logger.info(
       `[/report/create] - ${req.sis_id} - created review - ${review.review_id}`
     );
-    res.status(200).json({
+    return res.status(200).json({
       message: "Review Created",
       is_error: false,
       data: review,
     });
   } catch (error) {
     logger.error(`[/report/create] - ${error}`);
-    res.status(500).json({
+    return res.status(500).json({
       is_error: true,
       message: "Somthing went wrong",
     });
