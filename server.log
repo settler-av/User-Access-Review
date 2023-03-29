@@ -1779,3 +1779,4 @@ Foreign key constraint failed on the field: `review_access_id_fkey (index)`
 2023-03-30 01:15:38 info: [/addApplicationAccess]
 [29/Mar/2023:19:45:38 +0000] POST /api/v1/home/add 401 52 - 1203.758 ms
 2023-03-30 01:15:38 error: [/addApplicationAccess]: unauthorized
+2023-03-30 01:20:23 info: App is running on port localhost:4000

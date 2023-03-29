@@ -89,6 +89,7 @@ const login = async (req: Request, res: Response) => {
    logger.info("[/login]");
    try {
       const { email, core_id, password } = req.body;
+      let core_id_new = core_id.trim().toupperCase();
       let employee;
       if (email){
          employee = await prisma.employee.findUnique({
@@ -99,7 +100,7 @@ const login = async (req: Request, res: Response) => {
       }else{
          employee = await prisma.employee.findUnique({
             where: {
-               core_id: core_id,
+               core_id: core_id_new,
             }
          });
       }
