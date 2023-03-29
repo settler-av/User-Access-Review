@@ -170,6 +170,7 @@ const getAllApplicationAccess = async (req: any, res: any) => {
                 rec_st: true
             },
             select: {
+                sis_id: true,
                 access_id: true,
                 application: {
                     select: {
@@ -205,7 +206,7 @@ const getAllApplicationAccess = async (req: any, res: any) => {
         // console.log(applicationAccess)
         for (var i = 0; i < applicationAccess.length; i++) {
             sendJSON.push({
-                id: applicationAccess[i].access_id,
+                id: applicationAccess[i].sis_id,
                 applicationName: applicationAccess[i].application.name,
                 name: applicationAccess[i].employee.name,
                 coreId: applicationAccess[i].employee.core_id,
@@ -459,7 +460,7 @@ const validateExcelData = async (jsonData: any) => {
                     }
                 }
             }
-            if(employee.rec_st === false){
+            if (employee.rec_st === false) {
                 logger.info('[/validateExcelData]: employee is deleted');
                 return {
                     success: false,
@@ -663,7 +664,7 @@ const addApplicationAccess = async (req: any, res: any) => {
             })
             new_access = updated_application_access;
             logger.debug(`[addApplicationAccess] - application access updated - ${JSON.stringify(updated_application_access)}`);
-        }else{
+        } else {
             let applicationAccess = await prisma.application_access.create({
                 data: {
                     created_by: (req.user_id),
@@ -780,11 +781,11 @@ const deleteApplicationAccess = async (req: any, res: any) => {
 }
 
 
-export default { 
-    getAllApplications, 
-    getApplicationUsers, 
-    makeReview, 
-    uploadExcel, 
+export default {
+    getAllApplications,
+    getApplicationUsers,
+    makeReview,
+    uploadExcel,
     getAllApplicationAccess,
     addApplicationAccess,
     editApplicationAccess,

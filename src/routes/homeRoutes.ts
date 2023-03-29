@@ -6,7 +6,7 @@ import { mkdirSync } from "fs";
 const express = require("express");
 const router = express.Router();
 var storage = multer.diskStorage({
-    destination: function (req:any, file:any, cb:any) {
+    destination: function (req: any, file: any, cb: any) {
         let path = "./uploads";
         mkdirSync(path)
         cb(null, "./uploads");
@@ -26,9 +26,9 @@ router.get("/users", auth, controller.getAllUsers);
 
 router.post("/add", validation.addApplicationAccessSchema, auth, controller.addApplicationAccess);
 router.post("/edit/:id", validation.editApplicationAccessSchema, auth, controller.editApplicationAccess);
-router.post("/delete", validation.deleteApplicationAccessSchema, auth, controller.deleteApplicationAccess);
+router.post("/delete/:id", validation.deleteApplicationAccessSchema, auth, controller.deleteApplicationAccess);
 router.get("/application-access", auth, controller.getAllApplicationAccess);
 router.get("/:applicationName/users", auth, controller.getApplicationUsers);
-router.post("/make-review",validation.makeReviewSchema ,auth,controller.makeReview);
-router.post("/upload",auth,  upload, controller.uploadExcel);
+router.post("/make-review", validation.makeReviewSchema, auth, controller.makeReview);
+router.post("/upload", auth, upload, controller.uploadExcel);
 module.exports = router;
