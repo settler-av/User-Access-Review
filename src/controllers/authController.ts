@@ -91,7 +91,7 @@ const login = async (req: Request, res: Response) => {
         const { email, core_id, password } = req.body;
         let core_id_new;
         if (core_id) {
-            core_id_new = core_id.trim().toupperCase()
+            core_id_new = core_id.trim().toUpperCase();
         };
         let employee;
         if (email) {
