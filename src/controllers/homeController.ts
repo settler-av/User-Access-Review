@@ -9,7 +9,7 @@ dotenv.config();
 const getAllApplications = async (req: any, res: any) => {
     try {
         logger.info("[/getAllApplications]");
-        if (!(req.isCompliance || req.isAdmin || req.isOwner || req.isManager)) {
+        if (!(req.isCompliance || req.isAdmin || req.isOwner)) {
             logger.error("[/getAllUsers] - Unauthorized access");
             return res.status(401).json({
                 is_error: true,
@@ -95,7 +95,7 @@ const getAllApplications = async (req: any, res: any) => {
 const getAllUsers = async (req: any, res: any) => {
     try {
         logger.info("[/getAllUsers]");
-        if (!(req.isCompliance || req.isAdmin || req.isOwner || req.isManager)) {
+        if (!(req.isCompliance || req.isAdmin || req.isOwner)) {
             logger.error("[/getAllUsers] - Unauthorized access");
             return res.status(401).json({
                 is_error: true,
@@ -103,64 +103,34 @@ const getAllUsers = async (req: any, res: any) => {
             })
         }
 
-        var users: any;
-        if (req.isCompliance || req.isAdmin) {
-            users = await prisma.employee.findMany({
-                where: {
-                    rec_st: true
-                },
-                select: {
-                    sis_id: true,
-                    core_id: true,
-                    name: true,
-                    email: true,
-                    manager_id: true,
-                    manager: {
-                        select: {
-                            core_id: true,
-                        }
-                    },
-                    _count: {
-                        select: {
-                            application_access: true,
-                            review: true,
-                        }
+
+        var users: any = await prisma.employee.findMany({
+            where: {
+                rec_st: true
+            },
+            select: {
+                sis_id: true,
+                core_id: true,
+                name: true,
+                email: true,
+                manager_id: true,
+                manager: {
+                    select: {
+                        core_id: true,
                     }
                 },
-                orderBy: {
-                    created_at: "desc"
-                }
-            })
-        }
-        else if (req.isManager) {
-            users = await prisma.employee.findMany({
-                where: {
-                    rec_st: true,
-                    manager_id: req.user_id
-                },
-                select: {
-                    sis_id: true,
-                    core_id: true,
-                    name: true,
-                    email: true,
-                    manager_id: true,
-                    manager: {
-                        select: {
-                            core_id: true,
-                        }
-                    },
-                    _count: {
-                        select: {
-                            application_access: true,
-                            review: true,
-                        }
+                _count: {
+                    select: {
+                        application_access: true,
+                        review: true,
                     }
-                },
-                orderBy: {
-                    created_at: "desc"
                 }
-            })
-        }
+            },
+            orderBy: {
+                created_at: "desc"
+            }
+        })
+
 
         for (var i = 0; i < users.length; i++) {
             users[i].access_count = users[i]._count.application_access;
